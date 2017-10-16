@@ -1,2 +1,2 @@
-p# Platforme1
+# Platforme1
 ## pop-sf3-2016
