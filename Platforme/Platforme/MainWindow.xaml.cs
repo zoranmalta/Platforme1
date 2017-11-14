@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Platforme.UI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,34 @@ namespace Platforme
         public MainWindow()
         {
             InitializeComponent();
+            cbTipKorisnika.Items.Add("Administrator");
+            cbTipKorisnika.Items.Add("Prodavac");
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Potvrda(object sender, RoutedEventArgs e)
+        {
+            if (cbTipKorisnika.Text == "Administrator")
+            {
+                var meniAdministratora = new MeniAdministratora();
+                this.Close();
+                meniAdministratora.ShowDialog();
+            }
+            if (cbTipKorisnika.Text == "Prodavac")
+            {
+                var meniProdavac = new MeniProdavac();
+                this.Close();
+                meniProdavac.ShowDialog();
+            }
+            if (cbTipKorisnika.Text == "")
+            {
+                if(MessageBox.Show("Ponovo se ulogujte?","Niste se ulogovali", MessageBoxButton.YesNo) == MessageBoxResult.Yes) { }
+                else { this.Close(); }
+            }
         }
     }
 }

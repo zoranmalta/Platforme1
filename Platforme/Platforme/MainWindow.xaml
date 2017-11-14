@@ -7,6 +7,24 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="233*"/>
+            <ColumnDefinition Width="284*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="55*"/>
+            <RowDefinition Height="55"/>
+            <RowDefinition Height="55*"/>
+            <RowDefinition Height="87*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Ulogujte se" FontSize="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="95,10,0,0" Height="49" Width="277"/>
+        <Label Content="User name" FontSize="15" HorizontalContentAlignment="Right" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="55,18,0,0" Grid.Row="1" Width="168"/>
+        <Label Content="Password" FontSize="15" HorizontalContentAlignment="Right" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="55,19,0,0" Grid.Row="2" Width="168"/>
+        <Label Content="User" FontSize="15" HorizontalContentAlignment="Right" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="55,19,0,0" Grid.Row="3" Width="168"/>
+        <ComboBox Name="cbTipKorisnika" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" Width="168" Grid.Column="1" Margin="10,15,0,0" Grid.Row="3" Height="30"/>
+        <Button Content="Exit" FontSize="15" Click="Button_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Grid.Column="1" Margin="194,46,0,0" Grid.Row="4" Height="30"/>
+        <Button Content="Potvrdi" FontSize="15" Click="Potvrda" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="143,46,0,0" Grid.Row="4" Height="30"/>
+
     </Grid>
 </Window>

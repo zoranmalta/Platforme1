@@ -1,0 +1,23 @@
+﻿<Window x:Class="Platforme.UI.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Platforme.UI"
+        mc:Ignorable="d"
+        Title="Namestaj" Height="350" Width="450">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="199*"/>
+            <RowDefinition Height="60*"/>
+            <RowDefinition Height="60*"/>
+        </Grid.RowDefinitions>
+        <ListBox Name="lbNamestaj" FontSize="15" HorizontalAlignment="Left" Height="179" VerticalAlignment="Top" Width="422" Margin="10,10,0,0"/>
+        <Button Content="Dodaj" FontSize="15" Click="DodajNamestaj" Margin="10,21,351,10" Grid.Row="1"/>
+        <Button Content="Izmeni" FontSize="15" Click="IzmeniNamestaj" HorizontalAlignment="Left" VerticalAlignment="Top" Width="79" Margin="110,21,0,0" Grid.Row="1" Height="29"/>
+        <Button Content="Obrisi" FontSize="15" Click="ObrisiNamestaj" HorizontalAlignment="Left" VerticalAlignment="Top" Width="79" Margin="210,21,0,0" Grid.Row="1" Height="29"/>
+        <Button Content="Izadji" FontSize="15" Click="Button_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="70" Margin="362,21,0,0" Grid.Row="1" Height="29"/>
+        <Button Content="Pretraga po tipu namestaja" Click="Pretraga_po_tipu"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Margin="10,20,0,0" Grid.Row="2" Height="30"/>
+
+    </Grid>
+</Window>
