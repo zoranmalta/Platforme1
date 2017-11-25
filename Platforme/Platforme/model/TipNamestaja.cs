@@ -1,16 +1,44 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Platforme.model
 {
-    public class TipNamestaja
+    public class TipNamestaja :INotifyPropertyChanged
     {
-        public int Id { get; set; }
-        public string Naziv { get; set; }
-        public bool Obrisan { get; set; }
+
+        private int id;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public int Id
+        {
+            get { return id; }
+            set { id = value;
+                OnPropertyChanged("id");
+            }
+        }
+        private string naziv;
+
+        public string Naziv
+        {
+            get { return naziv; }
+            set { naziv = value;
+                OnPropertyChanged("naziv");
+            }
+        }
+        private bool obrisan;
+
+        public bool Obrisan
+        {
+            get { return obrisan; }
+            set { obrisan = value;
+                OnPropertyChanged("obrisan");
+            }
+        }
 
         public TipNamestaja() { }
 
@@ -26,7 +54,7 @@ namespace Platforme.model
         }
         public static TipNamestaja GetById(int Id)
         {
-            foreach (var tipNamestaja in Projekat.Instance.TipoviNamestaja)
+            foreach (var tipNamestaja in Projekat.Instance.TipNamestaja)
             {
                 if (tipNamestaja.Id == Id)
                 {
@@ -34,6 +62,13 @@ namespace Platforme.model
                 }
             }
             return null;
+        }
+        public void OnPropertyChanged(string PropertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(PropertyName));
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -11,11 +12,11 @@ namespace Platforme.util
     public class GenericsSerializer
     {
         //unosi listu objekata T u xml fajl imena filename 
-        public static void Serialize<T>(string filename, List<T> objToSerialize) where T : class
+        public static void Serialize<T>(string filename, ObservableCollection<T> objToSerialize) where T : class
         {
             try
             {
-                var serializer = new XmlSerializer(typeof(List<T>));
+                var serializer = new XmlSerializer(typeof(ObservableCollection<T>));
                 using (var sw = new StreamWriter($@"../../Data/{filename}"))
                 {
                     serializer.Serialize(sw, objToSerialize);
@@ -26,16 +27,16 @@ namespace Platforme.util
                 e.StackTrace.ToString();
             }
         }
-        public static List<T> DeSerialize<T>(string filename) where T : class
+        public static ObservableCollection<T> DeSerialize<T>(string filename) where T : class
             //vraca listu podataka iz xml fajla
         {
             try
             {
-                var serializer = new XmlSerializer(typeof(List<T>));
+                var serializer = new XmlSerializer(typeof(ObservableCollection<T>));
 
                 using (var sw = new StreamReader($@"../../Data/{filename}"))
                 {
-                    return (List<T>)serializer.Deserialize(sw);
+                    return (ObservableCollection<T>)serializer.Deserialize(sw);
                 }
             }
             catch (Exception)

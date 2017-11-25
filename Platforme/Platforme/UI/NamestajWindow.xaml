@@ -27,6 +27,9 @@
         <Label Content="Tip Korisnika" FontSize="15" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Grid.Row="4" Height="30" Width="171"/>
         <Button Content="Sacuvaj" Click="Sacuvaj_Namestaj" FontSize="15" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Margin="10,10,0,0" Grid.Row="6" Height="29"/>
         <Button Content="Izlaz" Click="Button_Click_1" FontSize="15" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Grid.Column="1" Margin="151,10,0,0" Grid.Row="6" Height="29"/>
+        <ComboBox SelectedItem="{Binding Path=TipNamestaja}" Name="cbTipNamestaja" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" Width="231" Grid.Column="1" Margin="10,10,0,0" Grid.Row="4" Height="30"/>
+        <TextBox Name="tbNaziv" Text="{Binding Path=Naziv}" FontSize="15" HorizontalContentAlignment="Left" TextWrapping="Wrap" Grid.Column="1" Margin="10"/>
+        <TextBox Name="tbCena" Text="{Binding Path=Cena}" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="231" Grid.Column="1" Margin="10,10,0,0" Grid.Row="2"/>
 
     </Grid>
 </Window>

@@ -1,4 +1,5 @@
 ﻿using Platforme.model;
+using Platforme.util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,32 +24,38 @@ namespace Platforme.UI
         public Window1()
         {
             InitializeComponent();
-            OsveziPrikaz();
+            dgNamestaj.ItemsSource = Projekat.Instance.Namestaj;
+            dgNamestaj.IsSynchronizedWithCurrentItem = true;
+           
         }
-        private void OsveziPrikaz()
-        {
-            lbNamestaj.Items.Clear();
-            foreach(Namestaj n in Projekat.Instance.Namestaj)
-            {
-                if (n.Obrisan == false)
-                {
-                    lbNamestaj.Items.Add(n);
-                }
-            }
-            lbNamestaj.SelectedIndex = 0;
-        }
+       
         private void DodajNamestaj(object sender, RoutedEventArgs e)
         {
-            var nw = new NamestajWindow();
+            var noviNamestaj = new Namestaj();
+            var nw = new NamestajWindow(noviNamestaj,NamestajWindow.Operacija.DODAVANJE);
             nw.ShowDialog();
         }
         private void IzmeniNamestaj(object sender, RoutedEventArgs e)
         {
-
+            var selectedNamestaj = (Namestaj)dgNamestaj.SelectedItem;
+            var nw = new NamestajWindow(selectedNamestaj, NamestajWindow.Operacija.IZMENA);
+            nw.ShowDialog();
         }
         private void ObrisiNamestaj(object sender, RoutedEventArgs e)
         {
-
+            var selectedNamestaj = (Namestaj)dgNamestaj.SelectedItem;
+            if(MessageBox.Show($"Da li sigurno zelite da obrisete namestaj: {selectedNamestaj.Naziv}","Potvrda",
+                                MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                foreach(var n in Projekat.Instance.Namestaj)
+                {
+                    if (n.Id == selectedNamestaj.Id)
+                    {
+                        n.Obrisan = true;
+                    }
+                }
+            }
+            GenericsSerializer.Serialize("namestaj.xml",Projekat.Instance.Namestaj);
         }
         private void Pretraga_po_tipu(object sender, RoutedEventArgs e)
         {
@@ -56,7 +63,7 @@ namespace Platforme.UI
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
     }
 }

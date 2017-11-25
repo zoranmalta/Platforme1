@@ -1,6 +1,7 @@
 ﻿using Platforme.util;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,43 +12,14 @@ namespace Platforme.model
     {
         public static Projekat Instance { get; private set; } = new Projekat();
 
-        private List<Namestaj> namestaj;
-        public List<Namestaj> Namestaj
-        {
-            get
-            {
-                this.namestaj = GenericsSerializer.DeSerialize<Namestaj>("namestaj.xml");
+        public ObservableCollection<Namestaj> Namestaj;
+        public ObservableCollection<TipNamestaja> TipNamestaja;
 
-                return this.namestaj;
-            }
-            set
-            {
-                this.namestaj = value;
-                GenericsSerializer.Serialize<Namestaj>("namestaj.xml", this.namestaj);
-            }
+        private Projekat()
+        {
+            TipNamestaja = new ObservableCollection<model.TipNamestaja>(GenericsSerializer.DeSerialize<TipNamestaja>("TipNamestaja.xml"));
+            Namestaj = new ObservableCollection<model.Namestaj>(GenericsSerializer.DeSerialize<Namestaj>("namestaj.xml"));
         }
 
-        public List<TipNamestaja> tipoviNamestaja;
-
-        public List<TipNamestaja> TipoviNamestaja
-        {
-            get
-            {
-                this.tipoviNamestaja = GenericsSerializer.DeSerialize<TipNamestaja>("tipNamestaja.xml");
-                return this.tipoviNamestaja;
-            }
-            set
-            {
-                this.tipoviNamestaja = value;
-                GenericsSerializer.Serialize<TipNamestaja>("tipNamestaja.xml", this.tipoviNamestaja);
-            }
-        }
-
-
-        //public Projekat()
-        //{
-        //    Instance = new Projekat();
-        //}
-        //pzivamo sa Projekat.Instance.Namestaj=novi namestaj tj value
     }
 }

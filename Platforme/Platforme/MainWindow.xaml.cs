@@ -26,6 +26,7 @@ namespace Platforme
             InitializeComponent();
             cbTipKorisnika.Items.Add("Administrator");
             cbTipKorisnika.Items.Add("Prodavac");
+            cbTipKorisnika.SelectedIndex = 0;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
