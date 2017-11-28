@@ -27,6 +27,8 @@ namespace Platforme.util
             return true;
 
         }
+
+        
         public static bool isDouble(String str)
         {
             try

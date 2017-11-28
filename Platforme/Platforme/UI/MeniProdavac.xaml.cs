@@ -23,5 +23,11 @@ namespace Platforme.UI
         {
             InitializeComponent();
         }
+
+        public void Prodaja(object Sender,RoutedEventArgs e)
+        {
+            var pw = new ProdajaWindow();
+            pw.ShowDialog();
+        }
     }
 }

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Platforme.model
 {
@@ -39,6 +40,7 @@ namespace Platforme.model
                 OnProtertyChanged("cena");
             }
         }
+        [XmlIgnore]
         public TipNamestaja TipNamestaja
         {
             get

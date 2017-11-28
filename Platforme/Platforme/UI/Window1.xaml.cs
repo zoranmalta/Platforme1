@@ -2,6 +2,7 @@
 using Platforme.util;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,24 +22,37 @@ namespace Platforme.UI
     /// </summary>
     public partial class Window1 : Window
     {
+        private ICollectionView view;
+
         public Window1()
         {
             InitializeComponent();
-            dgNamestaj.ItemsSource = Projekat.Instance.Namestaj;
+            view = CollectionViewSource.GetDefaultView(Projekat.Instance.Namestaj);
+            view.Filter = NamestajFilter;
+            dgNamestaj.ItemsSource = view;
             dgNamestaj.IsSynchronizedWithCurrentItem = true;
+
+            dgNamestaj.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
            
         }
+        private bool NamestajFilter(object obj)
+        {
+            return !((Namestaj)obj).Obrisan;
+        }
+
        
         private void DodajNamestaj(object sender, RoutedEventArgs e)
         {
             var noviNamestaj = new Namestaj();
             var nw = new NamestajWindow(noviNamestaj,NamestajWindow.Operacija.DODAVANJE);
+            this.Close();
             nw.ShowDialog();
         }
         private void IzmeniNamestaj(object sender, RoutedEventArgs e)
         {
             var selectedNamestaj = (Namestaj)dgNamestaj.SelectedItem;
             var nw = new NamestajWindow(selectedNamestaj, NamestajWindow.Operacija.IZMENA);
+            this.Close();
             nw.ShowDialog();
         }
         private void ObrisiNamestaj(object sender, RoutedEventArgs e)
@@ -52,6 +66,8 @@ namespace Platforme.UI
                     if (n.Id == selectedNamestaj.Id)
                     {
                         n.Obrisan = true;
+                        view.Refresh();
+                        break;
                     }
                 }
             }

@@ -54,6 +54,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="model\Kupac.cs" />
+    <Compile Include="model\Racun.cs" />
+    <Compile Include="model\Salon.cs" />
+    <Compile Include="model\StavkaProdajeNamestaja.cs" />
     <Compile Include="UI\MeniAdministratora.xaml.cs">
       <DependentUpon>MeniAdministratora.xaml</DependentUpon>
     </Compile>
@@ -62,6 +66,12 @@
     </Compile>
     <Compile Include="UI\NamestajWindow.xaml.cs">
       <DependentUpon>NamestajWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PrikazRacunaWindow.xaml.cs">
+      <DependentUpon>PrikazRacunaWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ProdajaWindow.xaml.cs">
+      <DependentUpon>ProdajaWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
@@ -89,6 +99,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\NamestajWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\PrikazRacunaWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\ProdajaWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -132,6 +150,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="data\namestaj.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="data\kupac.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="data\stavkaProdajeNamestaja.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="data\racun.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

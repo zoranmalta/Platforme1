@@ -75,6 +75,8 @@ namespace Platforme.UI
         {
             SacuvajIzmene();
             this.Close();
+            var w1 = new Window1();
+            w1.ShowDialog();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

@@ -58,7 +58,7 @@
       <Obrisan>false</Obrisan>
     </TipNamestaja>
     <IdTip>0</IdTip>
-    <Obrisan>false</Obrisan>
+    <Obrisan>true</Obrisan>
   </Namestaj>
   <Namestaj>
     <Id>6</Id>
@@ -70,6 +70,30 @@
       <Obrisan>false</Obrisan>
     </TipNamestaja>
     <IdTip>1</IdTip>
+    <Obrisan>false</Obrisan>
+  </Namestaj>
+  <Namestaj>
+    <Id>7</Id>
+    <Naziv>Belfast</Naziv>
+    <Cena>440</Cena>
+    <TipNamestaja>
+      <Id>2</Id>
+      <Naziv>Orman</Naziv>
+      <Obrisan>false</Obrisan>
+    </TipNamestaja>
+    <IdTip>2</IdTip>
+    <Obrisan>false</Obrisan>
+  </Namestaj>
+  <Namestaj>
+    <Id>8</Id>
+    <Naziv>Edinburg</Naziv>
+    <Cena>3300</Cena>
+    <TipNamestaja>
+      <Id>3</Id>
+      <Naziv>Sto</Naziv>
+      <Obrisan>false</Obrisan>
+    </TipNamestaja>
+    <IdTip>3</IdTip>
     <Obrisan>false</Obrisan>
   </Namestaj>
 </ArrayOfNamestaj>
