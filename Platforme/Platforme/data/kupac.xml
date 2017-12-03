@@ -359,4 +359,46 @@
     <Telefon>65346</Telefon>
     <Obrisan>false</Obrisan>
   </Kupac>
+  <Kupac>
+    <Id>54</Id>
+    <Ime>wret</Ime>
+    <Prezime>wtw</Prezime>
+    <Telefon>2345</Telefon>
+    <Obrisan>false</Obrisan>
+  </Kupac>
+  <Kupac>
+    <Id>55</Id>
+    <Ime>trwe</Ime>
+    <Prezime>wetr</Prezime>
+    <Telefon>2345</Telefon>
+    <Obrisan>false</Obrisan>
+  </Kupac>
+  <Kupac>
+    <Id>56</Id>
+    <Ime>sgdf</Ime>
+    <Prezime>sfgs</Prezime>
+    <Telefon>444</Telefon>
+    <Obrisan>false</Obrisan>
+  </Kupac>
+  <Kupac>
+    <Id>57</Id>
+    <Ime>hdfh</Ime>
+    <Prezime>dfghdhg</Prezime>
+    <Telefon>342</Telefon>
+    <Obrisan>false</Obrisan>
+  </Kupac>
+  <Kupac>
+    <Id>58</Id>
+    <Ime>rwetr</Ime>
+    <Prezime>qwerty</Prezime>
+    <Telefon>44</Telefon>
+    <Obrisan>false</Obrisan>
+  </Kupac>
+  <Kupac>
+    <Id>59</Id>
+    <Ime>vbcxbv</Ime>
+    <Prezime>xvcbvxcb</Prezime>
+    <Telefon>5645634</Telefon>
+    <Obrisan>false</Obrisan>
+  </Kupac>
 </ArrayOfKupac>

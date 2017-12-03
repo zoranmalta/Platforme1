@@ -96,5 +96,13 @@ namespace Platforme.UI
         {
             this.Close();
         }
+        private void dgPrikazNamestaja_AutoGeneratingColumn(object sender,
+            DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if ((string)e.Column.Header == "Obrisan" || (string)e.Column.Header == "Id" || (string)e.Column.Header == "IdTip")
+            {
+                e.Cancel = true;
+            }
+        }
     }
 }

@@ -58,7 +58,7 @@ namespace Platforme.UI
         private void dgPrikazRacuna_AutoGeneratingColumn(object sender,
             DataGridAutoGeneratingColumnEventArgs e)
         {
-            if ((string)e.Column.Header == "IdRacun" || (string)e.Column.Header == "IdNamestaj")
+            if ((string)e.Column.Header == "Obrisan" || (string)e.Column.Header == "Id_Racun" || (string)e.Column.Header == "Id_Namestaj")
             {
                 e.Cancel = true;
             }

@@ -12,7 +12,7 @@
             <RowDefinition Height="60*"/>
             <RowDefinition Height="60*"/>
         </Grid.RowDefinitions>
-        <DataGrid x:Name="dgNamestaj" CanUserAddRows="False" FontSize="15" HorizontalAlignment="Left" Height="179" VerticalAlignment="Top" Width="422" Margin="10,10,0,0"/>
+        <DataGrid x:Name="dgNamestaj" AutoGenerateColumns="True" AutoGeneratingColumn="dgPrikazNamestaja_AutoGeneratingColumn" CanUserAddRows="False" FontSize="15" HorizontalAlignment="Left" Height="179" VerticalAlignment="Top" Width="422" Margin="10,10,0,0"/>
         <Button Content="Dodaj" FontSize="15" Click="DodajNamestaj" Margin="10,21,351,10" Grid.Row="1"/>
         <Button Content="Izmeni" FontSize="15" Click="IzmeniNamestaj" HorizontalAlignment="Left" VerticalAlignment="Top" Width="79" Margin="110,21,0,0" Grid.Row="1" Height="29"/>
         <Button Content="Obrisi" FontSize="15" Click="ObrisiNamestaj" HorizontalAlignment="Left" VerticalAlignment="Top" Width="79" Margin="210,21,0,0" Grid.Row="1" Height="29"/>
