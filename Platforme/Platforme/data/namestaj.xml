@@ -4,11 +4,6 @@
     <Id>1</Id>
     <Naziv>Beograd</Naziv>
     <Cena>1055</Cena>
-    <TipNamestaja>
-      <Id>5</Id>
-      <Naziv>Fotelja</Naziv>
-      <Obrisan>false</Obrisan>
-    </TipNamestaja>
     <IdTip>5</IdTip>
     <Obrisan>false</Obrisan>
   </Namestaj>
@@ -16,11 +11,6 @@
     <Id>2</Id>
     <Naziv>Novi Sad</Naziv>
     <Cena>2000</Cena>
-    <TipNamestaja>
-      <Id>2</Id>
-      <Naziv>Orman</Naziv>
-      <Obrisan>false</Obrisan>
-    </TipNamestaja>
     <IdTip>2</IdTip>
     <Obrisan>false</Obrisan>
   </Namestaj>
@@ -28,11 +18,6 @@
     <Id>3</Id>
     <Naziv>Subotica</Naziv>
     <Cena>3004</Cena>
-    <TipNamestaja>
-      <Id>3</Id>
-      <Naziv>Sto</Naziv>
-      <Obrisan>false</Obrisan>
-    </TipNamestaja>
     <IdTip>3</IdTip>
     <Obrisan>true</Obrisan>
   </Namestaj>
@@ -40,11 +25,6 @@
     <Id>4</Id>
     <Naziv>Pancevo</Naziv>
     <Cena>400</Cena>
-    <TipNamestaja>
-      <Id>2</Id>
-      <Naziv>Orman</Naziv>
-      <Obrisan>false</Obrisan>
-    </TipNamestaja>
     <IdTip>4</IdTip>
     <Obrisan>false</Obrisan>
   </Namestaj>
@@ -52,11 +32,6 @@
     <Id>5</Id>
     <Naziv>Nis</Naziv>
     <Cena>5500</Cena>
-    <TipNamestaja>
-      <Id>0</Id>
-      <Naziv>Komoda</Naziv>
-      <Obrisan>false</Obrisan>
-    </TipNamestaja>
     <IdTip>0</IdTip>
     <Obrisan>true</Obrisan>
   </Namestaj>
@@ -64,11 +39,6 @@
     <Id>6</Id>
     <Naziv>Dublin</Naziv>
     <Cena>3300</Cena>
-    <TipNamestaja>
-      <Id>1</Id>
-      <Naziv>Krevet</Naziv>
-      <Obrisan>false</Obrisan>
-    </TipNamestaja>
     <IdTip>1</IdTip>
     <Obrisan>false</Obrisan>
   </Namestaj>
@@ -76,11 +46,6 @@
     <Id>7</Id>
     <Naziv>Belfast</Naziv>
     <Cena>440</Cena>
-    <TipNamestaja>
-      <Id>2</Id>
-      <Naziv>Orman</Naziv>
-      <Obrisan>false</Obrisan>
-    </TipNamestaja>
     <IdTip>2</IdTip>
     <Obrisan>false</Obrisan>
   </Namestaj>
@@ -88,11 +53,13 @@
     <Id>8</Id>
     <Naziv>Edinburg</Naziv>
     <Cena>3300</Cena>
-    <TipNamestaja>
-      <Id>3</Id>
-      <Naziv>Sto</Naziv>
-      <Obrisan>false</Obrisan>
-    </TipNamestaja>
+    <IdTip>3</IdTip>
+    <Obrisan>false</Obrisan>
+  </Namestaj>
+  <Namestaj>
+    <Id>9</Id>
+    <Naziv>Moskow</Naziv>
+    <Cena>5500</Cena>
     <IdTip>3</IdTip>
     <Obrisan>false</Obrisan>
   </Namestaj>

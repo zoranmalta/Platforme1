@@ -22,6 +22,7 @@ namespace Platforme.model
                 OnProtertyChanged("id_Racun");
             }
         }
+        [XmlIgnore]
         public Namestaj Namestaj
         {
             get {

@@ -89,6 +89,7 @@ namespace Platforme.UI
                 postojeciRacuni.Add(racun);
                 GenericsSerializer.Serialize<Racun>("racun.xml", postojeciRacuni);
                 var prw = new PrikazRacunaWindow(racun);
+                this.Close();
                 prw.ShowDialog();
             }
         }

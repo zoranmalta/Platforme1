@@ -17,6 +17,7 @@ namespace Platforme.model
         private DateTime datum;
         private Kupac kupac;
         private int id_Kupac;
+        [XmlIgnore]
         public ObservableCollection<StavkaProdajeNamestaja> listaStavkiNamestaja { get; set; }
 
         public int Id
@@ -34,6 +35,7 @@ namespace Platforme.model
                 OnPropertyChanged("datum");
             }
         }
+        [XmlIgnore]
         public Kupac Kupac
         {
             get { if (kupac == null)

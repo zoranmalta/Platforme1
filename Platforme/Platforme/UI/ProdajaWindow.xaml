@@ -26,9 +26,9 @@
         <Label Content="Prezime Kupca" FontSize="18" HorizontalContentAlignment="Right" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="175,10,0,0" Grid.Row="2" Width="149" Height="33"/>
         <Label Content="Telefon Kupca" FontSize="18" HorizontalContentAlignment="Right" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="175,10,0,0" Grid.Row="3" Height="34" Width="149"/>
         <Label Content="Vrsta Prodaje" FontSize="18" HorizontalContentAlignment="Right" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="157,10,0,0" Grid.Row="4" Height="33" Width="167"/>
-        <TextBox Name="tbImeKupca" Text="{Binding Path=Ime}" FontSize="18" HorizontalAlignment="Left" Height="33" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200" Grid.Column="1" Margin="10,10,0,0" Grid.Row="1"/>
-        <TextBox Name="tbPrezimeKupca" Text="{Binding Path=Prezime}" FontSize="18" HorizontalAlignment="Left" Height="33" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Margin="10,10,0,0" Grid.Row="2" Grid.Column="1"/>
-        <TextBox Name="tbTelefonKupca" Text="{Binding Path=Telefon}" FontSize="18" HorizontalAlignment="Left" Height="34" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" Grid.Column="1" Margin="8,10,0,0" Grid.Row="3"/>
+        <TextBox Name="tbImeKupca" Text="{Binding Path=Ime}" FontSize="18" HorizontalAlignment="Left" Height="49" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200" Grid.Column="1" Margin="10,10,0,0" Grid.Row="1"/>
+        <TextBox Name="tbPrezimeKupca" Text="{Binding Path=Prezime}" FontSize="18" HorizontalAlignment="Left" Height="48" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Margin="10,10,0,0" Grid.Row="2" Grid.Column="1"/>
+        <TextBox Name="tbTelefonKupca" Text="{Binding Path=Telefon}" FontSize="18" HorizontalAlignment="Left" Height="49" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" Grid.Column="1" Margin="8,10,0,0" Grid.Row="3"/>
         <ComboBox Name="cbVrstaProdaje" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Grid.Column="1" Margin="10,10,0,0" Grid.Row="4" Height="48"/>
         <Label Content="Odaberite" FontSize="18" HorizontalContentAlignment="Right" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="175,10,0,0" Grid.Row="5" Width="149" Height="35"/>
         <Label Content="Kolicina" FontSize="18" HorizontalContentAlignment="Right" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="175,10,0,0" Grid.Row="6" Height="34" Width="149"/>

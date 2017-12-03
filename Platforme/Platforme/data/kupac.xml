@@ -264,4 +264,36 @@
     <Telefon>55</Telefon>
     <Obrisan>false</Obrisan>
   </Kupac>
+  <Kupac>
+    <Id>40</Id>
+    <Obrisan>false</Obrisan>
+  </Kupac>
+  <Kupac>
+    <Id>41</Id>
+    <Ime>wetew</Ime>
+    <Prezime>weter</Prezime>
+    <Telefon>3452345</Telefon>
+    <Obrisan>false</Obrisan>
+  </Kupac>
+  <Kupac>
+    <Id>42</Id>
+    <Ime>erwtwt</Ime>
+    <Prezime>wertwer</Prezime>
+    <Telefon>234523</Telefon>
+    <Obrisan>false</Obrisan>
+  </Kupac>
+  <Kupac>
+    <Id>43</Id>
+    <Ime>dfgsd</Ime>
+    <Prezime>sdfgsgd</Prezime>
+    <Telefon>4352345</Telefon>
+    <Obrisan>false</Obrisan>
+  </Kupac>
+  <Kupac>
+    <Id>44</Id>
+    <Ime>a</Ime>
+    <Prezime>a</Prezime>
+    <Telefon>2</Telefon>
+    <Obrisan>false</Obrisan>
+  </Kupac>
 </ArrayOfKupac>
