@@ -63,4 +63,11 @@
     <IdTip>3</IdTip>
     <Obrisan>false</Obrisan>
   </Namestaj>
+  <Namestaj>
+    <Id>10</Id>
+    <Naziv>Minsk</Naziv>
+    <Cena>23500</Cena>
+    <IdTip>5</IdTip>
+    <Obrisan>false</Obrisan>
+  </Namestaj>
 </ArrayOfNamestaj>

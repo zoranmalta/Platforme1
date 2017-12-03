@@ -1,0 +1,18 @@
+﻿<Window x:Class="Platforme.UI.PrikazSelektovanihNamestaja"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Platforme.UI"
+        mc:Ignorable="d"
+        Title="PrikazSelektovanihNamestaja" Height="600" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="72*"/>
+            <RowDefinition Height="497*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Selektovani namestaj" FontSize="20" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="244,20,0,0" Height="42" Width="316"/>
+        <DataGrid x:Name="dgSelektovaniNamestaj" AutoGenerateColumns="True" IsReadOnly="True" AutoGeneratingColumn="dgSelektovaniNamestaj_AutoGeneratingColumn"  CanUserAddRows="False" HorizontalAlignment="Left" Height="477" VerticalAlignment="Top" Width="685" Margin="53,10,0,0" Grid.Row="1"/>
+
+    </Grid>
+</Window>

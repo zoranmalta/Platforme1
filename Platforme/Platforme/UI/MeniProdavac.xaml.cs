@@ -29,5 +29,9 @@ namespace Platforme.UI
             var pw = new ProdajaWindow();
             pw.ShowDialog();
         }
+        public void PrikazRacuna(object Sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

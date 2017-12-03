@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Platforme.UI"
         mc:Ignorable="d"
-        Title="PrikazRacunaWindow" Height="600" Width="500">
+        Title="PrikazRacunaWindow" Height="600" Width="600">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40*"/>
@@ -28,15 +28,15 @@
         <Label Content="Datum i vreme:" FontSize="18" HorizontalContentAlignment="Right" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,6,0,0" Grid.Row="3" Width="143"/>
         <Label Content="Kupac:" HorizontalContentAlignment="Right" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,5,0,0" Grid.Row="4" Width="143" Height="34"/>
         <Label Content="Stavke Prodaje:" HorizontalContentAlignment="Right" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,6,0,0" Grid.Row="5" Width="143" Height="34"/>
-        <DataGrid x:Name="dgStavkeProdaje" CanUserAddRows="False" HorizontalAlignment="Left" Height="211" Grid.RowSpan="2" VerticalAlignment="Top" Width="309" Grid.Column="1" Margin="10,0,0,0" Grid.Row="5"/>
+        <DataGrid x:Name="dgStavkeProdaje" AutoGenerateColumns="True"  IsReadOnly="True" AutoGeneratingColumn="dgPrikazRacuna_AutoGeneratingColumn" CanUserAddRows="False" HorizontalAlignment="Left" Height="211" Grid.RowSpan="2" VerticalAlignment="Top" Width="376" Grid.Column="1" Margin="10,0,0,0" Grid.Row="5"/>
         <Label Content="Ukupan Racun:" FontSize="18" HorizontalContentAlignment="Right" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,6,0,0" Grid.Row="7" Width="143"/>
-        <TextBox Name="tbSalon"  HorizontalAlignment="Left" Height="27" TextWrapping="Wrap" VerticalAlignment="Top" Width="309" Grid.Column="1" Margin="10,5,0,0" Grid.Row="1"/>
-        <TextBox Name="tbIdRacuna" Text="{Binding Path=Id}" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="309" Grid.Column="1" Margin="10,6,0,0" Grid.Row="2"/>
-        <TextBox Name="tbDatum" Text="{Binding Path=Datum}" HorizontalAlignment="Left" Height="27" TextWrapping="Wrap"  VerticalAlignment="Top" Width="309" Grid.Column="1" Margin="10,6,0,0" Grid.Row="3"/>
-        <TextBox Name="tbKupac" Text="{Binding Path=Kupac, Mode=OneWay}" HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" VerticalAlignment="Top" Width="309" Grid.Column="1" Margin="10,5,0,0" Grid.Row="4"/>
+        <TextBox Name="tbSalon"  HorizontalAlignment="Left" Height="27" TextWrapping="Wrap" VerticalAlignment="Top" Width="376" Grid.Column="1" Margin="10,5,0,0" Grid.Row="1"/>
+        <TextBox Name="tbIdRacuna" Text="{Binding Path=Id}" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="376" Grid.Column="1" Margin="10,6,0,0" Grid.Row="2"/>
+        <TextBox Name="tbDatum" Text="{Binding Path=Datum}" HorizontalAlignment="Left" Height="27" TextWrapping="Wrap"  VerticalAlignment="Top" Width="376" Grid.Column="1" Margin="10,6,0,0" Grid.Row="3"/>
+        <TextBox Name="tbKupac" Text="{Binding Path=Kupac, Mode=OneWay}" HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" VerticalAlignment="Top" Width="376" Grid.Column="1" Margin="10,5,0,0" Grid.Row="4"/>
         <TextBox Name="tbUkupanRacun"  HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="309" Margin="10,6,0,0" Grid.Row="7" Grid.Column="1"/>
         <Button Content="Stampaj" Click="Stampaj" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Top" Width="143" Margin="10,53,0,0" Grid.Row="8" Height="39"/>
-        <Button Content="Izlaz" Click="Izlaz" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Top" Width="144" Grid.Column="1" Margin="175,53,0,0" Grid.Row="8" Height="39"/>
+        <Button Content="Izlaz" Click="Izlaz" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Top" Width="144" Grid.Column="1" Margin="242,53,0,0" Grid.Row="8" Height="39"/>
 
     </Grid>
 </Window>

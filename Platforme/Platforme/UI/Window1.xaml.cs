@@ -2,6 +2,7 @@
 using Platforme.util;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -75,7 +76,21 @@ namespace Platforme.UI
         }
         private void Pretraga_po_tipu(object sender, RoutedEventArgs e)
         {
-            
+            Namestaj selektovaniNamestaj = view.CurrentItem as Namestaj;
+            if (selektovaniNamestaj != null)
+            {
+                ObservableCollection<Namestaj> lista = new ObservableCollection<Namestaj>();
+                foreach(Namestaj n in Projekat.Instance.Namestaj)
+                {
+                    if (n.IdTip == selektovaniNamestaj.IdTip)
+                    {
+                        lista.Add(n);
+                    }
+                }
+            PrikazSelektovanihNamestaja psn = new PrikazSelektovanihNamestaja( lista);
+                psn.ShowDialog();
+            }
+
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {

@@ -5,4 +5,49 @@
     <Datum>0001-01-01T00:00:00</Datum>
     <Id_Kupac>44</Id_Kupac>
   </Racun>
+  <Racun>
+    <Id>2</Id>
+    <Datum>0001-01-01T00:00:00</Datum>
+    <Id_Kupac>45</Id_Kupac>
+  </Racun>
+  <Racun>
+    <Id>3</Id>
+    <Datum>0001-01-01T00:00:00</Datum>
+    <Id_Kupac>46</Id_Kupac>
+  </Racun>
+  <Racun>
+    <Id>4</Id>
+    <Datum>0001-01-01T00:00:00</Datum>
+    <Id_Kupac>47</Id_Kupac>
+  </Racun>
+  <Racun>
+    <Id>5</Id>
+    <Datum>0001-01-01T00:00:00</Datum>
+    <Id_Kupac>48</Id_Kupac>
+  </Racun>
+  <Racun>
+    <Id>6</Id>
+    <Datum>0001-01-01T00:00:00</Datum>
+    <Id_Kupac>49</Id_Kupac>
+  </Racun>
+  <Racun>
+    <Id>7</Id>
+    <Datum>0001-01-01T00:00:00</Datum>
+    <Id_Kupac>50</Id_Kupac>
+  </Racun>
+  <Racun>
+    <Id>8</Id>
+    <Datum>0001-01-01T00:00:00</Datum>
+    <Id_Kupac>51</Id_Kupac>
+  </Racun>
+  <Racun>
+    <Id>9</Id>
+    <Datum>0001-01-01T00:00:00</Datum>
+    <Id_Kupac>52</Id_Kupac>
+  </Racun>
+  <Racun>
+    <Id>10</Id>
+    <Datum>0001-01-01T00:00:00</Datum>
+    <Id_Kupac>53</Id_Kupac>
+  </Racun>
 </ArrayOfRacun>

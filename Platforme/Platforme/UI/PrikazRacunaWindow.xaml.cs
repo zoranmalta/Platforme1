@@ -38,21 +38,32 @@ namespace Platforme.UI
 
             //view = CollectionViewSource.GetDefaultView(Projekat.Instance.StavkaProdajeNamestaja);
             ObservableCollection<StavkaProdajeNamestaja> listaStavkiProdajeNamestaja= new ObservableCollection<StavkaProdajeNamestaja>();
+            SelekcijaPoTipu(racun,listaStavkiProdajeNamestaja);
+            dgStavkeProdaje.ItemsSource = listaStavkiProdajeNamestaja;
+            dgStavkeProdaje.IsSynchronizedWithCurrentItem = true;
+
+            dgStavkeProdaje.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
+        }
+        public void SelekcijaPoTipu(Racun racun,ObservableCollection<StavkaProdajeNamestaja> listaStavkiProdajeNamestaja)
+        {
             ObservableCollection<StavkaProdajeNamestaja> StavkaProdajeNamestaja = Projekat.Instance.StavkaProdajeNamestaja;
-            foreach(StavkaProdajeNamestaja s in StavkaProdajeNamestaja)
+            foreach (StavkaProdajeNamestaja s in StavkaProdajeNamestaja)
             {
                 if (s.Id_Racun == racun.Id)
                 {
                     listaStavkiProdajeNamestaja.Add(s);
                 }
             }
-            dgStavkeProdaje.ItemsSource = listaStavkiProdajeNamestaja;
-            dgStavkeProdaje.IsSynchronizedWithCurrentItem = true;
-
-            dgStavkeProdaje.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
+        }
+        private void dgPrikazRacuna_AutoGeneratingColumn(object sender,
+            DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if ((string)e.Column.Header == "IdRacun" || (string)e.Column.Header == "IdNamestaj")
+            {
+                e.Cancel = true;
+            }
         }
 
-       
 
         public void Izlaz(object sender, RoutedEventArgs e) {
             this.Close();
