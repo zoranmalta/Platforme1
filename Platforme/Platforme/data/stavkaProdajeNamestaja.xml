@@ -125,4 +125,44 @@
     <Id_Namestaj>1</Id_Namestaj>
     <Kolicina>4</Kolicina>
   </StavkaProdajeNamestaja>
+  <StavkaProdajeNamestaja>
+    <Id_Racun>17</Id_Racun>
+    <Id_Namestaj>10</Id_Namestaj>
+    <Kolicina>3</Kolicina>
+  </StavkaProdajeNamestaja>
+  <StavkaProdajeNamestaja>
+    <Id_Racun>17</Id_Racun>
+    <Id_Namestaj>8</Id_Namestaj>
+    <Kolicina>4</Kolicina>
+  </StavkaProdajeNamestaja>
+  <StavkaProdajeNamestaja>
+    <Id_Racun>18</Id_Racun>
+    <Id_Namestaj>10</Id_Namestaj>
+    <Kolicina>5</Kolicina>
+  </StavkaProdajeNamestaja>
+  <StavkaProdajeNamestaja>
+    <Id_Racun>18</Id_Racun>
+    <Id_Namestaj>9</Id_Namestaj>
+    <Kolicina>3</Kolicina>
+  </StavkaProdajeNamestaja>
+  <StavkaProdajeNamestaja>
+    <Id_Racun>19</Id_Racun>
+    <Id_Namestaj>1</Id_Namestaj>
+    <Kolicina>3</Kolicina>
+  </StavkaProdajeNamestaja>
+  <StavkaProdajeNamestaja>
+    <Id_Racun>19</Id_Racun>
+    <Id_Namestaj>9</Id_Namestaj>
+    <Kolicina>3</Kolicina>
+  </StavkaProdajeNamestaja>
+  <StavkaProdajeNamestaja>
+    <Id_Racun>20</Id_Racun>
+    <Id_Namestaj>1</Id_Namestaj>
+    <Kolicina>4</Kolicina>
+  </StavkaProdajeNamestaja>
+  <StavkaProdajeNamestaja>
+    <Id_Racun>20</Id_Racun>
+    <Id_Namestaj>10</Id_Namestaj>
+    <Kolicina>3</Kolicina>
+  </StavkaProdajeNamestaja>
 </ArrayOfStavkaProdajeNamestaja>

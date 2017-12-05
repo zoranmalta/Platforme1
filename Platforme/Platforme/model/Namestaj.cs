@@ -11,8 +11,10 @@ namespace Platforme.model
     public class Namestaj : INotifyPropertyChanged
     {
         private int id;
+        private string sifra;
         private string naziv;
         private double cena;
+        private int kolicina;
         private int idTip;
         private bool obrisan;
         private TipNamestaja tipNamestaja;
@@ -24,6 +26,15 @@ namespace Platforme.model
                 OnProtertyChanged("id");
             }
         }
+
+        public string Sifra
+        {
+            get { return sifra; }
+            set { sifra = value;
+                OnProtertyChanged("sifra");
+            }
+        }
+
 
         public string Naziv
         {
@@ -40,6 +51,15 @@ namespace Platforme.model
                 OnProtertyChanged("cena");
             }
         }
+
+
+        public int Kolicina
+        {
+            get { return kolicina; }
+            set { kolicina = value; }
+        }
+
+
         [XmlIgnore]
         public TipNamestaja TipNamestaja
         {
@@ -80,13 +100,15 @@ namespace Platforme.model
 
         public Namestaj() { }
 
-        public Namestaj(int Id, string Naziv,  double Cena, int IdTip, bool Obrisan)
+        public Namestaj(int Id,string Sifra, string Naziv,  double Cena, int Kolicina, int IdTip, bool Obrisan)
         {
             this.Id = Id;
             this.IdTip = IdTip;
             this.Naziv = Naziv;
             this.Cena = Cena;
             this.Obrisan = Obrisan;
+            this.Sifra = Sifra;
+            this.Kolicina = Kolicina;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

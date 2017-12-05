@@ -80,4 +80,24 @@
     <Datum>0001-01-01T00:00:00</Datum>
     <Id_Kupac>59</Id_Kupac>
   </Racun>
+  <Racun>
+    <Id>17</Id>
+    <Datum>0001-01-01T00:00:00</Datum>
+    <Id_Kupac>60</Id_Kupac>
+  </Racun>
+  <Racun>
+    <Id>18</Id>
+    <Datum>0001-01-01T00:00:00</Datum>
+    <Id_Kupac>61</Id_Kupac>
+  </Racun>
+  <Racun>
+    <Id>19</Id>
+    <Datum>0001-01-01T00:00:00</Datum>
+    <Id_Kupac>62</Id_Kupac>
+  </Racun>
+  <Racun>
+    <Id>20</Id>
+    <Datum>0001-01-01T00:00:00</Datum>
+    <Id_Kupac>63</Id_Kupac>
+  </Racun>
 </ArrayOfRacun>

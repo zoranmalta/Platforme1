@@ -42,6 +42,8 @@ namespace Platforme.UI
             this.operacija = operacija;
             tbNaziv.DataContext = namestaj;
             tbCena.DataContext = namestaj;
+            tbSifra.DataContext = namestaj;
+            tbKolicina.DataContext = namestaj;
 
             cbTipNamestaja.ItemsSource = Projekat.Instance.TipNamestaja;
             cbTipNamestaja.DataContext = namestaj;

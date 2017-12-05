@@ -401,4 +401,29 @@
     <Telefon>5645634</Telefon>
     <Obrisan>false</Obrisan>
   </Kupac>
+  <Kupac>
+    <Id>60</Id>
+    <Ime>fdgd</Ime>
+    <Prezime>sdfg</Prezime>
+    <Telefon>54654</Telefon>
+    <Obrisan>false</Obrisan>
+  </Kupac>
+  <Kupac>
+    <Id>61</Id>
+    <Ime>ghd</Ime>
+    <Prezime>dfg</Prezime>
+    <Telefon>2345</Telefon>
+    <Obrisan>false</Obrisan>
+  </Kupac>
+  <Kupac>
+    <Id>62</Id>
+    <Obrisan>false</Obrisan>
+  </Kupac>
+  <Kupac>
+    <Id>63</Id>
+    <Ime>gdsdf</Ime>
+    <Prezime>sdg</Prezime>
+    <Telefon>3</Telefon>
+    <Obrisan>false</Obrisan>
+  </Kupac>
 </ArrayOfKupac>

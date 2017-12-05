@@ -9,10 +9,11 @@ namespace Platforme.model
 {
     public class TipNamestaja :INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
 
         private int id;
-
-        public event PropertyChangedEventHandler PropertyChanged;
+        private string naziv;
+        private bool obrisan;
 
         public int Id
         {
@@ -21,7 +22,6 @@ namespace Platforme.model
                 OnPropertyChanged("id");
             }
         }
-        private string naziv;
 
         public string Naziv
         {
@@ -30,7 +30,6 @@ namespace Platforme.model
                 OnPropertyChanged("naziv");
             }
         }
-        private bool obrisan;
 
         public bool Obrisan
         {

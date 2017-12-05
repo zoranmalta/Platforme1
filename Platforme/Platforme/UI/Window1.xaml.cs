@@ -80,22 +80,36 @@ namespace Platforme.UI
             if (selektovaniNamestaj != null)
             {
                 ObservableCollection<Namestaj> lista = new ObservableCollection<Namestaj>();
-                foreach(Namestaj n in Projekat.Instance.Namestaj)
+                foreach (Namestaj n in Projekat.Instance.Namestaj)
                 {
                     if (n.IdTip == selektovaniNamestaj.IdTip)
                     {
                         lista.Add(n);
                     }
                 }
-            PrikazSelektovanihNamestaja psn = new PrikazSelektovanihNamestaja( lista);
+                PrikazSelektovanihNamestaja psn = new PrikazSelektovanihNamestaja(lista);
                 psn.ShowDialog();
             }
-
         }
+
+        private void Pretraga_po_Nazivu(object sender, RoutedEventArgs e)
+        {
+            PretragaNamestaja pn = new PretragaNamestaja();
+            pn.ShowDialog();
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
+
+        private void Tip_Namestaja(object sender, RoutedEventArgs e)
+        {
+            TipNamestajaWindow tnw = new TipNamestajaWindow();
+            this.Close();
+            tnw.ShowDialog();
+        }
+
         private void dgPrikazNamestaja_AutoGeneratingColumn(object sender,
             DataGridAutoGeneratingColumnEventArgs e)
         {

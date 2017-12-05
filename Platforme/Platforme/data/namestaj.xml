@@ -2,15 +2,19 @@
 <ArrayOfNamestaj xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Namestaj>
     <Id>1</Id>
+    <Sifra>bg3</Sifra>
     <Naziv>Beograd</Naziv>
-    <Cena>1055</Cena>
+    <Cena>2000</Cena>
+    <Kolicina>30</Kolicina>
     <IdTip>5</IdTip>
     <Obrisan>false</Obrisan>
   </Namestaj>
   <Namestaj>
     <Id>2</Id>
+    <Sifra>ns3</Sifra>
     <Naziv>Novi Sad</Naziv>
     <Cena>2000</Cena>
+    <Kolicina>40</Kolicina>
     <IdTip>2</IdTip>
     <Obrisan>false</Obrisan>
   </Namestaj>
@@ -18,6 +22,7 @@
     <Id>3</Id>
     <Naziv>Subotica</Naziv>
     <Cena>3004</Cena>
+    <Kolicina>0</Kolicina>
     <IdTip>3</IdTip>
     <Obrisan>true</Obrisan>
   </Namestaj>
@@ -25,49 +30,96 @@
     <Id>4</Id>
     <Naziv>Pancevo</Naziv>
     <Cena>400</Cena>
+    <Kolicina>0</Kolicina>
     <IdTip>4</IdTip>
-    <Obrisan>false</Obrisan>
+    <Obrisan>true</Obrisan>
   </Namestaj>
   <Namestaj>
     <Id>5</Id>
     <Naziv>Nis</Naziv>
     <Cena>5500</Cena>
+    <Kolicina>0</Kolicina>
     <IdTip>0</IdTip>
     <Obrisan>true</Obrisan>
   </Namestaj>
   <Namestaj>
     <Id>6</Id>
+    <Sifra>du3</Sifra>
     <Naziv>Dublin</Naziv>
     <Cena>3300</Cena>
+    <Kolicina>50</Kolicina>
     <IdTip>1</IdTip>
     <Obrisan>false</Obrisan>
   </Namestaj>
   <Namestaj>
     <Id>7</Id>
+    <Sifra>be3</Sifra>
     <Naziv>Belfast</Naziv>
-    <Cena>440</Cena>
-    <IdTip>2</IdTip>
+    <Cena>445</Cena>
+    <Kolicina>105</Kolicina>
+    <IdTip>3</IdTip>
     <Obrisan>false</Obrisan>
   </Namestaj>
   <Namestaj>
     <Id>8</Id>
+    <Sifra>ed3</Sifra>
     <Naziv>Edinburg</Naziv>
     <Cena>3300</Cena>
+    <Kolicina>55</Kolicina>
     <IdTip>3</IdTip>
     <Obrisan>false</Obrisan>
   </Namestaj>
   <Namestaj>
     <Id>9</Id>
+    <Sifra>mo3</Sifra>
     <Naziv>Moskow</Naziv>
     <Cena>5500</Cena>
+    <Kolicina>44</Kolicina>
     <IdTip>3</IdTip>
     <Obrisan>false</Obrisan>
   </Namestaj>
   <Namestaj>
     <Id>10</Id>
+    <Sifra>mi3</Sifra>
     <Naziv>Minsk</Naziv>
     <Cena>23500</Cena>
+    <Kolicina>70</Kolicina>
     <IdTip>5</IdTip>
+    <Obrisan>false</Obrisan>
+  </Namestaj>
+  <Namestaj>
+    <Id>11</Id>
+    <Sifra>fu3</Sifra>
+    <Naziv>Futog</Naziv>
+    <Cena>1500</Cena>
+    <Kolicina>77</Kolicina>
+    <IdTip>5</IdTip>
+    <Obrisan>false</Obrisan>
+  </Namestaj>
+  <Namestaj>
+    <Id>12</Id>
+    <Sifra>ka3</Sifra>
+    <Naziv>Karlovci</Naziv>
+    <Cena>550</Cena>
+    <Kolicina>33</Kolicina>
+    <IdTip>5</IdTip>
+    <Obrisan>false</Obrisan>
+  </Namestaj>
+  <Namestaj>
+    <Id>13</Id>
+    <Naziv>eterwt</Naziv>
+    <Cena>6</Cena>
+    <Kolicina>0</Kolicina>
+    <IdTip>0</IdTip>
+    <Obrisan>true</Obrisan>
+  </Namestaj>
+  <Namestaj>
+    <Id>14</Id>
+    <Sifra>sf3</Sifra>
+    <Naziv>Sofija</Naziv>
+    <Cena>1500</Cena>
+    <Kolicina>20</Kolicina>
+    <IdTip>1</IdTip>
     <Obrisan>false</Obrisan>
   </Namestaj>
 </ArrayOfNamestaj>
