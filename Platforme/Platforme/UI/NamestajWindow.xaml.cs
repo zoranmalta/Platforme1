@@ -52,12 +52,13 @@ namespace Platforme.UI
         {
             ObservableCollection<Namestaj> pospojeciNamestaj= Projekat.Instance.Namestaj;
           
+
             switch (operacija)
             {
                 case Operacija.DODAVANJE:
                     namestaj.Id = pospojeciNamestaj.Count + 1;
-                    pospojeciNamestaj.Add(namestaj);
                     namestaj.IdTip = namestaj.TipNamestaja.Id;
+                    pospojeciNamestaj.Add(namestaj);
                     break;
                 case Operacija.IZMENA:
                     foreach(var n in pospojeciNamestaj)

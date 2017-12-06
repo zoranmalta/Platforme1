@@ -122,4 +122,31 @@
     <IdTip>1</IdTip>
     <Obrisan>false</Obrisan>
   </Namestaj>
+  <Namestaj>
+    <Id>15</Id>
+    <Sifra>at3</Sifra>
+    <Naziv>Atina</Naziv>
+    <Cena>3400</Cena>
+    <Kolicina>20</Kolicina>
+    <IdTip>16</IdTip>
+    <Obrisan>true</Obrisan>
+  </Namestaj>
+  <Namestaj>
+    <Id>16</Id>
+    <Sifra>is3</Sifra>
+    <Naziv>Istanbul</Naziv>
+    <Cena>2000</Cena>
+    <Kolicina>20</Kolicina>
+    <IdTip>16</IdTip>
+    <Obrisan>true</Obrisan>
+  </Namestaj>
+  <Namestaj>
+    <Id>17</Id>
+    <Sifra>as</Sifra>
+    <Naziv>Atina</Naziv>
+    <Cena>4000</Cena>
+    <Kolicina>20</Kolicina>
+    <IdTip>12</IdTip>
+    <Obrisan>false</Obrisan>
+  </Namestaj>
 </ArrayOfNamestaj>

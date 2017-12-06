@@ -80,6 +80,9 @@
     <Compile Include="UI\ProdajaWindow.xaml.cs">
       <DependentUpon>ProdajaWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\TipNamestajaIzmene.xaml.cs">
+      <DependentUpon>TipNamestajaIzmene.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\TipNamestajaWindow.xaml.cs">
       <DependentUpon>TipNamestajaWindow.xaml</DependentUpon>
     </Compile>
@@ -125,6 +128,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\ProdajaWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\TipNamestajaIzmene.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
