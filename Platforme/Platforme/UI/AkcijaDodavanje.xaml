@@ -1,0 +1,35 @@
+﻿<Window x:Class="Platforme.UI.AkcijaDodavanje"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Platforme.UI"
+        mc:Ignorable="d"
+        Title="AkcijaDodavanje" Height="380" Width="450">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="191*"/>
+            <ColumnDefinition Width="251*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="51*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="51*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="50*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Datum Pocetka" FontSize="15" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Height="30" Width="171"/>
+        <Label Content="Datum Zavrsetka" FontSize="15" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Grid.Row="1" Width="171" Height="31"/>
+        <Label Content="Popust" FontSize="15" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Grid.Row="2" Height="30" Width="171"/>
+        <Label Content="Namestaj" FontSize="15" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Grid.Row="3" Height="29" Width="171"/>
+        <Button Content="Sacuvaj" Click="Sacuvaj_Akciju" FontSize="15" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Margin="10,10,0,0" Grid.Row="6" Height="29"/>
+        <Button Content="Izlaz" Click="Izlaz" FontSize="15" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Grid.Column="1" Margin="151,10,0,0" Grid.Row="6" Height="29"/>
+        <TextBox Name="tbPopust" Text="{Binding Path=Popust}" FontSize="15" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="231" Grid.Column="1" Margin="10,10,0,0" Grid.Row="2"/>
+        <ComboBox SelectedItem="{Binding Path=Namestaj}" Name="cbNamestaj" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" Width="231" Grid.Column="1" Margin="10,10,0,0" Grid.Row="3" Height="30"/>
+        <DatePicker x:Name="dpPocetak"   SelectedDate="{Binding  Path=DatumPocetka}" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="30" Width="231"/>
+        <DatePicker x:Name="dpZavrsetak" SelectedDate="{Binding Path=DatumZavrsetka}" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="31" Width="231"/>
+
+    </Grid>
+</Window>

@@ -58,7 +58,15 @@
     <Compile Include="model\Racun.cs" />
     <Compile Include="model\Salon.cs" />
     <Compile Include="model\StavkaProdajeNamestaja.cs" />
+    <Compile Include="model\StavkaUsluge.cs" />
+    <Compile Include="model\Usluga.cs" />
     <Compile Include="model\Zaposleni.cs" />
+    <Compile Include="UI\AkcijaDodavanje.xaml.cs">
+      <DependentUpon>AkcijaDodavanje.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\AkcijaWindow.xaml.cs">
+      <DependentUpon>AkcijaWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\MeniAdministratora.xaml.cs">
       <DependentUpon>MeniAdministratora.xaml</DependentUpon>
     </Compile>
@@ -103,6 +111,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UI\AkcijaDodavanje.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\AkcijaWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\MeniAdministratora.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -172,7 +188,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="data\tipNamestaja.xml" />
@@ -188,6 +206,16 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="data\racun.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="data\akcija.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Db_scripts\createTables.sql" />
+    <Content Include="Db_scripts\insertTables.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

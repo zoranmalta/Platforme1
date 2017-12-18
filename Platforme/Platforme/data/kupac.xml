@@ -426,4 +426,18 @@
     <Telefon>3</Telefon>
     <Obrisan>false</Obrisan>
   </Kupac>
+  <Kupac>
+    <Id>64</Id>
+    <Ime>cana</Ime>
+    <Prezime>cancica</Prezime>
+    <Telefon>2</Telefon>
+    <Obrisan>false</Obrisan>
+  </Kupac>
+  <Kupac>
+    <Id>65</Id>
+    <Ime>sdfg</Ime>
+    <Prezime>sdfgs</Prezime>
+    <Telefon>sdfg</Telefon>
+    <Obrisan>false</Obrisan>
+  </Kupac>
 </ArrayOfKupac>

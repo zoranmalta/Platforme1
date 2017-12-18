@@ -23,23 +23,17 @@ namespace Platforme.UI
     public partial class NamestajWindow : Window
     {
         private Namestaj namestaj;
-        private Operacija operacija;
-
-        public enum Operacija
-        {
-            DODAVANJE,
-            IZMENA
-        }
-        public NamestajWindow(Namestaj namestaj,Operacija operacija)
+    
+        public NamestajWindow(Namestaj namestaj)
         {
             InitializeComponent();
-            InicijalizujVrednosti(namestaj, operacija);
+            InicijalizujVrednosti(namestaj);
         }
 
-        public void InicijalizujVrednosti(Namestaj namestaj,Operacija operacija)
+        public void InicijalizujVrednosti(Namestaj namestaj)
         {
             this.namestaj = namestaj;
-            this.operacija = operacija;
+           
             tbNaziv.DataContext = namestaj;
             tbCena.DataContext = namestaj;
             tbSifra.DataContext = namestaj;
@@ -48,35 +42,22 @@ namespace Platforme.UI
             cbTipNamestaja.ItemsSource = Projekat.Instance.TipNamestaja;
             cbTipNamestaja.DataContext = namestaj;
         }
-        public void SacuvajIzmene()
-        {
-            ObservableCollection<Namestaj> pospojeciNamestaj= Projekat.Instance.Namestaj;
-          
-
-            switch (operacija)
-            {
-                case Operacija.DODAVANJE:
-                    namestaj.Id = pospojeciNamestaj.Count + 1;
-                    namestaj.IdTip = namestaj.TipNamestaja.Id;
-                    pospojeciNamestaj.Add(namestaj);
-                    break;
-                case Operacija.IZMENA:
-                    foreach(var n in pospojeciNamestaj)
-                    {
-                        if (n.Id == namestaj.Id)
-                        {
-                            n.IdTip = namestaj.TipNamestaja.Id;
-                        }
-                    }
-                    break;
-                default:
-                    break;
-            }
-            GenericsSerializer.Serialize("namestaj.xml", pospojeciNamestaj);
-        }
+       
         private void Sacuvaj_Namestaj(object sender, RoutedEventArgs e) 
         {
-            SacuvajIzmene();
+            this.DialogResult = true;
+            if (namestaj.Id != 0) //ako postoji id, namestaj je vec u bazi, sto znaci da se radi izmena namestaja
+            {
+                namestaj.IdTip = namestaj.TipNamestaja.Id;
+                Namestaj.IzmeniNamestaj(namestaj);
+            }
+            else
+            {
+                namestaj.IdTip = namestaj.TipNamestaja.Id;
+                Projekat.Instance.Namestaj.Add(namestaj);
+                Namestaj.DodajNamestaj(namestaj);
+            }
+
             this.Close();
             var w1 = new Window1();
             w1.ShowDialog();

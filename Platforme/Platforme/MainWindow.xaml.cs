@@ -1,4 +1,5 @@
-﻿using Platforme.UI;
+﻿using Platforme.model;
+using Platforme.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,8 @@ namespace Platforme
         public MainWindow()
         {
             InitializeComponent();
+            TipNamestaja.UcitajTipNamestaja();
+            Namestaj.UcitajNamestaj();
             cbTipKorisnika.Items.Add("Administrator");
             cbTipKorisnika.Items.Add("Prodavac");
             cbTipKorisnika.SelectedIndex = 0;

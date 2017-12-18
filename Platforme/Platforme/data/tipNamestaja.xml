@@ -2,87 +2,22 @@
 <ArrayOfTipNamestaja xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <TipNamestaja>
     <Id>1</Id>
-    <Naziv>Komoda</Naziv>
+    <Naziv>Krevet</Naziv>
     <Obrisan>false</Obrisan>
   </TipNamestaja>
   <TipNamestaja>
     <Id>2</Id>
-    <Naziv>Fotelja</Naziv>
+    <Naziv>Ugaona garnitura</Naziv>
     <Obrisan>false</Obrisan>
   </TipNamestaja>
   <TipNamestaja>
     <Id>3</Id>
-    <Naziv>Orman</Naziv>
-    <Obrisan>false</Obrisan>
-  </TipNamestaja>
-  <TipNamestaja>
-    <Id>4</Id>
-    <Naziv>Stolica</Naziv>
-    <Obrisan>false</Obrisan>
-  </TipNamestaja>
-  <TipNamestaja>
-    <Id>5</Id>
-    <Naziv>Dvosed</Naziv>
-    <Obrisan>false</Obrisan>
-  </TipNamestaja>
-  <TipNamestaja>
-    <Id>6</Id>
-    <Naziv>Trosed</Naziv>
-    <Obrisan>false</Obrisan>
-  </TipNamestaja>
-  <TipNamestaja>
-    <Id>7</Id>
-    <Naziv>Natkasna</Naziv>
-    <Obrisan>false</Obrisan>
-  </TipNamestaja>
-  <TipNamestaja>
-    <Id>8</Id>
-    <Obrisan>true</Obrisan>
-  </TipNamestaja>
-  <TipNamestaja>
-    <Id>9</Id>
     <Naziv>Kauc</Naziv>
     <Obrisan>false</Obrisan>
   </TipNamestaja>
   <TipNamestaja>
-    <Id>10</Id>
-    <Obrisan>true</Obrisan>
-  </TipNamestaja>
-  <TipNamestaja>
-    <Id>11</Id>
-    <Obrisan>true</Obrisan>
-  </TipNamestaja>
-  <TipNamestaja>
-    <Id>12</Id>
-    <Naziv>Kredenac</Naziv>
-    <Obrisan>false</Obrisan>
-  </TipNamestaja>
-  <TipNamestaja>
-    <Id>13</Id>
-    <Obrisan>true</Obrisan>
-  </TipNamestaja>
-  <TipNamestaja>
-    <Id>14</Id>
-    <Obrisan>true</Obrisan>
-  </TipNamestaja>
-  <TipNamestaja>
-    <Id>15</Id>
-    <Naziv>dfghd</Naziv>
-    <Obrisan>true</Obrisan>
-  </TipNamestaja>
-  <TipNamestaja>
-    <Id>16</Id>
-    <Naziv>Ogledalo</Naziv>
-    <Obrisan>true</Obrisan>
-  </TipNamestaja>
-  <TipNamestaja>
-    <Id>17</Id>
-    <Naziv>Tabure</Naziv>
-    <Obrisan>false</Obrisan>
-  </TipNamestaja>
-  <TipNamestaja>
-    <Id>18</Id>
-    <Naziv>Kuhinja</Naziv>
+    <Id>4</Id>
+    <Naziv>fff</Naziv>
     <Obrisan>false</Obrisan>
   </TipNamestaja>
 </ArrayOfTipNamestaja>

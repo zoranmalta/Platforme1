@@ -39,7 +39,8 @@ namespace Platforme.UI
         }
         private void Akcije(object sender, RoutedEventArgs e)
         {
-
+            var ak = new AkcijaWindow();
+            ak.ShowDialog();
         }
         private void Nazad(object sender, RoutedEventArgs e)
         {

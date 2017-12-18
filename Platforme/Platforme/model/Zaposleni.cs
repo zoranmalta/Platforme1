@@ -15,8 +15,8 @@ namespace Platforme.model
         public string Lozinka { get; set; }
         public enum TipZaposleni
         {
-            Administrator,
-            Prodavac
+            Administrator=1,
+            Prodavac=2
         }
     }
 }

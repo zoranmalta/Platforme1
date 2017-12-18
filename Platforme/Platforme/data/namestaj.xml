@@ -13,7 +13,7 @@
     <Id>2</Id>
     <Sifra>ns3</Sifra>
     <Naziv>Novi Sad</Naziv>
-    <Cena>2000</Cena>
+    <Cena>4000</Cena>
     <Kolicina>40</Kolicina>
     <IdTip>2</IdTip>
     <Obrisan>false</Obrisan>
@@ -39,7 +39,7 @@
     <Naziv>Nis</Naziv>
     <Cena>5500</Cena>
     <Kolicina>0</Kolicina>
-    <IdTip>0</IdTip>
+    <IdTip>1</IdTip>
     <Obrisan>true</Obrisan>
   </Namestaj>
   <Namestaj>
@@ -110,7 +110,7 @@
     <Naziv>eterwt</Naziv>
     <Cena>6</Cena>
     <Kolicina>0</Kolicina>
-    <IdTip>0</IdTip>
+    <IdTip>4</IdTip>
     <Obrisan>true</Obrisan>
   </Namestaj>
   <Namestaj>
@@ -147,6 +147,24 @@
     <Cena>4000</Cena>
     <Kolicina>20</Kolicina>
     <IdTip>12</IdTip>
+    <Obrisan>false</Obrisan>
+  </Namestaj>
+  <Namestaj>
+    <Id>18</Id>
+    <Sifra>dd3</Sifra>
+    <Naziv>Dedinje</Naziv>
+    <Cena>12000</Cena>
+    <Kolicina>20</Kolicina>
+    <IdTip>6</IdTip>
+    <Obrisan>false</Obrisan>
+  </Namestaj>
+  <Namestaj>
+    <Id>19</Id>
+    <Sifra>sw3</Sifra>
+    <Naziv>Senjak</Naziv>
+    <Cena>3300</Cena>
+    <Kolicina>40</Kolicina>
+    <IdTip>6</IdTip>
     <Obrisan>false</Obrisan>
   </Namestaj>
 </ArrayOfNamestaj>

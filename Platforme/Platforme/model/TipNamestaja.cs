@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -69,5 +72,32 @@ namespace Platforme.model
                 PropertyChanged(this, new PropertyChangedEventArgs(PropertyName));
             }
         }
+        #region Database
+        public static void UcitajTipNamestaja()
+        {
+            using (SqlConnection connection=new SqlConnection(Projekat.CONNECTION_STRING))
+            {
+                connection.Open();
+
+                DataSet ds = new DataSet();
+
+                SqlCommand tipNamestajaCommand = connection.CreateCommand();
+                tipNamestajaCommand.CommandText = @"SELECT * FROM TipNamestaja";
+                SqlDataAdapter daTipNamestaja = new SqlDataAdapter();
+                daTipNamestaja.SelectCommand = tipNamestajaCommand;
+                daTipNamestaja.Fill(ds, "TipNamestaja");
+
+                foreach (DataRow row in ds.Tables["TipNamestaja"].Rows)
+                {
+                    TipNamestaja t = new TipNamestaja();
+                    t.Id = (int)row["Id"];
+                    t.Naziv = (string)row["Naziv"];
+                    t.Obrisan = (bool)row["Obrisan"];
+
+                    Projekat.Instance.TipNamestaja.Add(t);
+                }
+            }
+        }
+        #endregion
     }
 }

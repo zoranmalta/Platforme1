@@ -4,100 +4,132 @@
     <Id>1</Id>
     <Datum>0001-01-01T00:00:00</Datum>
     <Id_Kupac>44</Id_Kupac>
+    <Id_Zaposleni>0</Id_Zaposleni>
   </Racun>
   <Racun>
     <Id>2</Id>
     <Datum>0001-01-01T00:00:00</Datum>
     <Id_Kupac>45</Id_Kupac>
+    <Id_Zaposleni>0</Id_Zaposleni>
   </Racun>
   <Racun>
     <Id>3</Id>
     <Datum>0001-01-01T00:00:00</Datum>
     <Id_Kupac>46</Id_Kupac>
+    <Id_Zaposleni>0</Id_Zaposleni>
   </Racun>
   <Racun>
     <Id>4</Id>
     <Datum>0001-01-01T00:00:00</Datum>
     <Id_Kupac>47</Id_Kupac>
+    <Id_Zaposleni>0</Id_Zaposleni>
   </Racun>
   <Racun>
     <Id>5</Id>
     <Datum>0001-01-01T00:00:00</Datum>
     <Id_Kupac>48</Id_Kupac>
+    <Id_Zaposleni>0</Id_Zaposleni>
   </Racun>
   <Racun>
     <Id>6</Id>
     <Datum>0001-01-01T00:00:00</Datum>
     <Id_Kupac>49</Id_Kupac>
+    <Id_Zaposleni>0</Id_Zaposleni>
   </Racun>
   <Racun>
     <Id>7</Id>
     <Datum>0001-01-01T00:00:00</Datum>
     <Id_Kupac>50</Id_Kupac>
+    <Id_Zaposleni>0</Id_Zaposleni>
   </Racun>
   <Racun>
     <Id>8</Id>
     <Datum>0001-01-01T00:00:00</Datum>
     <Id_Kupac>51</Id_Kupac>
+    <Id_Zaposleni>0</Id_Zaposleni>
   </Racun>
   <Racun>
     <Id>9</Id>
     <Datum>0001-01-01T00:00:00</Datum>
     <Id_Kupac>52</Id_Kupac>
+    <Id_Zaposleni>0</Id_Zaposleni>
   </Racun>
   <Racun>
     <Id>10</Id>
     <Datum>0001-01-01T00:00:00</Datum>
     <Id_Kupac>53</Id_Kupac>
+    <Id_Zaposleni>0</Id_Zaposleni>
   </Racun>
   <Racun>
     <Id>11</Id>
     <Datum>0001-01-01T00:00:00</Datum>
     <Id_Kupac>54</Id_Kupac>
+    <Id_Zaposleni>0</Id_Zaposleni>
   </Racun>
   <Racun>
     <Id>12</Id>
     <Datum>0001-01-01T00:00:00</Datum>
     <Id_Kupac>55</Id_Kupac>
+    <Id_Zaposleni>0</Id_Zaposleni>
   </Racun>
   <Racun>
     <Id>13</Id>
     <Datum>0001-01-01T00:00:00</Datum>
     <Id_Kupac>56</Id_Kupac>
+    <Id_Zaposleni>0</Id_Zaposleni>
   </Racun>
   <Racun>
     <Id>14</Id>
     <Datum>0001-01-01T00:00:00</Datum>
     <Id_Kupac>57</Id_Kupac>
+    <Id_Zaposleni>0</Id_Zaposleni>
   </Racun>
   <Racun>
     <Id>15</Id>
     <Datum>0001-01-01T00:00:00</Datum>
     <Id_Kupac>58</Id_Kupac>
+    <Id_Zaposleni>0</Id_Zaposleni>
   </Racun>
   <Racun>
     <Id>16</Id>
     <Datum>0001-01-01T00:00:00</Datum>
     <Id_Kupac>59</Id_Kupac>
+    <Id_Zaposleni>0</Id_Zaposleni>
   </Racun>
   <Racun>
     <Id>17</Id>
     <Datum>0001-01-01T00:00:00</Datum>
     <Id_Kupac>60</Id_Kupac>
+    <Id_Zaposleni>0</Id_Zaposleni>
   </Racun>
   <Racun>
     <Id>18</Id>
     <Datum>0001-01-01T00:00:00</Datum>
     <Id_Kupac>61</Id_Kupac>
+    <Id_Zaposleni>0</Id_Zaposleni>
   </Racun>
   <Racun>
     <Id>19</Id>
     <Datum>0001-01-01T00:00:00</Datum>
     <Id_Kupac>62</Id_Kupac>
+    <Id_Zaposleni>0</Id_Zaposleni>
   </Racun>
   <Racun>
     <Id>20</Id>
     <Datum>0001-01-01T00:00:00</Datum>
     <Id_Kupac>63</Id_Kupac>
+    <Id_Zaposleni>0</Id_Zaposleni>
+  </Racun>
+  <Racun>
+    <Id>21</Id>
+    <Datum>0001-01-01T00:00:00</Datum>
+    <Id_Kupac>64</Id_Kupac>
+    <Id_Zaposleni>0</Id_Zaposleni>
+  </Racun>
+  <Racun>
+    <Id>22</Id>
+    <Datum>0001-01-01T00:00:00</Datum>
+    <Id_Kupac>65</Id_Kupac>
+    <Id_Zaposleni>0</Id_Zaposleni>
   </Racun>
 </ArrayOfRacun>

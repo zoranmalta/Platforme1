@@ -45,34 +45,28 @@ namespace Platforme.UI
         private void DodajNamestaj(object sender, RoutedEventArgs e)
         {
             var noviNamestaj = new Namestaj();
-            var nw = new NamestajWindow(noviNamestaj,NamestajWindow.Operacija.DODAVANJE);
+            var nw = new NamestajWindow(noviNamestaj);
             this.Close();
             nw.ShowDialog();
         }
         private void IzmeniNamestaj(object sender, RoutedEventArgs e)
         {
             var selectedNamestaj = (Namestaj)dgNamestaj.SelectedItem;
-            var nw = new NamestajWindow(selectedNamestaj, NamestajWindow.Operacija.IZMENA);
+            var nw = new NamestajWindow(selectedNamestaj);
             this.Close();
             nw.ShowDialog();
         }
         private void ObrisiNamestaj(object sender, RoutedEventArgs e)
         {
-            var selectedNamestaj = (Namestaj)dgNamestaj.SelectedItem;
-            if(MessageBox.Show($"Da li sigurno zelite da obrisete namestaj: {selectedNamestaj.Naziv}","Potvrda",
+            Namestaj selektovaniNamestaj = view.CurrentItem as Namestaj;
+           
+            if(MessageBox.Show($"Da li sigurno zelite da obrisete namestaj: {selektovaniNamestaj.Naziv}","Potvrda",
                                 MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                foreach(var n in Projekat.Instance.Namestaj)
-                {
-                    if (n.Id == selectedNamestaj.Id)
-                    {
-                        n.Obrisan = true;
-                        view.Refresh();
-                        break;
-                    }
-                }
+                Projekat.Instance.Namestaj.Remove(selektovaniNamestaj);
+                Namestaj.ObrisiNamestaj(selektovaniNamestaj);
             }
-            GenericsSerializer.Serialize("namestaj.xml",Projekat.Instance.Namestaj);
+          
         }
         private void Pretraga_po_tipu(object sender, RoutedEventArgs e)
         {

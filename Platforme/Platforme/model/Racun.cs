@@ -57,10 +57,21 @@ namespace Platforme.model
                 OnPropertyChanged("id_Kupac");
             }
         }
+        private int id_Zaposleni;
+
+        public int Id_Zaposleni
+        {
+            get { return id_Zaposleni; }
+            set { id_Zaposleni = value;
+                OnPropertyChanged("id_Zaposleni");
+            }
+        }
+
 
 
         public Racun()
         {
+            Datum = DateTime.Today;
             listaStavkiNamestaja = new ObservableCollection<StavkaProdajeNamestaja>();
         }
 
