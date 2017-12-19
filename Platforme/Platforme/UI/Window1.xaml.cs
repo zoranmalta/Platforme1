@@ -46,15 +46,29 @@ namespace Platforme.UI
         {
             var noviNamestaj = new Namestaj();
             var nw = new NamestajWindow(noviNamestaj);
-            this.Close();
+            //this.Close();
             nw.ShowDialog();
         }
         private void IzmeniNamestaj(object sender, RoutedEventArgs e)
         {
-            var selectedNamestaj = (Namestaj)dgNamestaj.SelectedItem;
-            var nw = new NamestajWindow(selectedNamestaj);
-            this.Close();
-            nw.ShowDialog();
+            Namestaj selektovaniNamestaj = view.CurrentItem as Namestaj; //preuzimanje selektovanog fakulteta
+
+            if (selektovaniNamestaj != null)//ako je neki namestaj selektovan
+            {
+                //napravimo kopiju trenutnih vrednosti u objektu,  da bi ih mogli preuzeti ako korisnik ponisti napravljenje izmene
+                Namestaj old = (Namestaj)selektovaniNamestaj.Clone();
+                NamestajWindow nw = new NamestajWindow(selektovaniNamestaj);
+                if (nw.ShowDialog() != true) //ako je kliknuo cancel, ponistavaju se izmene nad objektom
+                {
+                    //pronadjemo indeks selektovanog namestaja
+                    int index = Projekat.Instance.Namestaj.IndexOf(selektovaniNamestaj);
+                    //vratimo vrednosti njegovih atributa na stare vrednosti, jer je izmena ponistena
+                    Projekat.Instance.Namestaj[index] = old;
+                }
+            }
+            //var selectedNamestaj = (Namestaj)dgNamestaj.SelectedItem;
+            //this.Close();
+            //nw.ShowDialog();
         }
         private void ObrisiNamestaj(object sender, RoutedEventArgs e)
         {

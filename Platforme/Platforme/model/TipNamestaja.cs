@@ -41,6 +41,14 @@ namespace Platforme.model
                 OnPropertyChanged("obrisan");
             }
         }
+        public Object Clone()
+        {
+            TipNamestaja kopija = new TipNamestaja();
+            kopija.Id = Id;
+            kopija.Naziv = Naziv;
+            kopija.Obrisan = Obrisan;
+            return kopija;
+        }
 
         public TipNamestaja() { }
 
@@ -82,7 +90,7 @@ namespace Platforme.model
                 DataSet ds = new DataSet();
 
                 SqlCommand tipNamestajaCommand = connection.CreateCommand();
-                tipNamestajaCommand.CommandText = @"SELECT * FROM TipNamestaja";
+                tipNamestajaCommand.CommandText = @"SELECT * FROM TipNamestaja ";
                 SqlDataAdapter daTipNamestaja = new SqlDataAdapter();
                 daTipNamestaja.SelectCommand = tipNamestajaCommand;
                 daTipNamestaja.Fill(ds, "TipNamestaja");
@@ -99,5 +107,53 @@ namespace Platforme.model
             }
         }
         #endregion
+        public static void DodajTipNamestaja(TipNamestaja tipNamestaja)
+        {
+            using (SqlConnection conn = new SqlConnection(Projekat.CONNECTION_STRING))
+            {
+                conn.Open();
+                SqlCommand command = conn.CreateCommand();
+                command.CommandText = $"INSERT INTO TipNamestaja (Naziv,Obrisan) VALUES (@Naziv,@Obrisan)";
+
+                command.Parameters.Add(new SqlParameter("@Naziv", tipNamestaja.Naziv));
+                command.Parameters.Add(new SqlParameter("@Obrisan", tipNamestaja.Obrisan));
+
+                command.ExecuteNonQuery();
+            }
+        }
+        public static void IzmeniTipNamestaja(TipNamestaja tipNamestaja)
+        {
+            using(SqlConnection conn=new SqlConnection(Projekat.CONNECTION_STRING))
+            {
+                if (tipNamestaja.Id != 0)
+                {
+                    conn.Open();
+                    SqlCommand command = conn.CreateCommand();
+                    command.CommandText = $"UPDATE TipNamestaja SET Naziv=@Naziv,Obrisan=@Obrisan WHERE Id=@Id" ;
+
+                    command.Parameters.Add(new SqlParameter("@Naziv", tipNamestaja.Naziv));
+                    command.Parameters.Add(new SqlParameter("@Obrisan", tipNamestaja.Obrisan));
+                    command.Parameters.Add(new SqlParameter("@Id", tipNamestaja.Id));
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+        public static void ObrisiTipNamestaja(TipNamestaja tipNamestaja)
+        {
+            using(SqlConnection conn=new SqlConnection(Projekat.CONNECTION_STRING))
+            {
+                if (tipNamestaja.Id != 0)
+                {
+                    conn.Open();
+                    SqlCommand command = conn.CreateCommand();
+                    command.CommandText = $"DELETE FROM TipNamestaja WHERE Id=@Id";
+
+                    command.Parameters.Add(new SqlParameter("@Id", tipNamestaja.Id));
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

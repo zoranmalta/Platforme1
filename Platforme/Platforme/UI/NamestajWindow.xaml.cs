@@ -54,13 +54,14 @@ namespace Platforme.UI
             else
             {
                 namestaj.IdTip = namestaj.TipNamestaja.Id;
-                Projekat.Instance.Namestaj.Add(namestaj);
                 Namestaj.DodajNamestaj(namestaj);
+                Projekat.Instance.Namestaj.Clear();
+                Namestaj.UcitajNamestaj();
             }
 
             this.Close();
-            var w1 = new Window1();
-            w1.ShowDialog();
+            //var w1 = new Window1();
+            //w1.ShowDialog();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

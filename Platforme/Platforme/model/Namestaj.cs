@@ -58,7 +58,9 @@ namespace Platforme.model
         public int Kolicina
         {
             get { return kolicina; }
-            set { kolicina = value; }
+            set { kolicina = value;
+                OnProtertyChanged("kolicina");
+            }
         }
 
 
@@ -96,6 +98,21 @@ namespace Platforme.model
             set { obrisan = value;
                 OnProtertyChanged("obrisan");
             }
+        }
+        public Object Clone()
+        {
+            Namestaj kopija = new Namestaj();
+            kopija.Id = Id;
+            kopija.IdTip = IdTip;
+            kopija.Naziv = Naziv;
+            kopija.TipNamestaja = TipNamestaja;
+            kopija.Cena = Cena;
+            kopija.Obrisan = Obrisan;
+            kopija.Sifra = Sifra;
+            kopija.Kolicina = Kolicina;
+
+            return kopija;
+           
         }
 
         public Namestaj() { }
@@ -147,7 +164,7 @@ namespace Platforme.model
                 DataSet ds = new DataSet();
 
                 SqlCommand namestajCommand = connection.CreateCommand();
-                namestajCommand.CommandText = @"SELECT * FROM Namestaj WHERE Obrisan=0";
+                namestajCommand.CommandText = @"SELECT * FROM Namestaj";
                 SqlDataAdapter daNamestaj = new SqlDataAdapter();
                 daNamestaj.SelectCommand = namestajCommand;
                 daNamestaj.Fill(ds, "Namestaj");

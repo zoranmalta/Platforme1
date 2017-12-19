@@ -1,4 +1,4 @@
-﻿DROP database IF EXISTS Platforme;
+﻿DROP database  Platforme;
 CREATE Database Platforme;
 USE Platforme
 

@@ -42,41 +42,54 @@ namespace Platforme.UI
         private void Dodaj(object sender, RoutedEventArgs e)
         {
             TipNamestaja tipNamestaja = new TipNamestaja();
-            TipNamestajaIzmene tni = new TipNamestajaIzmene(tipNamestaja, TipNamestajaIzmene.Operacija.Dodavanje);
-            this.Close();
+            TipNamestajaIzmene tni = new TipNamestajaIzmene(tipNamestaja);
+            //this.Close();
             tni.ShowDialog();
         }
     
         private void Izmeni(object sender, RoutedEventArgs e)
         {
-            var selectedTipNamestaja = (TipNamestaja)dgTipNamestaja.SelectedItem;
-            var tni = new TipNamestajaIzmene(selectedTipNamestaja, TipNamestajaIzmene.Operacija.Izmena);
-            this.Close();
-            tni.ShowDialog();
+            TipNamestaja selektovaniTipNamestaja = view.CurrentItem as TipNamestaja; //preuzimanje selektovanog tipa
+
+            if (selektovaniTipNamestaja != null)//ako je neki tip namestaja selektovan
+            {
+                //napravimo kopiju trenutnih vrednosti u objektu,  da bi ih mogli preuzeti ako korisnik ponisti napravljenje izmene
+                TipNamestaja old = (TipNamestaja)selektovaniTipNamestaja.Clone();
+                TipNamestajaIzmene nw = new TipNamestajaIzmene(selektovaniTipNamestaja);
+                if (nw.ShowDialog() != true) //ako je kliknuo cancel, ponistavaju se izmene nad objektom
+                {
+                    //pronadjemo indeks selektovanog tipa namestaja
+                    int index = Projekat.Instance.TipNamestaja.IndexOf(selektovaniTipNamestaja);
+                    //vratimo vrednosti njegovih atributa na stare vrednosti, jer je izmena ponistena
+                    Projekat.Instance.TipNamestaja[index] = old;
+                }
+            }
+            //var selectedTipNamestaja = (TipNamestaja)dgTipNamestaja.SelectedItem;
+            //var tni = new TipNamestajaIzmene(selectedTipNamestaja);
+            ////this.Close();
+            //tni.ShowDialog();
         }
         private void Ukloni(object sender, RoutedEventArgs e)
         {
-            ObservableCollection<TipNamestaja> lista = Projekat.Instance.TipNamestaja;
-            ObservableCollection<Namestaj> listaNamestaja = Projekat.Instance.Namestaj;
-            TipNamestaja selectedTipNamestaja = (TipNamestaja)dgTipNamestaja.SelectedItem;
-            foreach(TipNamestaja tn in lista)
+            TipNamestaja selektovaniTip = view.CurrentItem as TipNamestaja;
+
+            if (MessageBox.Show($"Da li sigurno zelite da obrisete tip namestaja: {selektovaniTip.Naziv}", "Potvrda",
+                                MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                if (tn.Id == selectedTipNamestaja.Id)
+                foreach(Namestaj n in Projekat.Instance.Namestaj)
                 {
-                    tn.Obrisan=true;
-                    foreach (Namestaj n in listaNamestaja)
+                    if (n.IdTip == selektovaniTip.Id)
                     {
-                        if (n.IdTip == tn.Id)
-                        {
-                            n.Obrisan=true;
-                        }
+                        Namestaj.ObrisiNamestaj(n);
                     }
                 }
+                Projekat.Instance.Namestaj.Clear();
+                Namestaj.UcitajNamestaj();
+                TipNamestaja.ObrisiTipNamestaja(selektovaniTip);
+                Projekat.Instance.TipNamestaja.Clear();
+                TipNamestaja.UcitajTipNamestaja();
+                view.Refresh();
             }
-            view.Refresh();
-            GenericsSerializer.Serialize("tipNamestaja.xml", lista);
-            GenericsSerializer.Serialize("namestaj.xml", listaNamestaja);
-
         }
        
         private void Izlaz(object sender, RoutedEventArgs e)
