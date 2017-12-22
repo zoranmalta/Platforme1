@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -70,6 +72,80 @@ namespace Platforme.model
             this.Prezime = Prezime;
             this.Telefon = Telefon;
             this.Obrisan = Obrisan;
+        }
+
+        public static void UcitajKupce()
+        {
+            using (SqlConnection conn = new SqlConnection(Projekat.CONNECTION_STRING))
+            {
+                conn.Open();
+                DataSet ds = new DataSet();
+
+                SqlCommand kupacCommand = conn.CreateCommand();
+                kupacCommand.CommandText = @"SELECT * FROM Kupac ";
+                SqlDataAdapter daKupac = new SqlDataAdapter();
+                daKupac.SelectCommand = kupacCommand;
+                daKupac.Fill(ds, "Kupac");
+
+                foreach (DataRow row in ds.Tables["Kupac"].Rows)
+                {
+                    Kupac n = new Kupac();
+                    n.Id = (int)row["Id"];
+                    n.Ime = (string)row["Ime"];
+                    n.Prezime = (string)row["Prezime"];
+                    n.Telefon = (string)row["Telefon"];
+                    n.Obrisan = (bool)row["Obrisan"];
+
+                    Projekat.Instance.Kupac.Add(n);
+                }
+
+            }
+        }
+        public static void DodajKupca(Kupac kupac)
+        {
+            using(SqlConnection conn=new SqlConnection(Projekat.CONNECTION_STRING))
+            {
+                conn.Open();
+
+                SqlCommand command = conn.CreateCommand();
+                command.CommandText = $"INSERT INTO Kupac (Ime,Prezime,Telefon,Obrisan) " +
+                                                 $"VALUES(@Ime,@Prezime,@Telefon,@Obrisan)";
+
+                command.Parameters.Add(new SqlParameter("@Ime", kupac.Ime));
+                command.Parameters.Add(new SqlParameter("@Prezime", kupac.Prezime));
+                command.Parameters.Add(new SqlParameter("@Telefon", kupac.Telefon));
+                command.Parameters.Add(new SqlParameter("@Obrisan", kupac.Obrisan));
+
+                command.ExecuteNonQuery();
+
+            }
+        }
+        public static int UzmiMaxId()
+        {
+            using (SqlConnection connection = new SqlConnection(Projekat.CONNECTION_STRING))
+            {
+                connection.Open();
+
+                DataSet ds = new DataSet();
+
+                SqlCommand namestajCommand = connection.CreateCommand();
+                namestajCommand.CommandText = @"SELECT Id FROM Kupac ";
+                SqlDataAdapter daNamestaj = new SqlDataAdapter();
+                daNamestaj.SelectCommand = namestajCommand;
+                daNamestaj.Fill(ds, "Kupac");
+                int max = 0;
+                foreach (DataRow row in ds.Tables["Kupac"].Rows)
+                {
+                    Kupac n = new Kupac();
+                    n.Id = (int)row["Id"];
+
+                    if (n.Id > max)
+                    {
+                        max = n.Id;
+                    }
+                }
+                return max;
+            }
         }
 
         public override string ToString()

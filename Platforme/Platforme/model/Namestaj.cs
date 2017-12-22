@@ -28,7 +28,6 @@ namespace Platforme.model
                 OnProtertyChanged("id");
             }
         }
-
         public string Sifra
         {
             get { return sifra; }
@@ -36,8 +35,6 @@ namespace Platforme.model
                 OnProtertyChanged("sifra");
             }
         }
-
-
         public string Naziv
         {
             get { return naziv; }
@@ -45,7 +42,6 @@ namespace Platforme.model
                 OnProtertyChanged("naziv");
             }
         }
-
         public double Cena
         {
             get { return cena; }
@@ -53,8 +49,6 @@ namespace Platforme.model
                 OnProtertyChanged("cena");
             }
         }
-
-
         public int Kolicina
         {
             get { return kolicina; }
@@ -62,8 +56,6 @@ namespace Platforme.model
                 OnProtertyChanged("kolicina");
             }
         }
-
-
         [XmlIgnore]
         public TipNamestaja TipNamestaja
         {
@@ -112,7 +104,6 @@ namespace Platforme.model
             kopija.Kolicina = Kolicina;
 
             return kopija;
-           
         }
 
         public Namestaj() { }
@@ -164,7 +155,7 @@ namespace Platforme.model
                 DataSet ds = new DataSet();
 
                 SqlCommand namestajCommand = connection.CreateCommand();
-                namestajCommand.CommandText = @"SELECT * FROM Namestaj";
+                namestajCommand.CommandText = @"SELECT * FROM Namestaj ";
                 SqlDataAdapter daNamestaj = new SqlDataAdapter();
                 daNamestaj.SelectCommand = namestajCommand;
                 daNamestaj.Fill(ds, "Namestaj");

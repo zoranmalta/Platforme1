@@ -32,7 +32,7 @@
         <Label Content="Ukupan Racun:" FontSize="18" HorizontalContentAlignment="Right" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,6,0,0" Grid.Row="7" Width="143"/>
         <TextBox Name="tbSalon"  HorizontalAlignment="Left" Height="27" TextWrapping="Wrap" VerticalAlignment="Top" Width="376" Grid.Column="1" Margin="10,5,0,0" Grid.Row="1"/>
         <TextBox Name="tbIdRacuna" Text="{Binding Path=Id}" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="376" Grid.Column="1" Margin="10,6,0,0" Grid.Row="2"/>
-        <TextBox Name="tbDatum" Text="{Binding Path=Datum}" HorizontalAlignment="Left" Height="27" TextWrapping="Wrap"  VerticalAlignment="Top" Width="376" Grid.Column="1" Margin="10,6,0,0" Grid.Row="3"/>
+        <TextBox Name="tbDatum" Text="{Binding Path=Datum, Mode=OneWay}" HorizontalAlignment="Left" Height="27" TextWrapping="Wrap"  VerticalAlignment="Top" Width="376" Grid.Column="1" Margin="10,6,0,0" Grid.Row="3"/>
         <TextBox Name="tbKupac" Text="{Binding Path=Kupac, Mode=OneWay}" HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" VerticalAlignment="Top" Width="376" Grid.Column="1" Margin="10,5,0,0" Grid.Row="4"/>
         <TextBox Name="tbUkupanRacun"  HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="309" Margin="10,6,0,0" Grid.Row="7" Grid.Column="1"/>
         <Button Content="Stampaj" Click="Stampaj" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Top" Width="143" Margin="10,53,0,0" Grid.Row="8" Height="39"/>

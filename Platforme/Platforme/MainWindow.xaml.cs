@@ -42,13 +42,11 @@ namespace Platforme
             if (cbTipKorisnika.Text == "Administrator")
             {
                 var meniAdministratora = new MeniAdministratora();
-                this.Close();
                 meniAdministratora.ShowDialog();
             }
             if (cbTipKorisnika.Text == "Prodavac")
             {
                 var meniProdavac = new MeniProdavac();
-                this.Close();
                 meniProdavac.ShowDialog();
             }
             if (cbTipKorisnika.Text == "")

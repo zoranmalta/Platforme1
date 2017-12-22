@@ -37,9 +37,9 @@ namespace Platforme.UI
             tbUkupanRacun.Text = racun.TotalPrice().ToString();
 
             //view = CollectionViewSource.GetDefaultView(Projekat.Instance.StavkaProdajeNamestaja);
-            ObservableCollection<StavkaProdajeNamestaja> listaStavkiProdajeNamestaja= new ObservableCollection<StavkaProdajeNamestaja>();
-            SelekcijaPoTipu(racun,listaStavkiProdajeNamestaja);
-            dgStavkeProdaje.ItemsSource = listaStavkiProdajeNamestaja;
+            //ObservableCollection<StavkaProdajeNamestaja> listaStavkiProdajeNamestaja= new ObservableCollection<StavkaProdajeNamestaja>();
+            //SelekcijaPoTipu(racun,listaStavkiProdajeNamestaja);
+            dgStavkeProdaje.ItemsSource = racun.listaStavkiNamestaja;
             dgStavkeProdaje.IsSynchronizedWithCurrentItem = true;
 
             dgStavkeProdaje.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
@@ -58,7 +58,7 @@ namespace Platforme.UI
         private void dgPrikazRacuna_AutoGeneratingColumn(object sender,
             DataGridAutoGeneratingColumnEventArgs e)
         {
-            if ((string)e.Column.Header == "Obrisan" || (string)e.Column.Header == "Id_Racun" || (string)e.Column.Header == "Id_Namestaj")
+            if ((string)e.Column.Header == "Obrisan" || (string)e.Column.Header == "Id_Racun" || (string)e.Column.Header == "Id" || (string)e.Column.Header == "Id_Namestaj")
             {
                 e.Cancel = true;
             }

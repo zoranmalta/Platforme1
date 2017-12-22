@@ -18,19 +18,19 @@ namespace Platforme.model
 
         public ObservableCollection<Namestaj> Namestaj { get; set; }
         public ObservableCollection<TipNamestaja> TipNamestaja { get; set; }
-        public ObservableCollection<Kupac> Kupac;
-        public ObservableCollection<StavkaProdajeNamestaja> StavkaProdajeNamestaja;
-        public ObservableCollection<Racun> Racun;
-        public ObservableCollection<Akcija> Akcija;
+        public ObservableCollection<Kupac> Kupac { get; set; }
+        public ObservableCollection<StavkaProdajeNamestaja> StavkaProdajeNamestaja { get; set; }
+        public ObservableCollection<Racun> Racun { get; set; }
+        public ObservableCollection<Akcija> Akcija { get; set; }
 
         private Projekat()
         {
             TipNamestaja = new ObservableCollection<model.TipNamestaja>();
             Namestaj = new ObservableCollection<model.Namestaj>();
-            Kupac = new ObservableCollection<model.Kupac>(GenericsSerializer.DeSerialize<Kupac>("kupac.xml"));
-            StavkaProdajeNamestaja = new ObservableCollection<model.StavkaProdajeNamestaja>(GenericsSerializer.DeSerialize<StavkaProdajeNamestaja>("stavkaProdajeNamestaja.xml"));
-            Racun = new ObservableCollection<model.Racun>(GenericsSerializer.DeSerialize<Racun>("racun.xml"));
-            Akcija = new ObservableCollection<model.Akcija>(GenericsSerializer.DeSerialize<Akcija>("akcija.xml"));
+            Kupac = new ObservableCollection<model.Kupac>();
+            StavkaProdajeNamestaja = new ObservableCollection<model.StavkaProdajeNamestaja>();
+            Racun = new ObservableCollection<model.Racun>();
+            Akcija = new ObservableCollection<model.Akcija>();
         }
 
     }

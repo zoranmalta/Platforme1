@@ -44,9 +44,8 @@ namespace Platforme.UI
         }
         private void Nazad(object sender, RoutedEventArgs e)
         {
-            var mw = new MainWindow();
+            
             this.Close();
-            mw.ShowDialog();
         }
     }
 }
