@@ -22,7 +22,6 @@ namespace Platforme.model
             }
         }
 
-
         public string Naziv
         {
             get { return naziv; }
@@ -47,7 +46,6 @@ namespace Platforme.model
             }
         }
    
-
         public object Clone()
         {
             Usluga kopija = new Usluga();

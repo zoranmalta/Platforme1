@@ -40,14 +40,49 @@ namespace Platforme.UI
         private void Dodaj(object sender, RoutedEventArgs e)
         {
             Akcija akcija = new Akcija();
-            var ad = new AkcijaDodavanje(akcija, AkcijaDodavanje.Operacija.Dodavanje);
-            this.Close();
+            var ad = new AkcijaDodavanje(akcija);
             ad.ShowDialog();
         }
 
         private void Izmeni(object sender, RoutedEventArgs e)
         {
+            Akcija selektovanaAkcija = view.CurrentItem as Akcija; 
 
+            if (selektovanaAkcija != null)
+            {
+                //napravimo kopiju trenutnih vrednosti u objektu,  da bi ih mogli preuzeti ako korisnik ponisti napravljenje izmene
+                Akcija old = (Akcija)selektovanaAkcija.Clone();
+                AkcijaDodavanje nw = new AkcijaDodavanje(selektovanaAkcija);
+                if (nw.ShowDialog() != true) //ako je kliknuo cancel, ponistavaju se izmene nad objektom
+                {
+                    //pronadjemo indeks selektovanog akcija
+                    int index = Projekat.Instance.Akcija.IndexOf(selektovanaAkcija);
+                    //vratimo vrednosti njegovih atributa na stare vrednosti, jer je izmena ponistena
+                    Projekat.Instance.Akcija[index] = old;
+                }
+            }
+        }
+        private void Obrisi(object sender, RoutedEventArgs e)
+        {
+            Akcija selektovanaAkcija = view.CurrentItem as Akcija;
+
+            if (MessageBox.Show($"Da li sigurno zelite da obrisete izabranu akciju?", "Potvrda",
+                                MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                Projekat.Instance.Akcija.Remove(selektovanaAkcija);
+                Akcija.ObrisiAkciju(selektovanaAkcija);
+            }
+
+        }
+
+
+        private void dgAkcija_AutoGeneratingColumn(object sender,
+           DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if ((string)e.Column.Header == "Obrisan" || (string)e.Column.Header == "Id" || (string)e.Column.Header == "IdNamestaj")
+            {
+                e.Cancel = true;
+            }
         }
     }
     

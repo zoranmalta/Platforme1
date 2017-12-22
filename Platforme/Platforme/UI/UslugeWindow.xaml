@@ -1,0 +1,25 @@
+﻿<Window x:Class="Platforme.UI.UslugeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Platforme.UI"
+        mc:Ignorable="d"
+        Title="UslugeWindow" Height="550" Width="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="199*"/>
+            <RowDefinition Height="60*"/>
+            <RowDefinition Height="60*"/>
+        </Grid.RowDefinitions>
+        <DataGrid x:Name="dgUsluge" AutoGenerateColumns="True" AutoGeneratingColumn="dgPrikazNamestaja_AutoGeneratingColumn" CanUserAddRows="False" FontSize="15" HorizontalAlignment="Left" Height="304" VerticalAlignment="Top" Width="572" Margin="10,10,0,0"/>
+        <Button Content="Dodaj" FontSize="15" Click="" Margin="10,59,487,10" Grid.Row="1"/>
+        <Button Content="Izmeni" FontSize="15" Click="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="91" Margin="125,59,0,0" Grid.Row="1" Height="29"/>
+        <Button Content="Obrisi" FontSize="15" Click="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="91" Margin="233,59,0,0" Grid.Row="1" Height="29"/>
+        <Button Content="Izlaz" FontSize="15" Click="Button_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="109" Margin="473,59,0,0" Grid.Row="1" Height="29"/>
+        <Button Content="Pretraga po tipu namestaja" Click="Pretraga_po_tipu" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" Width="172" Margin="10,10,0,0" Grid.Row="2" Height="31"/>
+        <Button Content="Pretraga po nazivu" Click="Pretraga_po_Nazivu" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" Width="172" Margin="10,57,0,0" Grid.Row="2" Height="30"/>
+        <Button Content="Tip Namestaja" Click="Tip_Namestaja" HorizontalAlignment="Left" FontSize="15" Margin="473,57,0,0" Grid.Row="2" VerticalAlignment="Top" Width="109" Height="30"/>
+
+    </Grid>
+</Window>

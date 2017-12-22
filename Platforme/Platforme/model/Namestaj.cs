@@ -124,7 +124,7 @@ namespace Platforme.model
 
         public override string ToString()
         {
-            return $"{Id},{Naziv},{Cena},{TipNamestaja.GetById(IdTip).Naziv}";
+            return $"{Naziv},{Cena},{TipNamestaja.GetById(IdTip).Naziv}";
         }
 
         public static Namestaj GetById(int Id)

@@ -93,7 +93,7 @@ namespace Platforme.model
                     s.Id_Namestaj = (int)row["Id_Namestaj"];
                     s.Id_Racun = (int)row["Id_Racun"];
                     s.Kolicina = (int)row["Kolicina"];
-                    s.Namestaj = Namestaj.GetById(s.id_Namestaj);
+                    s.Namestaj = Namestaj.GetById(s.Id_Namestaj);
 
                     Projekat.Instance.StavkaProdajeNamestaja.Add(s);
                 }

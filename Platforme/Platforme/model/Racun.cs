@@ -81,7 +81,47 @@ namespace Platforme.model
         }
         public static void UcitajRacune()
         {
+            using (SqlConnection connection = new SqlConnection(Projekat.CONNECTION_STRING))
+            {
+                connection.Open();
 
+                DataSet ds = new DataSet();
+
+                SqlCommand namestajCommand = connection.CreateCommand();
+                namestajCommand.CommandText = @"SELECT * FROM Racun ";
+                SqlDataAdapter daNamestaj = new SqlDataAdapter();
+                daNamestaj.SelectCommand = namestajCommand;
+                daNamestaj.Fill(ds, "Racun");
+
+                foreach (DataRow row in ds.Tables["Racun"].Rows)
+                {
+                    Racun n = new Racun();
+                    n.Id = (int)row["Id"];
+                    n.Datum = (DateTime)row["Datum"];
+                    n.Id_Zaposleni = (int)(row["Id_Zaposleni"]);
+                    n.Id_Kupac = (int)row["Id_Kupac"];
+
+                    SqlCommand command = connection.CreateCommand();
+                    command.CommandText = @"SELECT * FROM StavkaProdajeNamestaja WHERE @Id=Id_Racun ";
+                    SqlDataAdapter daRacun = new SqlDataAdapter();
+                    daRacun.SelectCommand = command;
+                    daRacun.Fill(ds, "StavkaProdajeNamestaja");
+                    command.Parameters.Add(new SqlParameter("@Id", n.Id));
+                    foreach (DataRow row1 in ds.Tables["StavkaProdajeNamestaja"].Rows)
+                    {
+                        StavkaProdajeNamestaja s = new StavkaProdajeNamestaja();
+                        s.Id = (int)row["Id"];
+                        s.Id_Namestaj = (int)row["Id_Namestaj"];
+                        s.Id_Racun = (int)row["Id_Racun"];
+                        s.Kolicina = (int)row["Kolicina"];
+                        s.Namestaj = Namestaj.GetById(s.Id_Namestaj);
+
+
+                        n.listaStavkiNamestaja.Add(s);
+                    }
+                    Projekat.Instance.Racun.Add(n);
+                }
+            }
         }
         public static void DodajRacun(Racun racun)
         {

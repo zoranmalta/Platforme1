@@ -23,19 +23,12 @@ namespace Platforme.UI
     public partial class AkcijaDodavanje : Window
     {
         private Akcija akcija;
-        private Operacija operacija;
+       
 
-        public enum Operacija
-        {
-            Dodavanje,
-            Izmena
-        }
-
-        public AkcijaDodavanje(Akcija akcija,Operacija operacija)
+        public AkcijaDodavanje(Akcija akcija)
         {
             InitializeComponent();
             this.akcija = akcija;
-            this.operacija = operacija;
             tbPopust.DataContext = akcija;
             dpPocetak.DataContext = akcija;
             dpZavrsetak.DataContext = akcija;
@@ -43,31 +36,24 @@ namespace Platforme.UI
             cbNamestaj.DataContext = akcija;
 
         }
-        public void Sacuvaj_Izmene()
-        {
-            ObservableCollection<Akcija> postojeceAkcije = Projekat.Instance.Akcija;
-
-            switch (operacija)
-            {
-                case Operacija.Dodavanje:
-                    akcija.Id = postojeceAkcije.Count + 1;
-                    akcija.IdNamestaj = akcija.Namestaj.Id;
-                    postojeceAkcije.Add(akcija);
-                    break;
-                case Operacija.Izmena:
-                    break;
-                default:
-                    break;
-            }
-            GenericsSerializer.Serialize("akcija.xml", postojeceAkcije);
-        }
 
         private void Sacuvaj_Akciju(object sender, RoutedEventArgs e)
         {
-            Sacuvaj_Izmene();
-            var aw = new AkcijaWindow();
+            this.DialogResult = true;
+            if (akcija.Id != 0) //ako postoji id, Akcija je vec u bazi, sto znaci da se radi izmena akcije
+            {
+                akcija.IdNamestaj = akcija.Namestaj.Id;
+                Akcija.IzmeniAkciju(akcija);
+            }
+            else
+            {
+                akcija.IdNamestaj = akcija.Namestaj.Id;
+                Akcija.DodajAkciju(akcija);
+                Projekat.Instance.Akcija.Clear();
+                Akcija.UcitajAkcije();
+            }
+
             this.Close();
-            aw.ShowDialog();
         }
 
         private void Izlaz(object sender, RoutedEventArgs e)
