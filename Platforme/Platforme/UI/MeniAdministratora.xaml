@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Platforme.UI"
         mc:Ignorable="d"
-        Title="MeniAdministratora" Height="300" Width="300">
+        Title="MeniAdministratora" Height="400" Width="450">
     <Grid>
-        <Button Content="Namestaj" FontSize="15" Click="Namestaj" HorizontalAlignment="Left" VerticalAlignment="Top" Width="116" Margin="84,38,0,0" Height="30"/>
-        <Button Content="Korisnici" FontSize="15" Click="Korisnici" HorizontalAlignment="Left" VerticalAlignment="Top" Width="116" Margin="84,103,0,0" Height="30"/>
-        <Button Content="Akcije" FontSize="15" Click="Akcije" HorizontalAlignment="Left" VerticalAlignment="Top" Width="116" Margin="84,171,0,0" Height="30"/>
-        <Button Content="Izlaz" FontSize="15" Click="Button_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="71" Margin="211,229,0,0" Height="30"/>
-        <Button Content="Nazad" FontSize="15" Click="Nazad" HorizontalAlignment="Left" VerticalAlignment="Top" Width="79" Margin="10,229,0,0" Height="30"/>
+        <Button Content="Namestaj" FontSize="15" Click="Namestaj" HorizontalAlignment="Left" VerticalAlignment="Top" Width="116" Margin="154,38,0,0" Height="30"/>
+        <Button Content="Korisnici" FontSize="15" Click="Korisnici" HorizontalAlignment="Left" VerticalAlignment="Top" Width="116" Margin="154,251,0,0" Height="30"/>
+        <Button Content="Akcije" FontSize="15" Click="Akcije" HorizontalAlignment="Left" VerticalAlignment="Top" Width="116" Margin="154,181,0,0" Height="30"/>
+        <Button Content="Izlaz" FontSize="15" Click="Button_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="71" Margin="361,329,0,0" Height="30"/>
+        <Button Content="Nazad" FontSize="15" Click="Nazad" HorizontalAlignment="Left" VerticalAlignment="Top" Width="79" Margin="10,329,0,0" Height="30"/>
+        <Button Content="Usluge" FontSize="15" Click="Usluge" HorizontalAlignment="Left" Margin="154,111,0,0" VerticalAlignment="Top" Width="116" Height="30"/>
 
     </Grid>
 </Window>

@@ -56,7 +56,6 @@ namespace Platforme.model
                 OnProtertyChanged("kolicina");
             }
         }
-        [XmlIgnore]
         public TipNamestaja TipNamestaja
         {
             get
@@ -124,7 +123,7 @@ namespace Platforme.model
 
         public override string ToString()
         {
-            return $"{Naziv},{Cena},{TipNamestaja.GetById(IdTip).Naziv}";
+            return $"Naziv: {Naziv},Cena:{Cena} din,{TipNamestaja.GetById(IdTip).Naziv},kol: {Kolicina}";
         }
 
         public static Namestaj GetById(int Id)

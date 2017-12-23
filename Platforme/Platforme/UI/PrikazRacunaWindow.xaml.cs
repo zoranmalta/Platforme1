@@ -41,8 +41,10 @@ namespace Platforme.UI
             //SelekcijaPoTipu(racun,listaStavkiProdajeNamestaja);
             dgStavkeProdaje.ItemsSource = racun.listaStavkiNamestaja;
             dgStavkeProdaje.IsSynchronizedWithCurrentItem = true;
-
             dgStavkeProdaje.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
+            dgStavkeUsluga.ItemsSource = racun.listaStavkiUsluga;
+            dgStavkeUsluga.IsSynchronizedWithCurrentItem = true;
+            dgStavkeUsluga.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
         }
         public void SelekcijaPoTipu(Racun racun,ObservableCollection<StavkaProdajeNamestaja> listaStavkiProdajeNamestaja)
         {
@@ -59,6 +61,14 @@ namespace Platforme.UI
             DataGridAutoGeneratingColumnEventArgs e)
         {
             if ((string)e.Column.Header == "Obrisan" || (string)e.Column.Header == "Id_Racun" || (string)e.Column.Header == "Id" || (string)e.Column.Header == "Id_Namestaj")
+            {
+                e.Cancel = true;
+            }
+        }
+        private void dgPrikazUsluga_AutoGeneratingColumn(object sender,
+           DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if ((string)e.Column.Header == "Obrisan" || (string)e.Column.Header == "Id_Racun" || (string)e.Column.Header == "Id" || (string)e.Column.Header == "Id_Usluga")
             {
                 e.Cancel = true;
             }

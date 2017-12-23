@@ -20,8 +20,8 @@ namespace Platforme.model
         private Kupac kupac;
         private int id_Kupac;
         private int id_Zaposleni;
-        [XmlIgnore]
         public ObservableCollection<StavkaProdajeNamestaja> listaStavkiNamestaja { get; set; }
+        public ObservableCollection<StavkaProdajeUsluge> listaStavkiUsluga { get; set; }
 
         public int Id
         {
@@ -37,7 +37,6 @@ namespace Platforme.model
                 OnPropertyChanged("datum");
             }
         }
-        [XmlIgnore]
         public Kupac Kupac
         {
             get { if (kupac == null)
@@ -69,6 +68,7 @@ namespace Platforme.model
         {
             this.Datum = DateTime.Today;
             listaStavkiNamestaja = new ObservableCollection<StavkaProdajeNamestaja>();
+            listaStavkiUsluga = new ObservableCollection<StavkaProdajeUsluge>();
         }
         public Racun(int id,DateTime datum,int Id_Kupac, Kupac kupac,int Id_Zaposleni)
         {
@@ -78,6 +78,7 @@ namespace Platforme.model
             this.datum = datum;
             this.kupac = kupac;
             listaStavkiNamestaja = new ObservableCollection<StavkaProdajeNamestaja>();
+            listaStavkiUsluga = new ObservableCollection<StavkaProdajeUsluge>();
         }
         public static void UcitajRacune()
         {
@@ -177,6 +178,10 @@ namespace Platforme.model
             foreach(var s in listaStavkiNamestaja)
             {
                 totalPrice += s.vrednostJedneStavke();
+            }
+            foreach(var u in listaStavkiUsluga)
+            {
+                totalPrice += u.vrednostJedneStavke();
             }
             return totalPrice;
         }

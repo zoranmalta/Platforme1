@@ -28,6 +28,7 @@ namespace Platforme
             TipNamestaja.UcitajTipNamestaja();
             Namestaj.UcitajNamestaj();
             Akcija.UcitajAkcije();
+            Usluga.UcitajUsluge();
             cbTipKorisnika.Items.Add("Administrator");
             cbTipKorisnika.Items.Add("Prodavac");
             cbTipKorisnika.SelectedIndex = 0;

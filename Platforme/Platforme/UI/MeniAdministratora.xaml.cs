@@ -33,6 +33,11 @@ namespace Platforme.UI
             var w1 = new Window1();
             w1.ShowDialog();
         }
+        private void Usluge(object sender, RoutedEventArgs e)
+        {
+            UslugeWindow uw = new UslugeWindow();
+            uw.ShowDialog();
+        }
         private void Korisnici(object sender, RoutedEventArgs e)
         {
 

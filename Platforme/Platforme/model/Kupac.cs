@@ -150,7 +150,7 @@ namespace Platforme.model
 
         public override string ToString()
         {
-            return $"{Ime},{Prezime},{Telefon}";
+            return $"Ime: {Ime},Prezime:{Prezime},Tel:{Telefon}";
         }
 
         public static Kupac GetById(int Id)

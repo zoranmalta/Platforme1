@@ -30,7 +30,7 @@ namespace Platforme.model
         }
         public override string ToString()
         {
-            return $"{Naziv},{Adresa},{Telefon},{PIB}";
+            return $"{Naziv} , {Adresa} ,Tel: {Telefon} ,PIB: {PIB}";
         }
     }
 }

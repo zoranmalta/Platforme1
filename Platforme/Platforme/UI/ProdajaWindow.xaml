@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Platforme.UI"
         mc:Ignorable="d"
-        Title="ProdajaWindow" Height="650" Width="650">
+        Title="ProdajaWindow" Height="650" Width="650.724">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="167*"/>
-            <ColumnDefinition Width="154*"/>
+            <ColumnDefinition Width="290*"/>
+            <ColumnDefinition Width="353*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="53*"/>
@@ -22,20 +22,33 @@
             <RowDefinition Height="106*"/>
         </Grid.RowDefinitions>
         <Label FontSize="22" HorizontalContentAlignment="Center"  Content="Racun" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="201,10,0,0" Grid.ColumnSpan="2" Width="261" Height="34"/>
-        <Label Content="Ime Kupca" FontSize="18" HorizontalContentAlignment="Right" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="157,10,0,0" Grid.Row="1" Height="34" Width="167"/>
-        <Label Content="Prezime Kupca" FontSize="18" HorizontalContentAlignment="Right" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="175,10,0,0" Grid.Row="2" Width="149" Height="33"/>
-        <Label Content="Telefon Kupca" FontSize="18" HorizontalContentAlignment="Right" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="175,10,0,0" Grid.Row="3" Height="34" Width="149"/>
-        <Label Content="Vrsta Prodaje" FontSize="18" HorizontalContentAlignment="Right" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="157,10,0,0" Grid.Row="4" Height="33" Width="167"/>
+        <Label Content="Ime Kupca" FontSize="18" HorizontalContentAlignment="Right" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="113,25,0,0" Grid.Row="1" Height="34" Width="167"/>
+        <Label Content="Prezime Kupca" FontSize="18" HorizontalContentAlignment="Right" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="131,25,0,0" Grid.Row="2" Width="149" Height="33"/>
+        <Label Content="Telefon Kupca" FontSize="18" HorizontalContentAlignment="Right" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="131,25,0,0" Grid.Row="3" Height="34" Width="149" RenderTransformOrigin="0.188,0.882"/>
+        <Label Content="Odaberite Usluge" FontSize="18" HorizontalContentAlignment="Right" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="113,25,0,0" Grid.Row="4" Height="33" Width="167"/>
         <TextBox Name="tbImeKupca" Text="{Binding Path=Ime}" FontSize="18" HorizontalAlignment="Left" Height="49" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200" Grid.Column="1" Margin="10,10,0,0" Grid.Row="1"/>
         <TextBox Name="tbPrezimeKupca" Text="{Binding Path=Prezime}" FontSize="18" HorizontalAlignment="Left" Height="48" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Margin="10,10,0,0" Grid.Row="2" Grid.Column="1"/>
         <TextBox Name="tbTelefonKupca" Text="{Binding Path=Telefon}" FontSize="18" HorizontalAlignment="Left" Height="49" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" Grid.Column="1" Margin="8,10,0,0" Grid.Row="3"/>
-        <ComboBox Name="cbVrstaProdaje" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Grid.Column="1" Margin="10,10,0,0" Grid.Row="4" Height="48"/>
-        <Label Content="Odaberite" FontSize="18" HorizontalContentAlignment="Right" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="175,10,0,0" Grid.Row="5" Width="149" Height="35"/>
-        <Label Content="Kolicina" FontSize="18" HorizontalContentAlignment="Right" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="175,10,0,0" Grid.Row="6" Height="34" Width="149"/>
-        <TextBox Name="tbKolicina" Text="{Binding Path=Kolicina}" HorizontalAlignment="Left" Height="49" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Margin="10,10,0,0" Grid.Row="6" Grid.Column="1"/>
-        <Button Click="DodajNovuStavku" Content="Dodaj Novu Stavku Prodaje" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Width="264" Margin="10,89,0,0" Grid.Row="7" Height="40"/>
+        <ComboBox Name="cbUsluge" SelectedItem="{Binding Path=Usluga}" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Top" Width="333" Grid.Column="1" Margin="10,10,0,0" Grid.Row="4" Height="48"/>
+        <Label Content="Odaberite Namestaj" FontSize="18" HorizontalContentAlignment="Right" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="99,23,0,0" Grid.Row="6" Width="181" Height="35"/>
+        <Label Content="Kolicina" FontSize="18" HorizontalContentAlignment="Right" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="125,25,0,0" Grid.Row="7" Height="34" Width="149"/>
+        <TextBox Name="tbKolicina" Text="{Binding Path=Kolicina}" HorizontalAlignment="Left" Height="49" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Margin="10,10,0,0" Grid.Row="7" Grid.Column="1"/>
+        <Button Click="DodajNovuStavkuNamestaja" Content="Dodaj Novu Stavku Prodaje" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Width="264" Margin="10,89,0,0" Grid.Row="7" Height="40"/>
         <Button Click="ZavrsiRacun" Content="Zavrsi Racun" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Width="163" Margin="135,89,0,0" Grid.Row="7" Grid.Column="1" Height="40"/>
-        <ComboBox Name="cbOdaberite" FontSize="12" SelectedItem="{Binding Path=Namestaj}"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Grid.Column="1" Margin="10,10,0,0" Grid.Row="5" Height="48"/>
+        <ComboBox Name="cbOdaberite" FontSize="18" SelectedItem="{Binding Path=Namestaj}"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="335" Grid.Column="1" Margin="8,10,0,0" Grid.Row="6" Height="48"/>
+        <Button Click="DodajNovuStavkuUsluge" Content="Dodaj Novu Stavku Usluge" FontSize="20" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="5" VerticalAlignment="Top" Width="264" Height="48"/>
+        <Border BorderBrush="Black" BorderThickness="2" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="208" Grid.Row="6" VerticalAlignment="Top" Width="643" Grid.RowSpan="2"/>
+        <Border BorderBrush="Black" BorderThickness="2" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="275" VerticalAlignment="Top" Width="643" Grid.RowSpan="4"/>
+        <Border BorderBrush="Black" BorderThickness="2" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="140" Grid.Row="3" VerticalAlignment="Top" Width="643" RenderTransformOrigin="0.5,0.5" Margin="0,68,0,0" Grid.RowSpan="4">
+            <Border.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Border.RenderTransform>
+        </Border>
 
     </Grid>
 </Window>

@@ -58,6 +58,7 @@
     <Compile Include="model\Racun.cs" />
     <Compile Include="model\Salon.cs" />
     <Compile Include="model\StavkaProdajeNamestaja.cs" />
+    <Compile Include="model\StavkaProdajeUsluge.cs" />
     <Compile Include="model\StavkaUsluge.cs" />
     <Compile Include="model\Usluga.cs" />
     <Compile Include="model\Zaposleni.cs" />
@@ -93,6 +94,12 @@
     </Compile>
     <Compile Include="UI\TipNamestajaWindow.xaml.cs">
       <DependentUpon>TipNamestajaWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UslugeIzmene.xaml.cs">
+      <DependentUpon>UslugeIzmene.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UslugeWindow.xaml.cs">
+      <DependentUpon>UslugeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
@@ -152,6 +159,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\TipNamestajaWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\UslugeIzmene.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\UslugeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

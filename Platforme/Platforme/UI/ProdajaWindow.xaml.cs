@@ -27,38 +27,33 @@ namespace Platforme.UI
         private TipNamestaja tipNamestaja=new TipNamestaja();
         private Racun racun = new Racun();
         public StavkaProdajeNamestaja stavka { get; set; }
+        public StavkaProdajeUsluge stavkaUsluga { get; set; }
 
         public ProdajaWindow()
         {
             InitializeComponent();
             stavka = new StavkaProdajeNamestaja();
+            stavkaUsluga = new StavkaProdajeUsluge();
             tbImeKupca.DataContext = kupac;
             tbPrezimeKupca.DataContext = kupac;
             tbTelefonKupca.DataContext = kupac;
             cbOdaberite.ItemsSource = Projekat.Instance.Namestaj;
             cbOdaberite.DataContext = stavka;
-            cbVrstaProdaje.Items.Add("Namestaj");
-            cbVrstaProdaje.Items.Add("Usluge");
-            cbVrstaProdaje.SelectedIndex = 0;
             tbKolicina.DataContext = stavka;
-
-            //if (cbVrstaProdaje.Text == "Namestaj")
-            //{
-            //    cbOdaberite.ItemsSource = Projekat.Instance.Namestaj;
-            //    cbOdaberite.DataContext = namestaj;
-            //}
-            //else if (cbVrstaProdaje.Text == "Usluge")
-            //{
-                
-            //}
+            cbUsluge.ItemsSource = Projekat.Instance.Usluga;
+            cbUsluge.DataContext = stavkaUsluga;
 
         }
 
-        public void DodajNovuStavku(object sender, RoutedEventArgs e)
+        public void DodajNovuStavkuNamestaja(object sender, RoutedEventArgs e)
         {
             stavka.Namestaj = (Namestaj)cbOdaberite.SelectedItem;
+            if (stavka.Namestaj == null)
+            {
+                return;
+            }
             stavka.Id_Namestaj = stavka.Namestaj.Id;
-            if (stavka.Kolicina <= stavka.Namestaj.Kolicina)
+            if (stavka.Kolicina < stavka.Namestaj.Kolicina+1)
             {
                 namestaj = stavka.Namestaj;
                 foreach(Namestaj n in Projekat.Instance.Namestaj)
@@ -70,9 +65,10 @@ namespace Platforme.UI
                 }
                 racun.listaStavkiNamestaja.Add(stavka);
             }
-            if(stavka.Kolicina > stavka.Namestaj.Kolicina)
+            else if(stavka.Kolicina > stavka.Namestaj.Kolicina)
             {
                 MessageBox.Show("nema dovoljno na lageru");
+                return;
                
             }
 
@@ -81,6 +77,18 @@ namespace Platforme.UI
             cbOdaberite.Text = "";
             tbKolicina.Text = "";
 
+        }
+        public void DodajNovuStavkuUsluge(object sender, RoutedEventArgs e)
+        {
+            stavkaUsluga.Usluga = (Usluga)cbUsluge.SelectedItem;
+            if (stavkaUsluga.Usluga == null)
+            {
+                return;
+            }
+            stavkaUsluga.Id_Usluga = stavkaUsluga.Usluga.Id;
+            racun.listaStavkiUsluga.Add(stavkaUsluga);
+            stavkaUsluga = new StavkaProdajeUsluge();
+            cbUsluge.Text = "";
         }
         public void ZavrsiRacun(object sender, RoutedEventArgs e)
         {
@@ -92,7 +100,6 @@ namespace Platforme.UI
                 racun.Id_Kupac = idkupacmax;
                 kupac.Id = idkupacmax;
                 racun.Kupac = kupac;
-                //GenericsSerializer.Serialize<StavkaProdajeNamestaja>("stavkaProdajeNamestaja.xml", postojeceStavke);
                 Racun.DodajRacun(racun);
                 int max=Racun.UzmiMaxId();
                 racun.Id = max;
@@ -101,6 +108,11 @@ namespace Platforme.UI
                     s.Id_Racun = max;
                     StavkaProdajeNamestaja.DodajStavkuProdajeNamestaja(s);
                     Namestaj.IzmeniNamestaj(s.Namestaj);
+                }
+                foreach (StavkaProdajeUsluge s in racun.listaStavkiUsluga)
+                {
+                    s.Id_Racun = max;
+                    StavkaProdajeUsluge.DodajStavkuProdajeUsluga(s);
                 }
 
                 var prw = new PrikazRacunaWindow(racun);
