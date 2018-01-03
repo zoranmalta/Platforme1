@@ -40,6 +40,11 @@ namespace Platforme.UI
         private void Sacuvaj_Akciju(object sender, RoutedEventArgs e)
         {
             this.DialogResult = true;
+            if (akcija.DatumPocetka.CompareTo(akcija.DatumZavrsetka) > 0)
+            {
+                MessageBox.Show("Datum zavrsetka treba da je posle datuma pocetka akcije");
+                return;
+            }
             if (akcija.Id != 0) //ako postoji id, Akcija je vec u bazi, sto znaci da se radi izmena akcije
             {
                 akcija.IdNamestaj = akcija.Namestaj.Id;
@@ -47,6 +52,11 @@ namespace Platforme.UI
             }
             else
             {
+                if (akcija.Namestaj == null)
+                {
+                    MessageBox.Show("Niste izabrali namestaj za akciju");
+                    return;
+                }
                 akcija.IdNamestaj = akcija.Namestaj.Id;
                 Akcija.DodajAkciju(akcija);
                 Projekat.Instance.Akcija.Clear();

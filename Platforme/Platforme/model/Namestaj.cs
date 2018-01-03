@@ -154,7 +154,7 @@ namespace Platforme.model
                 DataSet ds = new DataSet();
 
                 SqlCommand namestajCommand = connection.CreateCommand();
-                namestajCommand.CommandText = @"SELECT * FROM Namestaj ";
+                namestajCommand.CommandText = @"SELECT * FROM Namestaj  ";
                 SqlDataAdapter daNamestaj = new SqlDataAdapter();
                 daNamestaj.SelectCommand = namestajCommand;
                 daNamestaj.Fill(ds, "Namestaj");

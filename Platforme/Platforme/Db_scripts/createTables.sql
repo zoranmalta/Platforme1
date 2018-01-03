@@ -1,35 +1,26 @@
-﻿DROP database  Platforme;
-CREATE Database Platforme;
-USE Platforme
-
+﻿
 CREATE table TipNamestaja(
 	Id INT PRIMARY KEY IDENTITY(1,1),
-	Naziv VARCHAR (80),
+	Naziv VARCHAR (80) NOT NULL,
 	Obrisan BIT
 );
 
 CREATE TABLE Namestaj(
 	Id INT PRIMARY KEY IDENTITY (1,1),
-	IdTip INT,
-	Sifra VARCHAR(20) ,
-	Naziv VARCHAR (100),
-	Cena NUMERIC(9,2),
-	Kolicina INT,
+	IdTip INT NOT NULL,
+	Sifra VARCHAR(20) NOT NULL ,
+	Naziv VARCHAR (100) NOT NULL,
+	Cena NUMERIC(9,2) NOT NULL,
+	Kolicina INT NOT NULL,
 	Obrisan BIT,
 	FOREIGN KEY (IdTip) REFERENCES TipNamestaja(Id)
 );
-create table Kupac(
-	Id int primary key identity(1,1),
-	Ime varchar(25),
-	Prezime VARCHAR(25),
-	Telefon VARCHAR(25),
-	Obrisan BIT
-);
+
 CREATE TABLE Zaposleni(
 	Id INT PRIMARY KEY IDENTITY(1,1),
-	Ime VARCHAR(30),
-	Prezime VARCHAR(30),
-	Enum INT,
+	Ime VARCHAR(30) NOT NULL,
+	Prezime VARCHAR(30) NOT NULL,
+	Tip INT,
 	KorisnickoIme VARCHAR(30),
 	Lozinka VARCHAR(30)
 );
@@ -37,7 +28,8 @@ CREATE TABLE StavkaProdajeNamestaja(
 	Id INT PRIMARY KEY IDENTITY(1,1),
 	Id_Racun INT,
 	Id_Namestaj INT,
-	Kolicina INT
+	Kolicina INT,
+	Popust INT
 );
 CREATE TABLE Racun(
 	Id INT PRIMARY KEY IDENTITY(1,1),
@@ -50,7 +42,7 @@ CREATE TABLE Akcija(
 	DatumPocetka DATETIME,
 	DatumZavrsetka DATETIME,
 	IdNamestaj INT,
-	Popust NUMERIC(9,2),
+	Popust NUMERIC(2,2),
 	Obrisan BIT
 );
 CREATE TABLE StavkaUsluge(

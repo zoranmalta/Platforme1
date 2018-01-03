@@ -16,6 +16,7 @@ namespace Platforme.model
 
         private int id;
         private int idNamestaj;
+        private DateTime datumPocetka;
         private DateTime datumZavrsetka;
         private Namestaj namestaj;
         private double popust;
@@ -37,7 +38,6 @@ namespace Platforme.model
             }
         }
 
-        private DateTime datumPocetka;
 
         public DateTime DatumPocetka
 
@@ -149,6 +149,37 @@ namespace Platforme.model
                 }
             }
         }
+
+        public static void UcitajAktuelneAkcije()
+        {
+            using (SqlConnection connection = new SqlConnection(Projekat.CONNECTION_STRING))
+            {
+                connection.Open();
+                string date = Convert.ToString(DateTime.Today);
+                DataSet ds = new DataSet();
+
+                SqlCommand namestajCommand = connection.CreateCommand();
+                namestajCommand.CommandText = @"SELECT * FROM Akcija Where "+date+" BETWEEN DatumPocetka AND DatumZavrsetka ";
+                SqlDataAdapter daNamestaj = new SqlDataAdapter();
+                daNamestaj.SelectCommand = namestajCommand;
+                daNamestaj.Fill(ds, "Akcija");
+
+                foreach (DataRow row in ds.Tables["Akcija"].Rows)
+                {
+                    Akcija n = new Akcija();
+                    n.Id = (int)row["Id"];
+                    n.DatumPocetka = (DateTime)row["DatumPocetka"];
+                    n.DatumZavrsetka = (DateTime)row["DatumZavrsetka"];
+                    n.Popust = Convert.ToDouble(row["Popust"]);
+                    n.IdNamestaj = (int)row["IdNamestaj"];
+                    n.Namestaj = Namestaj.GetById(n.IdNamestaj);
+                    n.Obrisan = (bool)row["Obrisan"];
+
+                    Projekat.Instance.Akcija.Add(n);
+                }
+            }
+        }
+
         public static void DodajAkciju(Akcija akcija)
         {
             using (SqlConnection conn = new SqlConnection(Projekat.CONNECTION_STRING))

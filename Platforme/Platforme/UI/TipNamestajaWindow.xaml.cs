@@ -94,9 +94,9 @@ namespace Platforme.UI
        
         private void Izlaz(object sender, RoutedEventArgs e)
         {
-            Window1 w1 = new Window1();
+            //Window1 w1 = new Window1();
             this.Close();
-            w1.ShowDialog();
+            //w1.ShowDialog();
         }
         private void dgTipNamestaja_AutoGeneratingColumn(object sender,
             DataGridAutoGeneratingColumnEventArgs e)

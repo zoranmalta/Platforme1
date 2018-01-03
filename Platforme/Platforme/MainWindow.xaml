@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Platforme"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
+    <Grid RenderTransformOrigin="0.489,0.518">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="233*"/>
             <ColumnDefinition Width="284*"/>
@@ -25,6 +25,26 @@
         <ComboBox Name="cbTipKorisnika" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" Width="168" Grid.Column="1" Margin="10,15,0,0" Grid.Row="3" Height="30"/>
         <Button Content="Exit" FontSize="15" Click="Button_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Grid.Column="1" Margin="194,46,0,0" Grid.Row="4" Height="30"/>
         <Button Content="Potvrdi" FontSize="15" Click="Potvrda" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="143,46,0,0" Grid.Row="4" Height="30"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="37" Margin="10,11,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="205" RenderTransformOrigin="0.5,0.5">
+            <TextBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.205"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBox.RenderTransform>
+        </TextBox>
+        <PasswordBox Grid.Column="1" HorizontalAlignment="Left" Margin="13,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="202" Height="36" RenderTransformOrigin="0.5,0.5">
+            <PasswordBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.153"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </PasswordBox.RenderTransform>
+        </PasswordBox>
 
     </Grid>
 </Window>

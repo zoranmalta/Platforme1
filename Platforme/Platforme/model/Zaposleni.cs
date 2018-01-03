@@ -13,10 +13,6 @@ namespace Platforme.model
         public string Prezime { get; set; }
         public string KorisnickoIme { get; set; }
         public string Lozinka { get; set; }
-        public enum TipZaposleni
-        {
-            Administrator=1,
-            Prodavac=2
-        }
+        public string Tip { get; set; }
     }
 }

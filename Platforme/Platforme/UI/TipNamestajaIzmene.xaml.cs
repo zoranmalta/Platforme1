@@ -37,6 +37,10 @@ namespace Platforme.UI
             if (tipNamestaja.Id != 0) //ako postoji id, tip namestaja je vec u bazi, sto znaci da se radi izmena tipa namestaja
             {
                 TipNamestaja.IzmeniTipNamestaja(tipNamestaja);
+                Projekat.Instance.TipNamestaja.Clear();
+                TipNamestaja.UcitajTipNamestaja();
+                Projekat.Instance.Namestaj.Clear();
+                Namestaj.UcitajNamestaj();
             }
             else
             {

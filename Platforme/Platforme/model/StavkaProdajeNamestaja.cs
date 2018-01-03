@@ -17,6 +17,7 @@ namespace Platforme.model
         private Namestaj namestaj;
         private int kolicina;
         private int id_Namestaj;
+        private double popust;
 
         public int Id
         {
@@ -33,7 +34,6 @@ namespace Platforme.model
                 OnProtertyChanged("id_Racun");
             }
         }
-        [XmlIgnore]
         public Namestaj Namestaj
         {
             get {
@@ -63,15 +63,25 @@ namespace Platforme.model
             }
         }
 
+        public double Popust
+        {
+            get { return popust; }
+            set { popust = value;
+                OnProtertyChanged("popust");
+            }
+        }
+
+
         public StavkaProdajeNamestaja() { }
 
-        public StavkaProdajeNamestaja(int Id, int Id_Racun, Namestaj namestaj, int Kolicina,int Id_Namestaj)
+        public StavkaProdajeNamestaja(int Id, int Id_Racun, Namestaj namestaj, int Kolicina,int Id_Namestaj,double Popust)
         {
             this.Id = Id;
             this.Id_Racun = Id_Racun;
             this.namestaj = namestaj;
             this.Kolicina = Kolicina;
             this.Id_Namestaj = Id_Namestaj;
+            this.Popust = Popust;
         }
         public static void UcitajStavkeRacuna(int Id_Racun)
         {
@@ -94,6 +104,7 @@ namespace Platforme.model
                     s.Id_Racun = (int)row["Id_Racun"];
                     s.Kolicina = (int)row["Kolicina"];
                     s.Namestaj = Namestaj.GetById(s.Id_Namestaj);
+                    //s.popust =?
 
                     Projekat.Instance.StavkaProdajeNamestaja.Add(s);
                 }
@@ -125,10 +136,18 @@ namespace Platforme.model
             }
         }
 
-        public double vrednostJedneStavke()
+        public double vrednostJedneStavkeBezPopusta()
         {
             double vrednost = namestaj.Cena * Kolicina;
             return vrednost;
+        }
+        public double vrednostPopusta()
+        {
+            return namestaj.Cena*Kolicina*(Popust/100);
+        }
+        public double UkupnaVrednostStavke()
+        {
+            return namestaj.Cena * Kolicina*(1-(Popust/100));
         }
     }
 }

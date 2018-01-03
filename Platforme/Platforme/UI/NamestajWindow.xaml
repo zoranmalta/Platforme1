@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Platforme.UI"
+        xmlns:local1="clr-namespace:Platforme.util"
         mc:Ignorable="d"
         Title="NamestajWindow" Height="380" Width="450">
     <Grid>
@@ -27,10 +28,42 @@
         <Label Content="Tip Korisnika" FontSize="15" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Grid.Row="4" Height="30" Width="171"/>
         <Button Content="Sacuvaj" Click="Sacuvaj_Namestaj" FontSize="15" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Margin="10,10,0,0" Grid.Row="6" Height="29"/>
         <Button Content="Izlaz" Click="Button_Click_1" FontSize="15" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Grid.Column="1" Margin="151,10,0,0" Grid.Row="6" Height="29"/>
-        <TextBox Name="tbNaziv" Text="{Binding Path=Naziv}" FontSize="15" HorizontalContentAlignment="Left" TextWrapping="Wrap" Grid.Column="1" Margin="10"/>
-        <TextBox Name="tbSifra" Text="{Binding Path=Sifra}" FontSize="15"  Grid.Column="1" HorizontalAlignment="Left" Height="31" Margin="10,10,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="231"/>
-        <TextBox Name="tbCena" Text="{Binding Path=Cena}" FontSize="15" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="231" Grid.Column="1" Margin="10,10,0,0" Grid.Row="2"/>
-        <TextBox Name="tbKolicina" Text="{Binding Path=Kolicina}" FontSize="15" Grid.Column="1" HorizontalAlignment="Left" Height="29" Margin="10,10,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="231"/>
+        <TextBox Name="tbNaziv" FontSize="15" HorizontalContentAlignment="Left" TextWrapping="Wrap" Grid.Column="1" Margin="10">
+            <TextBox.Text >
+                <Binding Path="Naziv"  UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <local1:StringValidation ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <TextBox Name="tbSifra" FontSize="15"  Grid.Column="1" HorizontalAlignment="Left" Height="31" Margin="10,10,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="231">
+            <TextBox.Text >
+                <Binding Path="Sifra"  UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <local1:StringValidation ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <TextBox Name="tbCena" FontSize="15" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="231" Grid.Column="1" Margin="10,10,0,0" Grid.Row="2">
+            <TextBox.Text>
+                <Binding Path="Cena" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <local:IntegerRangeTest Max="9999999" Min="1" ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <TextBox Name="tbKolicina" FontSize="15" Grid.Column="1" HorizontalAlignment="Left" Height="29" Margin="10,10,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="231">
+            <TextBox.Text>
+                <Binding Path="Kolicina" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <local:IntegerRangeTest Max="100000" Min="0" ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
         <ComboBox SelectedItem="{Binding Path=TipNamestaja}" Name="cbTipNamestaja" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" Width="231" Grid.Column="1" Margin="10,10,0,0" Grid.Row="4" Height="30"/>
 
     </Grid>

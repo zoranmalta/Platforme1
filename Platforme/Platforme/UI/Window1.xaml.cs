@@ -32,8 +32,13 @@ namespace Platforme.UI
             view.Filter = NamestajFilter;
             dgNamestaj.ItemsSource = view;
             dgNamestaj.IsSynchronizedWithCurrentItem = true;
-
             dgNamestaj.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
+            cbPretraga.Items.Add("Tip Namestaja");
+            cbPretraga.Items.Add("Naziv");
+            cbPretraga.Items.Add("Sifra");
+            cbSortiranje.Items.Add("Naziv");
+            cbSortiranje.Items.Add("Sifra");
+
            
         }
         private bool NamestajFilter(object obj)
@@ -73,6 +78,11 @@ namespace Platforme.UI
         private void ObrisiNamestaj(object sender, RoutedEventArgs e)
         {
             Namestaj selektovaniNamestaj = view.CurrentItem as Namestaj;
+            if (selektovaniNamestaj == null)
+            {
+                MessageBox.Show("Morate izabrati namestaj");
+                return;
+            }
            
             if(MessageBox.Show($"Da li sigurno zelite da obrisete namestaj: {selektovaniNamestaj.Naziv}","Potvrda",
                                 MessageBoxButton.YesNo) == MessageBoxResult.Yes)
@@ -100,12 +110,6 @@ namespace Platforme.UI
             }
         }
 
-        private void Pretraga_po_Nazivu(object sender, RoutedEventArgs e)
-        {
-            PretragaNamestaja pn = new PretragaNamestaja();
-            pn.ShowDialog();
-        }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -114,7 +118,7 @@ namespace Platforme.UI
         private void Tip_Namestaja(object sender, RoutedEventArgs e)
         {
             TipNamestajaWindow tnw = new TipNamestajaWindow();
-            this.Close();
+            //this.Close();
             tnw.ShowDialog();
         }
 
@@ -126,5 +130,122 @@ namespace Platforme.UI
                 e.Cancel = true;
             }
         }
-    }
+        private void tbFilter_TextChanged(Object sender, TextChangedEventArgs e)
+        {
+            string filterText = tbFilter.Text;
+            string action = cbPretraga.Text;
+            switch (action)
+            {
+                case "Tip Namestaja":
+
+                    ObservableCollection<Namestaj> lista1 = new ObservableCollection<Namestaj>();
+                    foreach (Namestaj n in view)
+                    {
+                        if (n.TipNamestaja.Naziv.ToUpper().Contains(tbFilter.Text.ToUpper()))
+                        {
+                            lista1.Add(n);
+                        }
+                    }
+                    dgNamestaj.ItemsSource = lista1;
+                    dgNamestaj.IsSynchronizedWithCurrentItem = true;
+                    dgNamestaj.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
+                    break;
+                case "Naziv":
+
+                    ObservableCollection<Namestaj> lista = new ObservableCollection<Namestaj>();
+                    foreach (Namestaj n in view)
+                    {
+                        if (n.Naziv.ToUpper().StartsWith(tbFilter.Text.ToUpper()))
+                        {
+                            lista.Add(n);
+                        }
+                    }
+                    dgNamestaj.ItemsSource = lista;
+                    dgNamestaj.IsSynchronizedWithCurrentItem = true;
+                    dgNamestaj.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
+                    break;
+                case "Sifra":
+                    ObservableCollection<Namestaj> lista2 = new ObservableCollection<Namestaj>();
+                    foreach (Namestaj n in view)
+                    {
+                        if (n.Sifra.ToUpper().StartsWith(tbFilter.Text.ToUpper()))
+                        {
+                            lista2.Add(n);
+                        }
+                    }
+                    dgNamestaj.ItemsSource = lista2;
+                    dgNamestaj.IsSynchronizedWithCurrentItem = true;
+                    dgNamestaj.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
+                    break;
+            }
+        }
+
+        private void cbSortiranje_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+            dgNamestaj.ItemsSource = view;
+            //ako koristimo string vrednosti za items iz sendera
+            string action = (sender as ComboBox).SelectedItem as string;
+            //string action = cbSortiranje.Text;
+            switch (action)
+            {
+                case "Naziv":
+                    view.SortDescriptions.Clear();
+                    view.SortDescriptions.Add(new SortDescription("Naziv", ListSortDirection.Ascending));
+                    view.Refresh();
+                    break;
+                case "Sifra":
+                    view.SortDescriptions.Clear();
+                    view.SortDescriptions.Add(new SortDescription("Sifra", ListSortDirection.Ascending));
+                    view.Refresh();
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+            //if (cbSortiranje.Text == "Naziv")
+            //{
+            //    view.SortDescriptions.Clear();
+            //    view.SortDescriptions.Add(new SortDescription("Naziv", ListSortDirection.Descending));
+            //}
+            //if (cbSortiranje.Text == "Tip Namestaja")
+            //{
+            //    view.SortDescriptions.Clear();
+            //    view.SortDescriptions.Add(new SortDescription("Tip Namestaja", ListSortDirection.Descending));
+            //}
+            //if (cbSortiranje.Text == "Sifra")
+            //{
+            //    view.SortDescriptions.Clear();
+            //    view.SortDescriptions.Add(new SortDescription("Sifra", ListSortDirection.Descending));
+            //}
+            //else {
+
+            //        view.SortDescriptions.Clear();
+            //        view.SortDescriptions.Add(new SortDescription("Id", ListSortDirection.Descending));
+
+            //}
+
+            //private void dgNamestaj_Sorting(object sender, DataGridSortingEventArgs e)
+            //{
+            //    SortDescription sd;
+            //    string action = cbSortiranje.SelectedItem as string;
+
+            //    switch (action)
+            //    {
+            //        case "Naziv":
+            //            sd = new SortDescription("Naziv", ListSortDirection.Ascending);
+            //            dgNamestaj.Sorting()
+            //            break;
+            //        case "Sifra":
+            //            sd = new SortDescription("Sifra", ListSortDirection.Ascending);
+            //            break;
+
+            //        default:
+            //            break;
+            //    }
+
+            //}
+        }
 }

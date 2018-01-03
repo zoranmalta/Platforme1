@@ -46,6 +46,26 @@ namespace Platforme.UI
         private void Sacuvaj_Namestaj(object sender, RoutedEventArgs e) 
         {
             this.DialogResult = true;
+            if (namestaj.TipNamestaja == null)
+            {
+                MessageBox.Show("Morate izabrati tip namestaja");
+                return;
+            }
+            if (namestaj.Naziv==null || namestaj.Sifra==null)
+            {
+                MessageBox.Show("Niste uneli sve podatke");
+                return;
+            }
+            if (namestaj.Cena <= 0)
+            {
+                MessageBox.Show("Cena mora biti veca od 0");
+                return;
+            }
+            if (namestaj.Kolicina <= 0)
+            {
+                MessageBox.Show("Kolicina mora biti veca od 0");
+                return;
+            }
             if (namestaj.Id != 0) //ako postoji id, namestaj je vec u bazi, sto znaci da se radi izmena namestaja
             {
                 namestaj.IdTip = namestaj.TipNamestaja.Id;
@@ -60,8 +80,7 @@ namespace Platforme.UI
             }
 
             this.Close();
-            //var w1 = new Window1();
-            //w1.ShowDialog();
+          
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

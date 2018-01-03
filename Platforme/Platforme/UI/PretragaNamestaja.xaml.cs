@@ -44,7 +44,7 @@ namespace Platforme.UI
             ObservableCollection<Namestaj> lista = new ObservableCollection<Namestaj>();
             foreach(Namestaj n in view)
             {
-                if (tbPretraga.ToString().ToUpper().Contains(n.Naziv.ToUpper()))
+                if (n.Naziv.ToUpper().StartsWith(tbPretraga.Text.ToUpper()))
                 {
                     lista.Add(n);
                 }

@@ -23,7 +23,6 @@ namespace Platforme.UI
     public partial class PrikazRacunaWindow : Window
     {
         private Salon salon;
-        private ICollectionView view;
   
 
         public PrikazRacunaWindow(Racun racun)
@@ -34,11 +33,10 @@ namespace Platforme.UI
             tbIdRacuna.DataContext = racun;
             tbDatum.DataContext = racun;
             tbKupac.DataContext = racun;
+            vrednostPdv.Text = racun.TotalPricePDV().ToString();
+            vrednostBezPdv.Text = racun.TotalPriceBezPDV().ToString();
             tbUkupanRacun.Text = racun.TotalPrice().ToString();
 
-            //view = CollectionViewSource.GetDefaultView(Projekat.Instance.StavkaProdajeNamestaja);
-            //ObservableCollection<StavkaProdajeNamestaja> listaStavkiProdajeNamestaja= new ObservableCollection<StavkaProdajeNamestaja>();
-            //SelekcijaPoTipu(racun,listaStavkiProdajeNamestaja);
             dgStavkeProdaje.ItemsSource = racun.listaStavkiNamestaja;
             dgStavkeProdaje.IsSynchronizedWithCurrentItem = true;
             dgStavkeProdaje.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
@@ -46,17 +44,7 @@ namespace Platforme.UI
             dgStavkeUsluga.IsSynchronizedWithCurrentItem = true;
             dgStavkeUsluga.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
         }
-        public void SelekcijaPoTipu(Racun racun,ObservableCollection<StavkaProdajeNamestaja> listaStavkiProdajeNamestaja)
-        {
-            ObservableCollection<StavkaProdajeNamestaja> StavkaProdajeNamestaja = Projekat.Instance.StavkaProdajeNamestaja;
-            foreach (StavkaProdajeNamestaja s in StavkaProdajeNamestaja)
-            {
-                if (s.Id_Racun == racun.Id)
-                {
-                    listaStavkiProdajeNamestaja.Add(s);
-                }
-            }
-        }
+       
         private void dgPrikazRacuna_AutoGeneratingColumn(object sender,
             DataGridAutoGeneratingColumnEventArgs e)
         {

@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Platforme.UI"
+        xmlns:local1="clr-namespace:Platforme.util"
         mc:Ignorable="d"
         Title="TipNamestajaIzmene" Height="200" Width="400">
     <Grid>
@@ -16,7 +17,15 @@
             <RowDefinition Height="89*"/>
         </Grid.RowDefinitions>
         <Label Content="Naziv Tipa Namestaja" FontSize="15" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" Width="169" Height="33"/>
-        <TextBox Name="tbTipNamestaja" Text="{Binding Path=Naziv}" Grid.Column="1" HorizontalAlignment="Left" Height="33" Margin="10,37,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="183"/>
+        <TextBox Name="tbTipNamestaja" FontSize="15" Grid.Column="1" HorizontalAlignment="Left" Height="33" Margin="10,37,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="183">
+            <TextBox.Text >
+                <Binding Path="Naziv"  UpdateSourceTrigger="Default">
+                    <Binding.ValidationRules>
+                        <local1:StringValidation ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
         <Button Content="Potvrdi" Click="Potvrdi" FontSize="18" HorizontalAlignment="Left" Margin="10,43,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100" Height="36"/>
         <Button Content="Izlaz" Click="Izlaz" FontSize="18" Grid.Column="1" HorizontalAlignment="Left" Margin="92,43,0,0" Grid.Row="1" VerticalAlignment="Top" Width="101" Height="36"/>
 

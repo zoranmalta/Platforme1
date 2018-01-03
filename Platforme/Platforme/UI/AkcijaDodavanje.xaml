@@ -3,9 +3,28 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Platforme.UI"
-        mc:Ignorable="d"
+        xmlns:local="clr-namespace:Platforme"
+        xmlns:c="clr-namespace:Platforme.UI"
+        xmlns:e="clr-namespace:Platforme.util"
         Title="AkcijaDodavanje" Height="380" Width="450">
+    <Window.Resources>
+        <ControlTemplate x:Key="validationTemplate">
+            <DockPanel>
+                <TextBlock Foreground="Red" FontSize="20">!</TextBlock>
+                <AdornedElementPlaceholder/>
+            </DockPanel>
+        </ControlTemplate>
+        <Style x:Key="textBoxInError" TargetType="{x:Type TextBox}">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip"
+        Value="{Binding RelativeSource={x:Static RelativeSource.Self},
+                        Path=(Validation.Errors)[0].ErrorContent}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+  
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="191*"/>
@@ -26,10 +45,27 @@
         <Label Content="Namestaj" FontSize="15" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Grid.Row="3" Height="29" Width="171"/>
         <Button Content="Sacuvaj" Click="Sacuvaj_Akciju" FontSize="15" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Margin="10,10,0,0" Grid.Row="6" Height="29"/>
         <Button Content="Izlaz" Click="Izlaz" FontSize="15" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Grid.Column="1" Margin="151,10,0,0" Grid.Row="6" Height="29"/>
-        <TextBox Name="tbPopust" Text="{Binding Path=Popust}" FontSize="15" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="231" Grid.Column="1" Margin="10,10,0,0" Grid.Row="2"/>
-        <ComboBox SelectedItem="{Binding Path=Namestaj}" Name="cbNamestaj" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" Width="231" Grid.Column="1" Margin="10,10,0,0" Grid.Row="3" Height="30"/>
-        <DatePicker x:Name="dpPocetak"   SelectedDate="{Binding  Path=DatumPocetka}" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="30" Width="231"/>
-        <DatePicker x:Name="dpZavrsetak" SelectedDate="{Binding Path=DatumZavrsetka}" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="31" Width="231"/>
+        <TextBox Name="tbPopust"  FontSize="15" Validation.ErrorTemplate="{StaticResource validationTemplate}"
+         Style="{StaticResource textBoxInError}" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="231" Grid.Column="1" Margin="10,10,0,0" Grid.Row="2">
+            <TextBox.Text>
+                <Binding Path="Popust" UpdateSourceTrigger="Default">
+                    <Binding.ValidationRules>
+                        <c:IntegerRangeTest Max="99" Min="0"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <ComboBox SelectedItem="{Binding Path=Namestaj, ValidatesOnExceptions=True}" Name="cbNamestaj" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" Width="231" Grid.Column="1" Margin="10,10,0,0" Grid.Row="3" Height="30"/>
+        <DatePicker x:Name="dpPocetak"   Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="30" Width="231">
+            <DatePicker.SelectedDate>
+                <Binding   Path="DatumPocetka" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True">
+                    <Binding.ValidationRules>
+                        
+                    </Binding.ValidationRules>
+                </Binding>
+            </DatePicker.SelectedDate>
+        </DatePicker>
+        <DatePicker x:Name="dpZavrsetak" SelectedDate="{Binding Path=DatumZavrsetka, ValidatesOnExceptions=True}" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="31" Width="231"/>
 
     </Grid>
 </Window>

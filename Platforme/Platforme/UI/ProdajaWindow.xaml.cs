@@ -32,6 +32,9 @@ namespace Platforme.UI
         public ProdajaWindow()
         {
             InitializeComponent();
+            Projekat.Instance.Namestaj.Clear();
+            Namestaj.UcitajNamestaj();
+
             stavka = new StavkaProdajeNamestaja();
             stavkaUsluga = new StavkaProdajeUsluge();
             tbImeKupca.DataContext = kupac;
@@ -42,7 +45,6 @@ namespace Platforme.UI
             tbKolicina.DataContext = stavka;
             cbUsluge.ItemsSource = Projekat.Instance.Usluga;
             cbUsluge.DataContext = stavkaUsluga;
-
         }
 
         public void DodajNovuStavkuNamestaja(object sender, RoutedEventArgs e)
@@ -50,9 +52,23 @@ namespace Platforme.UI
             stavka.Namestaj = (Namestaj)cbOdaberite.SelectedItem;
             if (stavka.Namestaj == null)
             {
+                MessageBox.Show("Niste odabrali namestaj za prodaju");
                 return;
             }
             stavka.Id_Namestaj = stavka.Namestaj.Id;
+            foreach(Akcija a in Projekat.Instance.Akcija)
+            {
+                if (stavka.Namestaj.Id == a.IdNamestaj&& racun.Datum.CompareTo(a.DatumPocetka)>=0
+                    && racun.Datum.CompareTo(a.DatumZavrsetka)<=0  )
+                {
+                    stavka.Popust = a.Popust;
+                }
+            }
+            if (stavka.Kolicina <= 0)
+            {
+                MessageBox.Show("Kolicina mora biti veca od nule");
+                return;
+            }
             if (stavka.Kolicina < stavka.Namestaj.Kolicina+1)
             {
                 namestaj = stavka.Namestaj;
@@ -68,10 +84,11 @@ namespace Platforme.UI
             else if(stavka.Kolicina > stavka.Namestaj.Kolicina)
             {
                 MessageBox.Show("nema dovoljno na lageru");
+                tbKolicina.DataContext = stavka;
+                cbOdaberite.Text = "";
+                tbKolicina.Text = "";
                 return;
-               
             }
-
             stavka = new StavkaProdajeNamestaja();
             tbKolicina.DataContext = stavka;
             cbOdaberite.Text = "";
@@ -83,6 +100,7 @@ namespace Platforme.UI
             stavkaUsluga.Usluga = (Usluga)cbUsluge.SelectedItem;
             if (stavkaUsluga.Usluga == null)
             {
+                MessageBox.Show("Niste odabrali uslugu");
                 return;
             }
             stavkaUsluga.Id_Usluga = stavkaUsluga.Usluga.Id;
@@ -92,9 +110,8 @@ namespace Platforme.UI
         }
         public void ZavrsiRacun(object sender, RoutedEventArgs e)
         {
-            if (racun.listaStavkiNamestaja.Count != 0)
+            if (racun.listaStavkiNamestaja.Count != 0||racun.listaStavkiUsluga.Count !=0)
             {
-                
                 Kupac.DodajKupca(kupac);
                 int idkupacmax = Kupac.UzmiMaxId();
                 racun.Id_Kupac = idkupacmax;

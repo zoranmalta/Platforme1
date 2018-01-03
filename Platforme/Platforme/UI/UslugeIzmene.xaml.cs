@@ -33,6 +33,16 @@ namespace Platforme.UI
         {
 
             this.DialogResult = true;
+            if (usluga.Naziv == null)
+            {
+                MessageBox.Show("Niste uneli naziv usluge");
+                return;
+            }
+            if (usluga.Cena <= 0)
+            {
+                MessageBox.Show("Cena mora biti veca od 0");
+                return;
+            }
             if (usluga.Id != 0) //ako postoji id, namestaj je vec u bazi, sto znaci da se radi izmena Usluge
             {
                 Usluga.IzmeniUslugu(usluga);

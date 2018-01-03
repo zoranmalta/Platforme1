@@ -66,7 +66,7 @@ namespace Platforme.model
         }
         public Racun()
         {
-            this.Datum = DateTime.Today;
+            this.Datum = DateTime.Today.Date;
             listaStavkiNamestaja = new ObservableCollection<StavkaProdajeNamestaja>();
             listaStavkiUsluga = new ObservableCollection<StavkaProdajeUsluge>();
         }
@@ -177,13 +177,21 @@ namespace Platforme.model
             double totalPrice = 0;
             foreach(var s in listaStavkiNamestaja)
             {
-                totalPrice += s.vrednostJedneStavke();
+                totalPrice += s.UkupnaVrednostStavke();
             }
             foreach(var u in listaStavkiUsluga)
             {
                 totalPrice += u.vrednostJedneStavke();
             }
             return totalPrice;
+        }
+        public double TotalPriceBezPDV()
+        {
+            return TotalPrice()*0.83;
+        }
+        public double TotalPricePDV()
+        {
+            return TotalPrice() *0.17;
         }
 
         public void OnPropertyChanged(string PropertyName)

@@ -7,19 +7,29 @@
         mc:Ignorable="d"
         Title="Namestaj" Height="550" Width="600">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="94*"/>
+            <ColumnDefinition Width="97*"/>
+            <ColumnDefinition Width="105*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="199*"/>
-            <RowDefinition Height="60*"/>
-            <RowDefinition Height="60*"/>
+            <RowDefinition Height="52*"/>
+            <RowDefinition Height="53*"/>
+            <RowDefinition Height="317*"/>
+            <RowDefinition Height="97*"/>
         </Grid.RowDefinitions>
-        <DataGrid x:Name="dgNamestaj" AutoGenerateColumns="True" IsReadOnly="True" AutoGeneratingColumn="dgPrikazNamestaja_AutoGeneratingColumn" CanUserAddRows="False" FontSize="15" HorizontalAlignment="Left" Height="304" VerticalAlignment="Top" Width="572" Margin="10,10,0,0"/>
-        <Button Content="Dodaj" FontSize="15" Click="DodajNamestaj" Margin="10,59,487,10" Grid.Row="1"/>
-        <Button Content="Izmeni" FontSize="15" Click="IzmeniNamestaj" HorizontalAlignment="Left" VerticalAlignment="Top" Width="91" Margin="125,59,0,0" Grid.Row="1" Height="29"/>
-        <Button Content="Obrisi" FontSize="15" Click="ObrisiNamestaj" HorizontalAlignment="Left" VerticalAlignment="Top" Width="91" Margin="233,59,0,0" Grid.Row="1" Height="29"/>
-        <Button Content="Izlaz" FontSize="15" Click="Button_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="109" Margin="473,59,0,0" Grid.Row="1" Height="29"/>
-        <Button Content="Pretraga po tipu namestaja" Click="Pretraga_po_tipu" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" Width="172" Margin="10,10,0,0" Grid.Row="2" Height="31"/>
-        <Button Content="Pretraga po nazivu" Click="Pretraga_po_Nazivu" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" Width="172" Margin="10,57,0,0" Grid.Row="2" Height="30"/>
-        <Button Content="Tip Namestaja" Click="Tip_Namestaja" HorizontalAlignment="Left" FontSize="15" Margin="473,57,0,0" Grid.Row="2" VerticalAlignment="Top" Width="109" Height="30"/>
+        <DataGrid x:Name="dgNamestaj" AutoGenerateColumns="True" IsReadOnly="True" AutoGeneratingColumn="dgPrikazNamestaja_AutoGeneratingColumn" CanUserAddRows="False" FontSize="15" HorizontalAlignment="Left" Height="304" VerticalAlignment="Top" Width="572" Margin="10,3,0,0" Grid.Row="2" Grid.ColumnSpan="3"/>
+        <Button Content="Dodaj" FontSize="15" Click="DodajNamestaj" Margin="10,2,83,66" Grid.Row="3"/>
+        <Button Content="Izmeni" FontSize="15" Click="IzmeniNamestaj" HorizontalAlignment="Left" VerticalAlignment="Top" Width="91" Margin="146,2,0,0" Grid.Row="3" Height="29" Grid.ColumnSpan="2"/>
+        <Button Content="Obrisi" FontSize="15" Click="ObrisiNamestaj" HorizontalAlignment="Left" VerticalAlignment="Top" Width="91" Margin="93,2,0,0" Grid.Row="3" Height="29" Grid.Column="1" RenderTransformOrigin="0.989,0.448"/>
+        <Button Content="Izlaz" FontSize="15" Click="Button_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="109" Margin="91,2,0,0" Grid.Row="3" Height="29" Grid.Column="2"/>
+        <Button Content="Pretraga po tipu namestaja" Click="Pretraga_po_tipu" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" Width="172" Margin="28,58,0,0" Grid.Row="3" Height="31" Grid.Column="2"/>
+        <Button Content="Tip Namestaja" Click="Tip_Namestaja" HorizontalAlignment="Left" FontSize="15" Margin="10,58,0,0" Grid.Row="3" VerticalAlignment="Top" Width="139" Height="31"/>
+        <Label Content="Pretraga Namestaja po:" FontSize="15" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="32" Width="168"/>
+        <Label Content="Sortiranje Namestaja :" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Grid.Row="1" Height="33" Width="168"/>
+        <ComboBox Name="cbPretraga" FontSize="15" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="174" Height="32"/>
+        <ComboBox SelectionChanged="cbSortiranje_SelectionChanged" Name="cbSortiranje" FontSize="15" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="174" Height="33"/>
+        <TextBox Name="tbFilter" TextChanged="tbFilter_TextChanged" Grid.Column="2" HorizontalAlignment="Left" Height="34" Margin="10,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188"/>
 
     </Grid>
 </Window>
