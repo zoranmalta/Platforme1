@@ -1,4 +1,4 @@
-use Platforme;
+
 
 INSERT INTO TipNamestaja(Naziv,Obrisan) VALUES ('Krevet',0)
 INSERT INTO TipNamestaja(Naziv,Obrisan) VALUES ('Ugaona garnitura',0)

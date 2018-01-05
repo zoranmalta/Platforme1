@@ -1,6 +1,7 @@
 ﻿using Platforme.model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -74,7 +75,33 @@ namespace Platforme.UI
             }
 
         }
+        public void Izlaz(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
 
+        private void PrikazAktuelnihAkcija(object sender, RoutedEventArgs e)
+        {
+            DateTime danas = DateTime.Today;
+            ObservableCollection<Akcija> lista = new ObservableCollection<Akcija>();
+            foreach(Akcija a in view)
+            {
+                if (danas <= a.DatumZavrsetka && danas >= a.DatumPocetka)
+                {
+                    lista.Add(a);
+                }
+            }
+            dgAkcija.ItemsSource = lista;
+            dgAkcija.IsSynchronizedWithCurrentItem = true;
+            dgAkcija.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
+
+        }
+        private void PrikazSvihAkcija(object sender, RoutedEventArgs e)
+        {
+            dgAkcija.ItemsSource = view;
+            dgAkcija.IsSynchronizedWithCurrentItem = true;
+            dgAkcija.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
+        }
 
         private void dgAkcija_AutoGeneratingColumn(object sender,
            DataGridAutoGeneratingColumnEventArgs e)

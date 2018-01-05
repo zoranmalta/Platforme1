@@ -1,0 +1,33 @@
+﻿<Window x:Class="Platforme.UI.ZaposleniWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Platforme.UI"
+        mc:Ignorable="d"
+        Title="ZaposleniWindow" Height="550" Width="650">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="217*"/>
+            <ColumnDefinition Width="217*"/>
+            <ColumnDefinition Width="217*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="19*"/>
+            <RowDefinition Height="19*"/>
+            <RowDefinition Height="116*"/>
+            <RowDefinition Height="19*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Pretraga zaposlenih po:" FontSize="15" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="37" Width="194"/>
+        <Label Content="Sortiranje zaposlenih:" FontSize="15" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="37" Width="194"/>
+        <ComboBox Name="cbPretragaZaposlenih" FontSize="15" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="194" Height="37" RenderTransformOrigin="0.5,0.5"/>
+        <ComboBox Name="cbSortiranjeZaposlenih" FontSize="15" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="194" Height="37"/>
+        <TextBox Name="tbfilterZaposlenih" Grid.Column="2" HorizontalAlignment="Left" Height="37" Margin="10,10,0,0" TextWrapping="Wrap" FontSize="15" VerticalAlignment="Top" Width="194"/>
+        <DataGrid x:Name="dgZaposleni" AutoGenerateColumns="True" AutoGeneratingColumn="dgZaposleni_AutoGeneratingColumn" IsReadOnly="True" CanUserAddRows="False" FontSize="15" HorizontalAlignment="Left" Height="328" Margin="10,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="622" Grid.ColumnSpan="3"/>
+        <Button Content="Dodaj" Click="Dodaj" FontSize="15" HorizontalAlignment="Left" Margin="10,12,0,0" Grid.Row="3" VerticalAlignment="Top" Width="124" Height="35"/>
+        <Button Content="Izmeni" Click="Izmeni" FontSize="15" HorizontalAlignment="Left" Margin="156,12,0,0" Grid.Row="3" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.5,0.5" Height="35" Grid.ColumnSpan="2"/>
+        <Button Content="Obrisi" Click="Obrisi" FontSize="15" Grid.Column="1" HorizontalAlignment="Left" Margin="92,12,0,0" Grid.Row="3" VerticalAlignment="Top" Width="135" Grid.ColumnSpan="2" Height="35"/>
+        <Button Content="Izlaz" Click="Button_Click" FontSize="15" Grid.Column="2" HorizontalAlignment="Left" Margin="68,12,0,0" Grid.Row="3" VerticalAlignment="Top" Width="136" Height="35"/>
+
+    </Grid>
+</Window>

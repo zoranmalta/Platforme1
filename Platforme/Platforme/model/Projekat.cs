@@ -24,6 +24,7 @@ namespace Platforme.model
         public ObservableCollection<Racun> Racun { get; set; }
         public ObservableCollection<Akcija> Akcija { get; set; }
         public ObservableCollection<Usluga> Usluga { get; set; }
+        public ObservableCollection<Zaposleni> Zaposleni { get; set; }
 
         private Projekat()
         {
@@ -35,6 +36,7 @@ namespace Platforme.model
             Akcija = new ObservableCollection<model.Akcija>();
             Usluga = new ObservableCollection<model.Usluga>();
             StavkaProdajeUsluge = new ObservableCollection<model.StavkaProdajeUsluge>();
+            Zaposleni = new ObservableCollection<model.Zaposleni>();
         }
 
     }

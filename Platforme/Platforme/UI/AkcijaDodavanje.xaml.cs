@@ -68,7 +68,7 @@ namespace Platforme.UI
 
         private void Izlaz(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
     }
 }

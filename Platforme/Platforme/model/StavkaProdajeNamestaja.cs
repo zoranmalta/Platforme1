@@ -103,8 +103,9 @@ namespace Platforme.model
                     s.Id_Namestaj = (int)row["Id_Namestaj"];
                     s.Id_Racun = (int)row["Id_Racun"];
                     s.Kolicina = (int)row["Kolicina"];
+                    s.Popust = Convert.ToDouble(row["Popust"]);
                     s.Namestaj = Namestaj.GetById(s.Id_Namestaj);
-                    //s.popust =?
+                    
 
                     Projekat.Instance.StavkaProdajeNamestaja.Add(s);
                 }
@@ -116,11 +117,12 @@ namespace Platforme.model
             {
                 conn.Open();
                 SqlCommand command = conn.CreateCommand();
-                command.CommandText = $"INSERT INTO StavkaProdajeNamestaja (Id_Racun,Id_Namestaj,Kolicina)" +
-                                                                    $"VALUES(@Id_Racun,@Id_Namestaj,@Kolicina)";
+                command.CommandText = $"INSERT INTO StavkaProdajeNamestaja (Id_Racun,Id_Namestaj,Kolicina,Popust)" +
+                                                                    $"VALUES(@Id_Racun,@Id_Namestaj,@Kolicina,@Popust)";
                 command.Parameters.Add(new SqlParameter("@Id_Racun", stavkaProdajeNamestaja.Id_Racun));
                 command.Parameters.Add(new SqlParameter("@Id_Namestaj", stavkaProdajeNamestaja.Id_Namestaj));
                 command.Parameters.Add(new SqlParameter("@Kolicina", stavkaProdajeNamestaja.Kolicina));
+                command.Parameters.Add(new SqlParameter("@Popust", stavkaProdajeNamestaja.Popust));
 
                 command.ExecuteNonQuery();
             }

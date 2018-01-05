@@ -40,7 +40,8 @@ namespace Platforme.UI
         }
         private void Korisnici(object sender, RoutedEventArgs e)
         {
-
+            ZaposleniWindow zw = new ZaposleniWindow();
+            zw.ShowDialog();
         }
         private void Akcije(object sender, RoutedEventArgs e)
         {

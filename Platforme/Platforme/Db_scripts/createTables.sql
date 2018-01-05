@@ -20,35 +20,43 @@ CREATE TABLE Zaposleni(
 	Id INT PRIMARY KEY IDENTITY(1,1),
 	Ime VARCHAR(30) NOT NULL,
 	Prezime VARCHAR(30) NOT NULL,
-	Tip INT,
-	KorisnickoIme VARCHAR(30),
-	Lozinka VARCHAR(30)
+	Tip VARCHAR(30) NOT NULL,
+	KorisnickoIme VARCHAR(30) NOT NULL,
+	Lozinka VARCHAR(30) NOT NULL,
+	Obrisan BIT
+);
+CREATE TABLE Kupac(
+	Id INT PRIMARY KEY IDENTITY(1,1),
+	Ime VARCHAR(30) NOT NULL,
+	Prezime VARCHAR(30) NOT NULL,
+	Telefon VARCHAR(30) NOT NULL
+);
+CREATE TABLE Racun(
+	Id INT PRIMARY KEY IDENTITY(1,1),
+	Id_Kupac INT,
+	Id_Zaposleni INT,
+	Datum DATETIME,
+	FOREIGN KEY (Id_Kupac) REFERENCES Kupac(Id),
+	FOREIGN KEY (Id_Zaposleni) REFERENCES Zaposleni(Id)
 );
 CREATE TABLE StavkaProdajeNamestaja(
 	Id INT PRIMARY KEY IDENTITY(1,1),
 	Id_Racun INT,
 	Id_Namestaj INT,
 	Kolicina INT,
-	Popust INT
+	Popust INT,
+	FOREIGN KEY (Id_Racun) REFERENCES Racun(Id),
+	FOREIGN KEY (Id_Namestaj) REFERENCES Namestaj(Id)
 );
-CREATE TABLE Racun(
-	Id INT PRIMARY KEY IDENTITY(1,1),
-	Id_Kupac INT,
-	Id_Zaposleni INT,
-	Datum DATETIME
-);
+
 CREATE TABLE Akcija(
 	Id INT PRIMARY KEY IDENTITY(1,1),
 	DatumPocetka DATETIME,
 	DatumZavrsetka DATETIME,
 	IdNamestaj INT,
-	Popust NUMERIC(2,2),
-	Obrisan BIT
-);
-CREATE TABLE StavkaUsluge(
-	Id INT PRIMARY KEY IDENTITY(1,1),
-	Id_Racun INT,
-	Id_Usluga INT
+	Popust INT,
+	Obrisan BIT,
+	FOREIGN KEY (IdNamestaj) REFERENCES Namestaj(Id)
 );
 CREATE TABLE Usluga(
 	Id	INT PRIMARY KEY IDENTITY(1,1),
@@ -56,3 +64,10 @@ CREATE TABLE Usluga(
 	Cena NUMERIC(9,2),
 	Obrisan BIT
 )
+CREATE TABLE StavkaUsluge(
+	Id INT PRIMARY KEY IDENTITY(1,1),
+	Id_Racun INT,
+	Id_Usluga INT,
+	FOREIGN KEY (Id_Racun) REFERENCES Racun(Id),
+	FOREIGN KEY (Id_Usluga) REFERENCES Usluga(Id),
+);

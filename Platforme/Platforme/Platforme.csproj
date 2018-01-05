@@ -105,6 +105,12 @@
     <Compile Include="UI\Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\ZaposleniIzmene.xaml.cs">
+      <DependentUpon>ZaposleniIzmene.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ZaposleniWindow.xaml.cs">
+      <DependentUpon>ZaposleniWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="util\EmailValidation.cs" />
     <Compile Include="util\GenericsSerializer.cs" />
     <Compile Include="util\StringUtils.cs" />
@@ -174,6 +180,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Window1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\ZaposleniIzmene.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\ZaposleniWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

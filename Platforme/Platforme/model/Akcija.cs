@@ -19,7 +19,7 @@ namespace Platforme.model
         private DateTime datumPocetka;
         private DateTime datumZavrsetka;
         private Namestaj namestaj;
-        private double popust;
+        private int popust;
         private bool obrisan;
 
         public int Id
@@ -38,7 +38,6 @@ namespace Platforme.model
             }
         }
 
-
         public DateTime DatumPocetka
 
         {
@@ -47,7 +46,6 @@ namespace Platforme.model
                 OnPropertyChanged("datumPocetka");
             }
         }
-
 
         public DateTime DatumZavrsetka
         {
@@ -75,7 +73,7 @@ namespace Platforme.model
             }
         }
 
-        public double Popust
+        public int Popust
         {
             get { return popust; }
             set { popust = value;
@@ -110,7 +108,7 @@ namespace Platforme.model
             DatumZavrsetka = DateTime.Today;
         }
 
-        public Akcija(int Id, int IdNamestaj, DateTime DatumPocetka, DateTime DatumZavrsetka, Namestaj Namestaj, double Popust, bool Obrisan)
+        public Akcija(int Id, int IdNamestaj, DateTime DatumPocetka, DateTime DatumZavrsetka, Namestaj Namestaj, int Popust, bool Obrisan)
         {
             this.Id = Id;
             this.IdNamestaj = IdNamestaj;
@@ -140,7 +138,7 @@ namespace Platforme.model
                     n.Id = (int)row["Id"];
                     n.DatumPocetka = (DateTime)row["DatumPocetka"];
                     n.DatumZavrsetka = (DateTime)row["DatumZavrsetka"];
-                    n.Popust = Convert.ToDouble(row["Popust"]);
+                    n.Popust = (int)row["Popust"];
                     n.IdNamestaj = (int)row["IdNamestaj"];
                     n.Namestaj = Namestaj.GetById(n.IdNamestaj);
                     n.Obrisan = (bool)row["Obrisan"];
@@ -170,7 +168,7 @@ namespace Platforme.model
                     n.Id = (int)row["Id"];
                     n.DatumPocetka = (DateTime)row["DatumPocetka"];
                     n.DatumZavrsetka = (DateTime)row["DatumZavrsetka"];
-                    n.Popust = Convert.ToDouble(row["Popust"]);
+                    n.Popust = (int)row["Popust"];
                     n.IdNamestaj = (int)row["IdNamestaj"];
                     n.Namestaj = Namestaj.GetById(n.IdNamestaj);
                     n.Obrisan = (bool)row["Obrisan"];
