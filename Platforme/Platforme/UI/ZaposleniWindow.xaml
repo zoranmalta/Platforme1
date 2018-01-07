@@ -21,8 +21,8 @@
         <Label Content="Pretraga zaposlenih po:" FontSize="15" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="37" Width="194"/>
         <Label Content="Sortiranje zaposlenih:" FontSize="15" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="37" Width="194"/>
         <ComboBox Name="cbPretragaZaposlenih" FontSize="15" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="194" Height="37" RenderTransformOrigin="0.5,0.5"/>
-        <ComboBox Name="cbSortiranjeZaposlenih" FontSize="15" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="194" Height="37"/>
-        <TextBox Name="tbfilterZaposlenih" Grid.Column="2" HorizontalAlignment="Left" Height="37" Margin="10,10,0,0" TextWrapping="Wrap" FontSize="15" VerticalAlignment="Top" Width="194"/>
+        <ComboBox Name="cbSortiranjeZaposlenih" SelectionChanged="cbSortiranje_SelectionChanged" FontSize="15" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="194" Height="37"/>
+        <TextBox Name="tbfilterZaposlenih" TextChanged="tbFilter_TextChanged" Grid.Column="2" HorizontalAlignment="Left" Height="37" Margin="10,10,0,0" TextWrapping="Wrap" FontSize="15" VerticalAlignment="Top" Width="194"/>
         <DataGrid x:Name="dgZaposleni" AutoGenerateColumns="True" AutoGeneratingColumn="dgZaposleni_AutoGeneratingColumn" IsReadOnly="True" CanUserAddRows="False" FontSize="15" HorizontalAlignment="Left" Height="328" Margin="10,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="622" Grid.ColumnSpan="3"/>
         <Button Content="Dodaj" Click="Dodaj" FontSize="15" HorizontalAlignment="Left" Margin="10,12,0,0" Grid.Row="3" VerticalAlignment="Top" Width="124" Height="35"/>
         <Button Content="Izmeni" Click="Izmeni" FontSize="15" HorizontalAlignment="Left" Margin="156,12,0,0" Grid.Row="3" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.5,0.5" Height="35" Grid.ColumnSpan="2"/>

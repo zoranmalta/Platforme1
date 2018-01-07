@@ -30,9 +30,8 @@ namespace Platforme
             Usluga.UcitajUsluge();
             Akcija.UcitajAkcije();
             Zaposleni.UcitajZaposlene();
-            cbTipKorisnika.Items.Add("Administrator");
-            cbTipKorisnika.Items.Add("Prodavac");
-            cbTipKorisnika.SelectedIndex = 0;
+
+           
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -42,21 +41,44 @@ namespace Platforme
 
         private void Potvrda(object sender, RoutedEventArgs e)
         {
-            if (cbTipKorisnika.Text == "Administrator")
+            if (tbKorisnickoIme.Text.Equals("") || tbPassword.Password.ToString().Equals(""))
             {
-                var meniAdministratora = new MeniAdministratora();
-                meniAdministratora.ShowDialog();
+                MessageBox.Show("Niste uneli sve podatke");
+                return;
             }
-            if (cbTipKorisnika.Text == "Prodavac")
+            foreach (Zaposleni z in Projekat.Instance.Zaposleni)
             {
-                var meniProdavac = new MeniProdavac();
-                meniProdavac.ShowDialog();
+                if(z.KorisnickoIme.ToUpper().Equals(tbKorisnickoIme.Text.ToUpper())
+                    && z.Lozinka.Equals(tbPassword.Password.ToString())&& z.Tip.Equals("Administrator"))
+                {
+                    tbKorisnickoIme.Text = "";
+                    tbPassword.Password = "";
+                    Projekat.Instance.UlogovaniKorisnik = z;
+                    var meniAdministratora = new MeniAdministratora();
+                    meniAdministratora.ShowDialog();
+                    return;
+                }
+                if (z.KorisnickoIme.ToUpper().Equals(tbKorisnickoIme.Text.ToUpper())
+                    && z.Lozinka.Equals(tbPassword.Password.ToString()) && z.Tip.Equals("Prodavac"))
+                {
+                    tbKorisnickoIme.Text = "";
+                    tbPassword.Password = "";
+                    Projekat.Instance.UlogovaniKorisnik = z;
+                    var meniProdavac = new MeniProdavac();
+                    meniProdavac.ShowDialog();
+                    return;
+                }
             }
-            if (cbTipKorisnika.Text == "")
-            {
-                if(MessageBox.Show("Ponovo se ulogujte?","Niste se ulogovali", MessageBoxButton.YesNo) == MessageBoxResult.Yes) { }
-                else { this.Close(); }
-            }
+            MessageBox.Show("Ne postoji takav zaposleni");
+            tbKorisnickoIme.Text = "";
+            tbPassword.Password = "";
         }
+
+        private void tbPassword_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        
     }
 }

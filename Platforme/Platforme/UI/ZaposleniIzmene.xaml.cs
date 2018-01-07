@@ -56,21 +56,33 @@ namespace Platforme.UI
                 MessageBox.Show("Morate uneti lozinku");
                 return;
             }
-            foreach(Zaposleni z in Projekat.Instance.Zaposleni)
-            {
-                if (z.KorisnickoIme.Equals(zaposleni.KorisnickoIme))
-                {
-                    MessageBox.Show("Korisnicko ime mora biti jedinstveno");
-                    return;
-                }
-            }
+            
             if (zaposleni.Id != 0) //ako postoji id, zaposleni je vec u bazi, sto znaci da se radi izmena zaposlenog
             {
-
+                foreach (Zaposleni z in Projekat.Instance.Zaposleni)
+                {
+                    if (z.KorisnickoIme.Equals(zaposleni.KorisnickoIme)&&z.Id!=zaposleni.Id)
+                    {
+                        Projekat.Instance.Zaposleni.Clear();
+                        Zaposleni.UcitajZaposlene();
+                        MessageBox.Show("Korisnicko ime mora biti jedinstveno");
+                        return;
+                    }
+                }
                 Zaposleni.IzmeniZaposlenog(zaposleni);
             }
             else
             {
+                foreach (Zaposleni z in Projekat.Instance.Zaposleni)
+                {
+                    if (z.KorisnickoIme.Equals(zaposleni.KorisnickoIme))
+                    {
+                        Projekat.Instance.Zaposleni.Clear();
+                        Zaposleni.UcitajZaposlene();
+                        MessageBox.Show("Korisnicko ime mora biti jedinstveno");
+                        return;
+                    }
+                }
                 Zaposleni.DodajZaposlenog(zaposleni);
                 Projekat.Instance.Zaposleni.Clear();
                 Zaposleni.UcitajZaposlene();
