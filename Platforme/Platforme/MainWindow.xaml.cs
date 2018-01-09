@@ -30,6 +30,9 @@ namespace Platforme
             Usluga.UcitajUsluge();
             Akcija.UcitajAkcije();
             Zaposleni.UcitajZaposlene();
+            Kupac.UcitajKupce();
+            
+            Racun.UcitajRacune();
 
            
         }

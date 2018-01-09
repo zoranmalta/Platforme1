@@ -62,10 +62,20 @@ namespace Platforme.UI
                     Projekat.Instance.Akcija[index] = old;
                 }
             }
+            else
+            {
+                MessageBox.Show("Niste odabrali nijednu akciju za izmenu");
+                return;
+            }
         }
         private void Obrisi(object sender, RoutedEventArgs e)
         {
             Akcija selektovanaAkcija = view.CurrentItem as Akcija;
+            if (selektovanaAkcija == null)
+            {
+                MessageBox.Show("Niste odabrali akciju za brisanje");
+                return;
+            }
 
             if (MessageBox.Show($"Da li sigurno zelite da obrisete izabranu akciju?", "Potvrda",
                                 MessageBoxButton.YesNo) == MessageBoxResult.Yes)
@@ -84,20 +94,20 @@ namespace Platforme.UI
         {
             DateTime danas = DateTime.Today;
             ObservableCollection<Akcija> lista = new ObservableCollection<Akcija>();
-            foreach(Akcija a in view)
+            foreach(Akcija a in Projekat.Instance.Akcija)
             {
                 if (danas <= a.DatumZavrsetka && danas >= a.DatumPocetka)
                 {
                     lista.Add(a);
                 }
             }
-            dgAkcija.ItemsSource = lista;
-            dgAkcija.IsSynchronizedWithCurrentItem = true;
-            dgAkcija.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
+            view = CollectionViewSource.GetDefaultView(lista);
+            dgAkcija.ItemsSource = view;
 
         }
         private void PrikazSvihAkcija(object sender, RoutedEventArgs e)
         {
+            view = CollectionViewSource.GetDefaultView(Projekat.Instance.Akcija);
             dgAkcija.ItemsSource = view;
             dgAkcija.IsSynchronizedWithCurrentItem = true;
             dgAkcija.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);

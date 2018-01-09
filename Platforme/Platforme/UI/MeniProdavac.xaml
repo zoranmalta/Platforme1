@@ -8,8 +8,8 @@
         Title="MeniProdavac" Height="500" Width="650">
     <Grid>
         <Button Click="Prodaja" Content="Prodaja" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20" Width="191" Margin="234,36,0,0" Height="50"/>
-        <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="191" Margin="234,139,0,0" Height="51"/>
-        <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="155" Margin="477,410,0,0" Height="49"/>
+        <Button Content="Pregled Racuna" FontSize="20" Click="PrikazRacuna" HorizontalAlignment="Left" VerticalAlignment="Top" Width="191" Margin="234,139,0,0" Height="51"/>
+        <Button Content="Izlaz" FontSize="20" Click="Izlaz" HorizontalAlignment="Left" VerticalAlignment="Top" Width="155" Margin="477,410,0,0" Height="49"/>
 
     </Grid>
 </Window>

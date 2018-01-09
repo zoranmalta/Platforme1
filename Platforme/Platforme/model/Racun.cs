@@ -17,9 +17,10 @@ namespace Platforme.model
 
         private int id;
         private DateTime datum;
-        private Kupac kupac;
         private int id_Kupac;
         private int id_Zaposleni;
+        private Zaposleni zaposleni;
+        private Kupac kupac;
         public ObservableCollection<StavkaProdajeNamestaja> listaStavkiNamestaja { get; set; }
         public ObservableCollection<StavkaProdajeUsluge> listaStavkiUsluga { get; set; }
 
@@ -64,19 +65,37 @@ namespace Platforme.model
                 OnPropertyChanged("id_Zaposleni");
             }
         }
+        public Zaposleni Zaposleni
+        {
+            get
+            {
+                if (zaposleni == null)
+                {
+                    zaposleni = Zaposleni.GetById(Id_Zaposleni);
+                }
+                return zaposleni;
+            }
+            set
+            {
+                zaposleni = value;
+                Zaposleni.Id = zaposleni.Id;
+                OnPropertyChanged("Zaposleni");
+            }
+        }
         public Racun()
         {
             this.Datum = DateTime.Today.Date;
             listaStavkiNamestaja = new ObservableCollection<StavkaProdajeNamestaja>();
             listaStavkiUsluga = new ObservableCollection<StavkaProdajeUsluge>();
         }
-        public Racun(int id,DateTime datum,int Id_Kupac, Kupac kupac,int Id_Zaposleni)
+        public Racun(int id,DateTime datum,int Id_Kupac, Kupac kupac,int Id_Zaposleni,Zaposleni zaposleni)
         {
             this.id = id;
             this.Id_Kupac = Id_Kupac;
             this.Id_Zaposleni = Id_Zaposleni;
             this.datum = datum;
             this.kupac = kupac;
+            this.zaposleni = zaposleni;
             listaStavkiNamestaja = new ObservableCollection<StavkaProdajeNamestaja>();
             listaStavkiUsluga = new ObservableCollection<StavkaProdajeUsluge>();
         }
@@ -101,25 +120,30 @@ namespace Platforme.model
                     n.Datum = (DateTime)row["Datum"];
                     n.Id_Zaposleni = (int)(row["Id_Zaposleni"]);
                     n.Id_Kupac = (int)row["Id_Kupac"];
+                    n.Kupac = Kupac.GetById(n.Id_Kupac);
+                    n.Zaposleni = Zaposleni.GetById(n.Id_Zaposleni);
 
-                    SqlCommand command = connection.CreateCommand();
-                    command.CommandText = @"SELECT * FROM StavkaProdajeNamestaja WHERE @Id=Id_Racun ";
-                    SqlDataAdapter daRacun = new SqlDataAdapter();
-                    daRacun.SelectCommand = command;
-                    daRacun.Fill(ds, "StavkaProdajeNamestaja");
-                    command.Parameters.Add(new SqlParameter("@Id", n.Id));
-                    foreach (DataRow row1 in ds.Tables["StavkaProdajeNamestaja"].Rows)
-                    {
-                        StavkaProdajeNamestaja s = new StavkaProdajeNamestaja();
-                        s.Id = (int)row["Id"];
-                        s.Id_Namestaj = (int)row["Id_Namestaj"];
-                        s.Id_Racun = (int)row["Id_Racun"];
-                        s.Kolicina = (int)row["Kolicina"];
-                        s.Namestaj = Namestaj.GetById(s.Id_Namestaj);
+                    StavkaProdajeNamestaja.UcitajStavkeRacuna(n, n.Id);
+                    StavkaProdajeUsluge.UcitajStavkeRacuna(n, n.Id);
+                    //DataSet ds2 = new DataSet();
+
+                    //SqlCommand command1 = connection.CreateCommand();
+                    //command1.CommandText = $"SELECT * FROM StavkaUsluge s WHERE s.Id_Racun=@Id ";
+                    //SqlDataAdapter daStavkaUsluge = new SqlDataAdapter();
+                    //daStavkaUsluge.SelectCommand = command1;
+                    //daStavkaUsluge.Fill(ds2, "StavkaUsluge");
+                    //command1.Parameters.Add(new SqlParameter("@Id", n.Id));
+                    //foreach (DataRow row2 in ds2.Tables["StavkaUsluge"].Rows)
+                    //{
+                    //    StavkaProdajeUsluge s = new StavkaProdajeUsluge();
+                    //    s.Id = (int)row2["Id"];
+                    //    s.Id_Usluga = (int)row2["Id_Usluga"];
+                    //    s.Usluga = Usluga.GetById(s.Id_Usluga);
+                    //    s.Id_Racun = (int)row2["Id_Racun"];
 
 
-                        n.listaStavkiNamestaja.Add(s);
-                    }
+                    //    n.listaStavkiUsluga.Add(s);
+                    //}
                     Projekat.Instance.Racun.Add(n);
                 }
             }

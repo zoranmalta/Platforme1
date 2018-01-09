@@ -38,6 +38,16 @@ namespace Platforme.UI
                 MessageBox.Show("Niste uneli naziv usluge");
                 return;
             }
+            try
+            {
+                if ((tbCena.Text).Length > 0)
+                    usluga.Cena = Double.Parse(tbCena.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Cena mora biti broj veci od nule");
+                return;
+            }
             if (usluga.Cena <= 0)
             {
                 MessageBox.Show("Cena mora biti veca od 0");

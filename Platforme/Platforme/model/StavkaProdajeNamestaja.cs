@@ -17,7 +17,7 @@ namespace Platforme.model
         private Namestaj namestaj;
         private int kolicina;
         private int id_Namestaj;
-        private double popust;
+        private int popust;
 
         public int Id
         {
@@ -63,18 +63,21 @@ namespace Platforme.model
             }
         }
 
-        public double Popust
+        public int Popust
         {
             get { return popust; }
             set { popust = value;
                 OnProtertyChanged("popust");
             }
         }
-
+        public override string ToString()
+        {
+            return $"{namestaj.Naziv},{Kolicina} komada,{namestaj.Cena * Kolicina * (1 - (Popust / 100))} dinara";
+        }
 
         public StavkaProdajeNamestaja() { }
 
-        public StavkaProdajeNamestaja(int Id, int Id_Racun, Namestaj namestaj, int Kolicina,int Id_Namestaj,double Popust)
+        public StavkaProdajeNamestaja(int Id, int Id_Racun, Namestaj namestaj, int Kolicina,int Id_Namestaj,int Popust)
         {
             this.Id = Id;
             this.Id_Racun = Id_Racun;
@@ -83,7 +86,7 @@ namespace Platforme.model
             this.Id_Namestaj = Id_Namestaj;
             this.Popust = Popust;
         }
-        public static void UcitajStavkeRacuna(int Id_Racun)
+        public static void UcitajStavkeRacuna(Racun racun,int Id_Racun)
         {
             using(SqlConnection conn=new SqlConnection(Projekat.CONNECTION_STRING))
             {
@@ -91,7 +94,8 @@ namespace Platforme.model
                 DataSet ds = new DataSet();
 
                 SqlCommand command = conn.CreateCommand();
-                command.CommandText = $"SELECT * FROM StavkaProdajeNamestaja s WHERE s.Id_Racun=Id_Racun ";
+                command.CommandText = $"SELECT * FROM StavkaProdajeNamestaja s WHERE s.Id_Racun=@Id_Racun ";
+                command.Parameters.Add(new SqlParameter("@Id_Racun", Id_Racun));
                 SqlDataAdapter daStavkaNamestaja = new SqlDataAdapter();
                 daStavkaNamestaja.SelectCommand = command;
                 daStavkaNamestaja.Fill(ds, "StavkaProdajeNamestaja");
@@ -103,11 +107,11 @@ namespace Platforme.model
                     s.Id_Namestaj = (int)row["Id_Namestaj"];
                     s.Id_Racun = (int)row["Id_Racun"];
                     s.Kolicina = (int)row["Kolicina"];
-                    s.Popust = Convert.ToDouble(row["Popust"]);
+                    s.Popust = (int)(row["Popust"]);
                     s.Namestaj = Namestaj.GetById(s.Id_Namestaj);
-                    
 
-                    Projekat.Instance.StavkaProdajeNamestaja.Add(s);
+                    racun.listaStavkiNamestaja.Add(s);
+                    
                 }
             }
         }

@@ -31,7 +31,12 @@ namespace Platforme.UI
         }
         public void PrikazRacuna(object Sender, RoutedEventArgs e)
         {
-
+            var pr = new PregledRacuna();
+            pr.ShowDialog();
+        }
+        public void Izlaz(object Sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

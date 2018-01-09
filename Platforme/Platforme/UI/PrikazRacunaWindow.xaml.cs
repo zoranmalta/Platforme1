@@ -33,6 +33,7 @@ namespace Platforme.UI
             tbIdRacuna.DataContext = racun;
             tbDatum.DataContext = racun;
             tbKupac.DataContext = racun;
+            tbZaposleni.DataContext = racun;
             vrednostPdv.Text = racun.TotalPricePDV().ToString();
             vrednostBezPdv.Text = racun.TotalPriceBezPDV().ToString();
             tbUkupanRacun.Text = racun.TotalPrice().ToString();
@@ -67,7 +68,9 @@ namespace Platforme.UI
             this.Close();
         }
 
-        public void Stampaj(object sender, RoutedEventArgs e) { }
+        public void Stampaj(object sender, RoutedEventArgs e) {
+            this.Close();
+        }
 
        
     }

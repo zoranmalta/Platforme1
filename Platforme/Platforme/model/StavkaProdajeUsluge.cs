@@ -72,7 +72,12 @@ namespace Platforme.model
             this.usluga = usluga;
             this.Id_Usluga = Id_Usluga;
         }
-        public static void UcitajStavkeRacuna(int Id_Racun)
+
+        public override string ToString()
+        {
+            return $"{usluga.Naziv}";
+        }
+        public static void UcitajStavkeRacuna(Racun racun,int Id_Racun)
         {
             using (SqlConnection conn = new SqlConnection(Projekat.CONNECTION_STRING))
             {
@@ -80,7 +85,8 @@ namespace Platforme.model
                 DataSet ds = new DataSet();
 
                 SqlCommand command = conn.CreateCommand();
-                command.CommandText = $"SELECT * FROM StavkaUsluge s WHERE s.Id_Racun=Id_Racun ";
+                command.CommandText = $"SELECT * FROM StavkaUsluge s WHERE s.Id_Racun=@Id_Racun ";
+                command.Parameters.Add(new SqlParameter("@Id_Racun", Id_Racun));
                 SqlDataAdapter daStavkaNamestaja = new SqlDataAdapter();
                 daStavkaNamestaja.SelectCommand = command;
                 daStavkaNamestaja.Fill(ds, "StavkaUsluge");
@@ -92,9 +98,8 @@ namespace Platforme.model
                     s.Id_Usluga = (int)row["Id_Usluga"];
                     s.Usluga = Usluga.GetById(s.Id_Usluga);
                     s.Id_Racun = (int)row["Id_Racun"];
-                   
 
-                    Projekat.Instance.StavkaProdajeUsluge.Add(s);
+                    racun.listaStavkiUsluga.Add(s);
                 }
             }
         }

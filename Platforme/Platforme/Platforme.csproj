@@ -59,7 +59,6 @@
     <Compile Include="model\Salon.cs" />
     <Compile Include="model\StavkaProdajeNamestaja.cs" />
     <Compile Include="model\StavkaProdajeUsluge.cs" />
-    <Compile Include="model\StavkaUsluge.cs" />
     <Compile Include="model\Usluga.cs" />
     <Compile Include="model\Zaposleni.cs" />
     <Compile Include="UI\AkcijaDodavanje.xaml.cs">
@@ -77,6 +76,9 @@
     </Compile>
     <Compile Include="UI\NamestajWindow.xaml.cs">
       <DependentUpon>NamestajWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PregledRacuna.xaml.cs">
+      <DependentUpon>PregledRacuna.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\PretragaNamestaja.xaml.cs">
       <DependentUpon>PretragaNamestaja.xaml</DependentUpon>
@@ -111,6 +113,7 @@
     <Compile Include="UI\ZaposleniWindow.xaml.cs">
       <DependentUpon>ZaposleniWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="util\DoubleRangeTest.cs" />
     <Compile Include="util\EmailValidation.cs" />
     <Compile Include="util\GenericsSerializer.cs" />
     <Compile Include="util\StringUtils.cs" />
@@ -144,6 +147,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\NamestajWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\PregledRacuna.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

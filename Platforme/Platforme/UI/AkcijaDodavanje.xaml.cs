@@ -45,6 +45,29 @@ namespace Platforme.UI
                 MessageBox.Show("Datum zavrsetka treba da je posle datuma pocetka akcije");
                 return;
             }
+            try
+            {
+                if (((string)tbPopust.Text).Length > 0)
+                    akcija.Popust = Int32.Parse((String)tbPopust.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Popust mora biti broj izmedju 0 i 99");
+                return;
+            }
+            if (akcija.Popust < 0 || akcija.Popust > 99)
+            {
+                MessageBox.Show("Popust mora biti broj izmedju 0 i 99");
+                return;
+            }
+            foreach(Akcija a in Projekat.Instance.Akcija)
+            {
+                if (a.Namestaj == akcija.Namestaj && akcija.DatumPocetka.CompareTo(a.DatumZavrsetka)<=0)
+                {
+                    MessageBox.Show("Datum pocetka akcije za namestaj " + akcija.Namestaj.Naziv + " mora biti posle datuma " + a.DatumZavrsetka);
+                    return;
+                }
+            }
             if (akcija.Id != 0) //ako postoji id, Akcija je vec u bazi, sto znaci da se radi izmena akcije
             {
                 akcija.IdNamestaj = akcija.Namestaj.Id;

@@ -17,7 +17,6 @@ namespace Platforme.model
         private string ime;
         private string prezime;
         private string telefon;
-        private bool obrisan;
 
         public int Id
         {
@@ -55,23 +54,14 @@ namespace Platforme.model
                 OnPropertyChanged("telefon");
             }
         }
-        public bool Obrisan
-        {
-            get { return obrisan; }
-            set
-            {
-                obrisan = value;
-                OnPropertyChanged("obrisan");
-            }
-        }
+        
         public Kupac() { }
-        public Kupac(int Id, string Ime, string Prezime, string Telefon, bool Obrisan)
+        public Kupac(int Id, string Ime, string Prezime, string Telefon)
         {
             this.Id = Id;
             this.Ime = Ime;
             this.Prezime = Prezime;
             this.Telefon = Telefon;
-            this.Obrisan = Obrisan;
         }
 
         public static void UcitajKupce()
@@ -94,7 +84,6 @@ namespace Platforme.model
                     n.Ime = (string)row["Ime"];
                     n.Prezime = (string)row["Prezime"];
                     n.Telefon = (string)row["Telefon"];
-                    n.Obrisan = (bool)row["Obrisan"];
 
                     Projekat.Instance.Kupac.Add(n);
                 }
@@ -108,13 +97,12 @@ namespace Platforme.model
                 conn.Open();
 
                 SqlCommand command = conn.CreateCommand();
-                command.CommandText = $"INSERT INTO Kupac (Ime,Prezime,Telefon,Obrisan) " +
-                                                 $"VALUES(@Ime,@Prezime,@Telefon,@Obrisan)";
+                command.CommandText = $"INSERT INTO Kupac (Ime,Prezime,Telefon) " +
+                                                 $"VALUES(@Ime,@Prezime,@Telefon)";
 
                 command.Parameters.Add(new SqlParameter("@Ime", kupac.Ime));
                 command.Parameters.Add(new SqlParameter("@Prezime", kupac.Prezime));
                 command.Parameters.Add(new SqlParameter("@Telefon", kupac.Telefon));
-                command.Parameters.Add(new SqlParameter("@Obrisan", kupac.Obrisan));
 
                 command.ExecuteNonQuery();
 

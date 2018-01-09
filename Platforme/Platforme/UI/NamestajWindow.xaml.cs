@@ -56,9 +56,29 @@ namespace Platforme.UI
                 MessageBox.Show("Niste uneli sve podatke");
                 return;
             }
+            try
+            {
+                if (((string)tbCena.Text).Length > 0)
+                    namestaj.Cena = Double.Parse((String)tbCena.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Cena mora biti broj veci od nule");
+                return;
+            }
             if (namestaj.Cena <= 0)
             {
                 MessageBox.Show("Cena mora biti veca od 0");
+                return;
+            }
+            try
+            {
+                if (((string)tbKolicina.Text).Length > 0)
+                    namestaj.Kolicina = Int32.Parse((String)tbKolicina.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Kolicina mora biti ceo broj veci od nule");
                 return;
             }
             if (namestaj.Kolicina <= 0)
