@@ -145,6 +145,7 @@ namespace Platforme.UI
             if (racun.listaStavkiNamestaja.Count != 0||racun.listaStavkiUsluga.Count !=0)
             {
                 Kupac.DodajKupca(kupac);
+                Projekat.Instance.Kupac.Add(kupac);
                 int idkupacmax = Kupac.UzmiMaxId();
                 racun.Id_Kupac = idkupacmax;
                 kupac.Id = idkupacmax;
