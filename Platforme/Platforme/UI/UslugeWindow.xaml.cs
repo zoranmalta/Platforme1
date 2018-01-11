@@ -47,7 +47,11 @@ namespace Platforme.UI
         private void IzmeniUslugu(object sender, RoutedEventArgs e)
         {
             Usluga selektovanaUsluga = view.CurrentItem as Usluga; //preuzimanje selektovane usluge
-
+            if (selektovanaUsluga == null)
+            {
+                MessageBox.Show("Niste odabrali uslugu za brisanje");
+                return;
+            }
             if (selektovanaUsluga != null)//ako je neki namestaj selektovan
             {
                 //napravimo kopiju trenutnih vrednosti u objektu,  da bi ih mogli preuzeti ako korisnik ponisti napravljenje izmene
@@ -65,7 +69,11 @@ namespace Platforme.UI
         private void ObrisiUslugu(object sender, RoutedEventArgs e)
         {
             Usluga selektovanaUsluga = view.CurrentItem as Usluga;
-
+            if (selektovanaUsluga == null)
+            {
+                MessageBox.Show("Niste odabrali uslugu za brisanje");
+                return;
+            }
             if (selektovanaUsluga != null)
             {
                 if (MessageBox.Show($"Da li sigurno zelite da obrisete uslugu: {selektovanaUsluga.Naziv}", "Potvrda",

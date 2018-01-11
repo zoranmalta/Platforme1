@@ -50,7 +50,11 @@ namespace Platforme.UI
         private void Izmeni(object sender, RoutedEventArgs e)
         {
             TipNamestaja selektovaniTipNamestaja = view.CurrentItem as TipNamestaja; //preuzimanje selektovanog tipa
-
+            if (selektovaniTipNamestaja == null)
+            {
+                MessageBox.Show("Niste odabrali tip namestaja za brisanje");
+                return;
+            }
             if (selektovaniTipNamestaja != null)//ako je neki tip namestaja selektovan
             {
                 //napravimo kopiju trenutnih vrednosti u objektu,  da bi ih mogli preuzeti ako korisnik ponisti napravljenje izmene
@@ -64,14 +68,16 @@ namespace Platforme.UI
                     Projekat.Instance.TipNamestaja[index] = old;
                 }
             }
-            //var selectedTipNamestaja = (TipNamestaja)dgTipNamestaja.SelectedItem;
-            //var tni = new TipNamestajaIzmene(selectedTipNamestaja);
-            ////this.Close();
-            //tni.ShowDialog();
+           
         }
         private void Ukloni(object sender, RoutedEventArgs e)
         {
             TipNamestaja selektovaniTip = view.CurrentItem as TipNamestaja;
+            if (selektovaniTip == null)
+            {
+                MessageBox.Show("Niste odabrali tip namestaja za brisanje");
+                return;
+            }
 
             if (MessageBox.Show($"Da li sigurno zelite da obrisete tip namestaja: {selektovaniTip.Naziv}", "Potvrda",
                                 MessageBoxButton.YesNo) == MessageBoxResult.Yes)
