@@ -123,28 +123,37 @@ namespace Platforme.model
         {
             using (SqlConnection connection = new SqlConnection(Projekat.CONNECTION_STRING))
             {
-                connection.Open();
-
-                DataSet ds = new DataSet();
-
-                SqlCommand command = connection.CreateCommand();
-                command.CommandText = @"SELECT * FROM Zaposleni ";
-                SqlDataAdapter daZaposleni = new SqlDataAdapter();
-                daZaposleni.SelectCommand = command;
-                daZaposleni.Fill(ds, "Zaposleni");
-
-                foreach (DataRow row in ds.Tables["Zaposleni"].Rows)
+                try
                 {
-                    Zaposleni n = new Zaposleni();
-                    n.Id = (int)row["Id"];
-                    n.Ime = (string)row["Ime"];
-                    n.Prezime = (string)row["Prezime"];
-                    n.KorisnickoIme = (string)row["KorisnickoIme"];
-                    n.Lozinka = (string)row["Lozinka"];
-                    n.Tip = (string)row["Tip"];
-                    n.Obrisan = (bool)row["Obrisan"];
+                    connection.Open();
 
-                    Projekat.Instance.Zaposleni.Add(n);
+                    DataSet ds = new DataSet();
+
+                    SqlCommand command = connection.CreateCommand();
+                    command.CommandText = @"SELECT * FROM Zaposleni ";
+                    SqlDataAdapter daZaposleni = new SqlDataAdapter();
+                    daZaposleni.SelectCommand = command;
+                    daZaposleni.Fill(ds, "Zaposleni");
+
+                    foreach (DataRow row in ds.Tables["Zaposleni"].Rows)
+                    {
+                        Zaposleni n = new Zaposleni();
+                        n.Id = (int)row["Id"];
+                        n.Ime = (string)row["Ime"];
+                        n.Prezime = (string)row["Prezime"];
+                        n.KorisnickoIme = (string)row["KorisnickoIme"];
+                        n.Lozinka = (string)row["Lozinka"];
+                        n.Tip = (string)row["Tip"];
+                        n.Obrisan = (bool)row["Obrisan"];
+
+                        Projekat.Instance.Zaposleni.Add(n);
+                    }
+                }
+                catch (Exception)
+                {
+
+                    Console.WriteLine("Nije uspela sql naredba");
+                    return;
                 }
             }
         }
@@ -152,56 +161,83 @@ namespace Platforme.model
         {
             using (SqlConnection conn = new SqlConnection(Projekat.CONNECTION_STRING))
             {
-                conn.Open();
+                try
+                {
+                    conn.Open();
 
-                SqlCommand command = conn.CreateCommand();
-                command.CommandText = @"INSERT INTO Zaposleni (Ime, Prezime,Tip,KorisnickoIme,Lozinka,Obrisan) 
+                    SqlCommand command = conn.CreateCommand();
+                    command.CommandText = @"INSERT INTO Zaposleni (Ime, Prezime,Tip,KorisnickoIme,Lozinka,Obrisan) 
                                                      VALUES (@Ime, @Prezime,@Tip,@KorisnickoIme,@Lozinka,@Obrisan)";
 
-                command.Parameters.Add(new SqlParameter("@Ime", zaposleni.Ime));
-                command.Parameters.Add(new SqlParameter("@Prezime", zaposleni.Prezime));
-                command.Parameters.Add(new SqlParameter("@Tip", zaposleni.Tip));
-                command.Parameters.Add(new SqlParameter("@KorisnickoIme", zaposleni.KorisnickoIme));
-                command.Parameters.Add(new SqlParameter("@Lozinka", zaposleni.Lozinka));
-                command.Parameters.Add(new SqlParameter("@Obrisan", zaposleni.Obrisan));
+                    command.Parameters.Add(new SqlParameter("@Ime", zaposleni.Ime));
+                    command.Parameters.Add(new SqlParameter("@Prezime", zaposleni.Prezime));
+                    command.Parameters.Add(new SqlParameter("@Tip", zaposleni.Tip));
+                    command.Parameters.Add(new SqlParameter("@KorisnickoIme", zaposleni.KorisnickoIme));
+                    command.Parameters.Add(new SqlParameter("@Lozinka", zaposleni.Lozinka));
+                    command.Parameters.Add(new SqlParameter("@Obrisan", zaposleni.Obrisan));
 
-                command.ExecuteNonQuery();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception)
+                {
+
+                    Console.WriteLine("Nije uspela sql naredba");
+                    return;
+                }
             }
         }
         public static void IzmeniZaposlenog(Zaposleni zaposleni)
         {
             using (SqlConnection conn = new SqlConnection(Projekat.CONNECTION_STRING))
             {
-                conn.Open();
+                try
+                {
+                    conn.Open();
 
-                SqlCommand command = conn.CreateCommand();
-                command.CommandText = @"UPDATE Zaposleni SET Ime=@Ime, Prezime=@Prezime,Tip=@Tip,
+                    SqlCommand command = conn.CreateCommand();
+                    command.CommandText = @"UPDATE Zaposleni SET Ime=@Ime, Prezime=@Prezime,Tip=@Tip,
                                         KorisnickoIme=@KorisnickoIme,Lozinka=@Lozinka,Obrisan=@Obrisan WHERE Id=@Id ";
 
-                command.Parameters.Add(new SqlParameter("@Ime", zaposleni.Ime));
-                command.Parameters.Add(new SqlParameter("@Prezime", zaposleni.Prezime));
-                command.Parameters.Add(new SqlParameter("@Tip", zaposleni.Tip));
-                command.Parameters.Add(new SqlParameter("@KorisnickoIme", zaposleni.KorisnickoIme));
-                command.Parameters.Add(new SqlParameter("@Lozinka", zaposleni.Lozinka));
-                command.Parameters.Add(new SqlParameter("@Obrisan", zaposleni.Obrisan));
-                command.Parameters.Add(new SqlParameter("@Id", zaposleni.Id));
+                    command.Parameters.Add(new SqlParameter("@Ime", zaposleni.Ime));
+                    command.Parameters.Add(new SqlParameter("@Prezime", zaposleni.Prezime));
+                    command.Parameters.Add(new SqlParameter("@Tip", zaposleni.Tip));
+                    command.Parameters.Add(new SqlParameter("@KorisnickoIme", zaposleni.KorisnickoIme));
+                    command.Parameters.Add(new SqlParameter("@Lozinka", zaposleni.Lozinka));
+                    command.Parameters.Add(new SqlParameter("@Obrisan", zaposleni.Obrisan));
+                    command.Parameters.Add(new SqlParameter("@Id", zaposleni.Id));
 
-                command.ExecuteNonQuery();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception)
+                {
+
+                    Console.WriteLine("Nije uspela sql naredba");
+                    return;
+                }
             }
         }
         public static void ObrisiZaposlenog(Zaposleni zaposleni)
         {
             using (SqlConnection conn = new SqlConnection(Projekat.CONNECTION_STRING))
             {
-                conn.Open();
+                try
+                {
+                    conn.Open();
 
-                SqlCommand command = conn.CreateCommand();
-                command.CommandText = @"UPDATE Zaposleni SET Obrisan=@Obrisan WHERE Id=@Id ";
+                    SqlCommand command = conn.CreateCommand();
+                    command.CommandText = @"UPDATE Zaposleni SET Obrisan=@Obrisan WHERE Id=@Id ";
 
-                command.Parameters.Add(new SqlParameter("@Obrisan", zaposleni.Obrisan));
-                command.Parameters.Add(new SqlParameter("@Id", zaposleni.Id));
+                    command.Parameters.Add(new SqlParameter("@Obrisan", zaposleni.Obrisan));
+                    command.Parameters.Add(new SqlParameter("@Id", zaposleni.Id));
 
-                command.ExecuteNonQuery();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception)
+                {
+
+                    Console.WriteLine("Nije uspela sql naredba");
+                    return;
+                }
             }
         }
 

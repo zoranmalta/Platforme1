@@ -87,25 +87,34 @@ namespace Platforme.model
         {
             using (SqlConnection connection = new SqlConnection(Projekat.CONNECTION_STRING))
             {
-                connection.Open();
-
-                DataSet ds = new DataSet();
-
-                SqlCommand command = connection.CreateCommand();
-                command.CommandText = @"SELECT * FROM Usluga ";
-                SqlDataAdapter daUsluga = new SqlDataAdapter();
-                daUsluga.SelectCommand = command;
-                daUsluga.Fill(ds, "Usluga");
-
-                foreach (DataRow row in ds.Tables["Usluga"].Rows)
+                try
                 {
-                    Usluga n = new Usluga();
-                    n.Id = (int)row["Id"];
-                    n.Naziv = (string)row["Naziv"];
-                    n.Cena = Convert.ToDouble(row["Cena"]);
-                    n.Obrisan = (bool)row["Obrisan"];
+                    connection.Open();
 
-                    Projekat.Instance.Usluga.Add(n);
+                    DataSet ds = new DataSet();
+
+                    SqlCommand command = connection.CreateCommand();
+                    command.CommandText = @"SELECT * FROM Usluga ";
+                    SqlDataAdapter daUsluga = new SqlDataAdapter();
+                    daUsluga.SelectCommand = command;
+                    daUsluga.Fill(ds, "Usluga");
+
+                    foreach (DataRow row in ds.Tables["Usluga"].Rows)
+                    {
+                        Usluga n = new Usluga();
+                        n.Id = (int)row["Id"];
+                        n.Naziv = (string)row["Naziv"];
+                        n.Cena = Convert.ToDouble(row["Cena"]);
+                        n.Obrisan = (bool)row["Obrisan"];
+
+                        Projekat.Instance.Usluga.Add(n);
+                    }
+                }
+                catch (Exception)
+                {
+
+                    Console.WriteLine("Nije uspela sql naredba");
+                    return;
                 }
             }
         }
@@ -113,37 +122,55 @@ namespace Platforme.model
         {
             using (SqlConnection conn = new SqlConnection(Projekat.CONNECTION_STRING))
             {
-                conn.Open();
+                try
+                {
+                    conn.Open();
 
-                SqlCommand command = conn.CreateCommand();
-                command.CommandText = @"INSERT INTO Usluga (Naziv,Cena,Obrisan) 
+                    SqlCommand command = conn.CreateCommand();
+                    command.CommandText = @"INSERT INTO Usluga (Naziv,Cena,Obrisan) 
                                                      VALUES (@Naziv,@Cena,@Obrisan)";
 
-                command.Parameters.Add(new SqlParameter("@Naziv", usluga.Naziv));
-                command.Parameters.Add(new SqlParameter("@Cena", usluga.Cena));
-                command.Parameters.Add(new SqlParameter("@Obrisan", usluga.Obrisan));
+                    command.Parameters.Add(new SqlParameter("@Naziv", usluga.Naziv));
+                    command.Parameters.Add(new SqlParameter("@Cena", usluga.Cena));
+                    command.Parameters.Add(new SqlParameter("@Obrisan", usluga.Obrisan));
 
-                command.ExecuteNonQuery();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception)
+                {
+
+                    Console.WriteLine("Nije uspela sql naredba");
+                    return;
+                }
             }
         }
         public static void IzmeniUslugu(Usluga usluga)
         {
             using (SqlConnection conn = new SqlConnection(Projekat.CONNECTION_STRING))
             {
-                if (usluga.Id != 0)//ako namestaj postoji u bazi
+                try
                 {
-                    conn.Open();
+                    if (usluga.Id != 0)//ako namestaj postoji u bazi
+                    {
+                        conn.Open();
 
-                    SqlCommand command = conn.CreateCommand();
-                    command.CommandText = @"UPDATE Usluga SET NAZIV=@Naziv,Cena=@Cena,
+                        SqlCommand command = conn.CreateCommand();
+                        command.CommandText = @"UPDATE Usluga SET NAZIV=@Naziv,Cena=@Cena,
                                                                 Obrisan=@Obrisan WHERE Id=@Id";
 
-                    command.Parameters.Add(new SqlParameter("@Naziv", usluga.Naziv));
-                    command.Parameters.Add(new SqlParameter("@Cena", usluga.Cena));
-                    command.Parameters.Add(new SqlParameter("@Obrisan", usluga.Obrisan));
-                    command.Parameters.Add(new SqlParameter("@Id", usluga.Id));
+                        command.Parameters.Add(new SqlParameter("@Naziv", usluga.Naziv));
+                        command.Parameters.Add(new SqlParameter("@Cena", usluga.Cena));
+                        command.Parameters.Add(new SqlParameter("@Obrisan", usluga.Obrisan));
+                        command.Parameters.Add(new SqlParameter("@Id", usluga.Id));
 
-                    command.ExecuteNonQuery();
+                        command.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception)
+                {
+
+                    Console.WriteLine("Nije uspela sql naredba");
+                    return;
                 }
             }
         }
@@ -151,16 +178,25 @@ namespace Platforme.model
         {
             using (SqlConnection conn = new SqlConnection(Projekat.CONNECTION_STRING))
             {
-                if (usluga.Id != 0)//ako namestaj postoji u bazi
+                try
                 {
-                    conn.Open();
+                    if (usluga.Id != 0)//ako namestaj postoji u bazi
+                    {
+                        conn.Open();
 
-                    SqlCommand command = conn.CreateCommand();
-                    command.CommandText = @"DELETE FROM Usluga WHERE Id=@Id";
+                        SqlCommand command = conn.CreateCommand();
+                        command.CommandText = @"DELETE FROM Usluga WHERE Id=@Id";
 
-                    command.Parameters.Add(new SqlParameter("@Id", usluga.Id));
+                        command.Parameters.Add(new SqlParameter("@Id", usluga.Id));
 
-                    command.ExecuteNonQuery();
+                        command.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception)
+                {
+
+                    Console.WriteLine("Nije uspela sql naredba");
+                    return;
                 }
             }
         }

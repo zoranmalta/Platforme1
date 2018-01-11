@@ -1,0 +1,18 @@
+﻿SET IDENTITY_INSERT [dbo].[StavkaProdajeNamestaja] ON
+INSERT INTO [dbo].[StavkaProdajeNamestaja] ([Id], [Id_Racun], [Id_Namestaj], [Kolicina], [Popust]) VALUES (1, 2, 3, 2, 0)
+INSERT INTO [dbo].[StavkaProdajeNamestaja] ([Id], [Id_Racun], [Id_Namestaj], [Kolicina], [Popust]) VALUES (2, 3, 1, 3, 20)
+INSERT INTO [dbo].[StavkaProdajeNamestaja] ([Id], [Id_Racun], [Id_Namestaj], [Kolicina], [Popust]) VALUES (3, 4, 3, 1, 0)
+INSERT INTO [dbo].[StavkaProdajeNamestaja] ([Id], [Id_Racun], [Id_Namestaj], [Kolicina], [Popust]) VALUES (4, 5, 2, 1, 25)
+INSERT INTO [dbo].[StavkaProdajeNamestaja] ([Id], [Id_Racun], [Id_Namestaj], [Kolicina], [Popust]) VALUES (5, 5, 1, 1, 20)
+INSERT INTO [dbo].[StavkaProdajeNamestaja] ([Id], [Id_Racun], [Id_Namestaj], [Kolicina], [Popust]) VALUES (6, 6, 2, 1, 25)
+INSERT INTO [dbo].[StavkaProdajeNamestaja] ([Id], [Id_Racun], [Id_Namestaj], [Kolicina], [Popust]) VALUES (7, 6, 1, 1, 20)
+INSERT INTO [dbo].[StavkaProdajeNamestaja] ([Id], [Id_Racun], [Id_Namestaj], [Kolicina], [Popust]) VALUES (8, 7, 2, 1, 25)
+INSERT INTO [dbo].[StavkaProdajeNamestaja] ([Id], [Id_Racun], [Id_Namestaj], [Kolicina], [Popust]) VALUES (9, 9, 1, 2, 20)
+INSERT INTO [dbo].[StavkaProdajeNamestaja] ([Id], [Id_Racun], [Id_Namestaj], [Kolicina], [Popust]) VALUES (10, 10, 1, 2, 20)
+INSERT INTO [dbo].[StavkaProdajeNamestaja] ([Id], [Id_Racun], [Id_Namestaj], [Kolicina], [Popust]) VALUES (11, 10, 3, 1, 0)
+INSERT INTO [dbo].[StavkaProdajeNamestaja] ([Id], [Id_Racun], [Id_Namestaj], [Kolicina], [Popust]) VALUES (12, 11, 4, 4, 0)
+INSERT INTO [dbo].[StavkaProdajeNamestaja] ([Id], [Id_Racun], [Id_Namestaj], [Kolicina], [Popust]) VALUES (1002, 2002, 1, 4, 20)
+INSERT INTO [dbo].[StavkaProdajeNamestaja] ([Id], [Id_Racun], [Id_Namestaj], [Kolicina], [Popust]) VALUES (1003, 2003, 4, 1, 0)
+INSERT INTO [dbo].[StavkaProdajeNamestaja] ([Id], [Id_Racun], [Id_Namestaj], [Kolicina], [Popust]) VALUES (1004, 2003, 1002, 1, 0)
+INSERT INTO [dbo].[StavkaProdajeNamestaja] ([Id], [Id_Racun], [Id_Namestaj], [Kolicina], [Popust]) VALUES (1005, 2004, 4, 4, 0)
+SET IDENTITY_INSERT [dbo].[StavkaProdajeNamestaja] OFF

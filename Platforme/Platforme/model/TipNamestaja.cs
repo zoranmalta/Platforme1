@@ -85,24 +85,32 @@ namespace Platforme.model
         {
             using (SqlConnection connection=new SqlConnection(Projekat.CONNECTION_STRING))
             {
-                connection.Open();
-
-                DataSet ds = new DataSet();
-
-                SqlCommand tipNamestajaCommand = connection.CreateCommand();
-                tipNamestajaCommand.CommandText = @"SELECT * FROM TipNamestaja ";
-                SqlDataAdapter daTipNamestaja = new SqlDataAdapter();
-                daTipNamestaja.SelectCommand = tipNamestajaCommand;
-                daTipNamestaja.Fill(ds, "TipNamestaja");
-
-                foreach (DataRow row in ds.Tables["TipNamestaja"].Rows)
+                try
                 {
-                    TipNamestaja t = new TipNamestaja();
-                    t.Id = (int)row["Id"];
-                    t.Naziv = (string)row["Naziv"];
-                    t.Obrisan = (bool)row["Obrisan"];
+                    connection.Open();
 
-                    Projekat.Instance.TipNamestaja.Add(t);
+                    DataSet ds = new DataSet();
+
+                    SqlCommand tipNamestajaCommand = connection.CreateCommand();
+                    tipNamestajaCommand.CommandText = @"SELECT * FROM TipNamestaja ";
+                    SqlDataAdapter daTipNamestaja = new SqlDataAdapter();
+                    daTipNamestaja.SelectCommand = tipNamestajaCommand;
+                    daTipNamestaja.Fill(ds, "TipNamestaja");
+
+                    foreach (DataRow row in ds.Tables["TipNamestaja"].Rows)
+                    {
+                        TipNamestaja t = new TipNamestaja();
+                        t.Id = (int)row["Id"];
+                        t.Naziv = (string)row["Naziv"];
+                        t.Obrisan = (bool)row["Obrisan"];
+
+                        Projekat.Instance.TipNamestaja.Add(t);
+                    }
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Nije uspela sql naredba");
+                    return;
                 }
             }
         }
@@ -111,31 +119,49 @@ namespace Platforme.model
         {
             using (SqlConnection conn = new SqlConnection(Projekat.CONNECTION_STRING))
             {
-                conn.Open();
-                SqlCommand command = conn.CreateCommand();
-                command.CommandText = $"INSERT INTO TipNamestaja (Naziv,Obrisan) VALUES (@Naziv,@Obrisan)";
+                try
+                {
+                    conn.Open();
+                    SqlCommand command = conn.CreateCommand();
+                    command.CommandText = $"INSERT INTO TipNamestaja (Naziv,Obrisan) VALUES (@Naziv,@Obrisan)";
 
-                command.Parameters.Add(new SqlParameter("@Naziv", tipNamestaja.Naziv));
-                command.Parameters.Add(new SqlParameter("@Obrisan", tipNamestaja.Obrisan));
+                    command.Parameters.Add(new SqlParameter("@Naziv", tipNamestaja.Naziv));
+                    command.Parameters.Add(new SqlParameter("@Obrisan", tipNamestaja.Obrisan));
 
-                command.ExecuteNonQuery();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception)
+                {
+
+                    Console.WriteLine("Nije uspela sql naredba");
+                    return;
+                }
             }
         }
         public static void IzmeniTipNamestaja(TipNamestaja tipNamestaja)
         {
             using(SqlConnection conn=new SqlConnection(Projekat.CONNECTION_STRING))
             {
-                if (tipNamestaja.Id != 0)
+                try
                 {
-                    conn.Open();
-                    SqlCommand command = conn.CreateCommand();
-                    command.CommandText = $"UPDATE TipNamestaja SET Naziv=@Naziv,Obrisan=@Obrisan WHERE Id=@Id" ;
+                    if (tipNamestaja.Id != 0)
+                    {
+                        conn.Open();
+                        SqlCommand command = conn.CreateCommand();
+                        command.CommandText = $"UPDATE TipNamestaja SET Naziv=@Naziv,Obrisan=@Obrisan WHERE Id=@Id";
 
-                    command.Parameters.Add(new SqlParameter("@Naziv", tipNamestaja.Naziv));
-                    command.Parameters.Add(new SqlParameter("@Obrisan", tipNamestaja.Obrisan));
-                    command.Parameters.Add(new SqlParameter("@Id", tipNamestaja.Id));
+                        command.Parameters.Add(new SqlParameter("@Naziv", tipNamestaja.Naziv));
+                        command.Parameters.Add(new SqlParameter("@Obrisan", tipNamestaja.Obrisan));
+                        command.Parameters.Add(new SqlParameter("@Id", tipNamestaja.Id));
 
-                    command.ExecuteNonQuery();
+                        command.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception)
+                {
+
+                    Console.WriteLine("Nije uspela sql naredba");
+                    return;
                 }
             }
         }
@@ -143,15 +169,24 @@ namespace Platforme.model
         {
             using(SqlConnection conn=new SqlConnection(Projekat.CONNECTION_STRING))
             {
-                if (tipNamestaja.Id != 0)
+                try
                 {
-                    conn.Open();
-                    SqlCommand command = conn.CreateCommand();
-                    command.CommandText = $"DELETE FROM TipNamestaja WHERE Id=@Id";
+                    if (tipNamestaja.Id != 0)
+                    {
+                        conn.Open();
+                        SqlCommand command = conn.CreateCommand();
+                        command.CommandText = $"DELETE FROM TipNamestaja WHERE Id=@Id";
 
-                    command.Parameters.Add(new SqlParameter("@Id", tipNamestaja.Id));
+                        command.Parameters.Add(new SqlParameter("@Id", tipNamestaja.Id));
 
-                    command.ExecuteNonQuery();
+                        command.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception)
+                {
+
+                    Console.WriteLine("Nije uspela sql naredba");
+                    return;
                 }
             }
         }

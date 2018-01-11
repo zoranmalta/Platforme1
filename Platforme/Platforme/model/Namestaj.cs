@@ -149,29 +149,37 @@ namespace Platforme.model
         {
             using (SqlConnection connection = new SqlConnection(Projekat.CONNECTION_STRING))
             {
-                connection.Open();
-
-                DataSet ds = new DataSet();
-
-                SqlCommand namestajCommand = connection.CreateCommand();
-                namestajCommand.CommandText = @"SELECT * FROM Namestaj  ";
-                SqlDataAdapter daNamestaj = new SqlDataAdapter();
-                daNamestaj.SelectCommand = namestajCommand;
-                daNamestaj.Fill(ds, "Namestaj");
-
-                foreach (DataRow row in ds.Tables["Namestaj"].Rows)
+                try
                 {
-                    Namestaj n = new Namestaj();
-                    n.Id = (int)row["Id"];
-                    n.Sifra = (string)row["Sifra"];
-                    n.Naziv = (string)row["Naziv"];
-                    n.Cena = Convert.ToDouble(row["Cena"]);
-                    n.Kolicina = (int)row["Kolicina"];
-                    n.IdTip = (int)row["IdTip"];
-                    n.TipNamestaja = TipNamestaja.GetById(n.IdTip);
-                    n.Obrisan = (bool)row["Obrisan"];
+                    connection.Open();
 
-                    Projekat.Instance.Namestaj.Add(n);
+                    DataSet ds = new DataSet();
+
+                    SqlCommand namestajCommand = connection.CreateCommand();
+                    namestajCommand.CommandText = @"SELECT * FROM Namestaj  ";
+                    SqlDataAdapter daNamestaj = new SqlDataAdapter();
+                    daNamestaj.SelectCommand = namestajCommand;
+                    daNamestaj.Fill(ds, "Namestaj");
+
+                    foreach (DataRow row in ds.Tables["Namestaj"].Rows)
+                    {
+                        Namestaj n = new Namestaj();
+                        n.Id = (int)row["Id"];
+                        n.Sifra = (string)row["Sifra"];
+                        n.Naziv = (string)row["Naziv"];
+                        n.Cena = Convert.ToDouble(row["Cena"]);
+                        n.Kolicina = (int)row["Kolicina"];
+                        n.IdTip = (int)row["IdTip"];
+                        n.TipNamestaja = TipNamestaja.GetById(n.IdTip);
+                        n.Obrisan = (bool)row["Obrisan"];
+
+                        Projekat.Instance.Namestaj.Add(n);
+                    }
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Nije uspela sql naredba");
+                    return;
                 }
             }
         }
@@ -179,33 +187,13 @@ namespace Platforme.model
         {
             using (SqlConnection conn = new SqlConnection(Projekat.CONNECTION_STRING))
             {
-                conn.Open();
-
-                SqlCommand command = conn.CreateCommand();
-                command.CommandText = @"INSERT INTO Namestaj (Naziv, Sifra,Cena,Kolicina,Obrisan,IdTip) 
-                                                     VALUES (@Naziv, @Sifra,@Cena,@Kolicina,@Obrisan,@IdTip)";
-
-                command.Parameters.Add(new SqlParameter("@Naziv", namestaj.Naziv));
-                command.Parameters.Add(new SqlParameter("@Sifra", namestaj.Sifra));
-                command.Parameters.Add(new SqlParameter("@Cena", namestaj.Cena));
-                command.Parameters.Add(new SqlParameter("@Kolicina", namestaj.Kolicina));
-                command.Parameters.Add(new SqlParameter("@Obrisan", namestaj.Obrisan));
-                command.Parameters.Add(new SqlParameter("@IdTip", namestaj.IdTip));
-
-                command.ExecuteNonQuery();
-            }
-        }
-        public static void IzmeniNamestaj(Namestaj namestaj)
-        {
-            using (SqlConnection conn = new SqlConnection(Projekat.CONNECTION_STRING))
-            {
-                if (namestaj.Id != 0)//ako namestaj postoji u bazi
+                try
                 {
                     conn.Open();
 
                     SqlCommand command = conn.CreateCommand();
-                    command.CommandText = @"UPDATE Namestaj SET NAZIV=@Naziv, Sifra=@Sifra,Cena=@Cena,Kolicina=@Kolicina,
-                                                                Obrisan=@Obrisan,IdTip=@IdTip WHERE Id=@Id";
+                    command.CommandText = @"INSERT INTO Namestaj (Naziv, Sifra,Cena,Kolicina,Obrisan,IdTip) 
+                                                     VALUES (@Naziv, @Sifra,@Cena,@Kolicina,@Obrisan,@IdTip)";
 
                     command.Parameters.Add(new SqlParameter("@Naziv", namestaj.Naziv));
                     command.Parameters.Add(new SqlParameter("@Sifra", namestaj.Sifra));
@@ -213,9 +201,45 @@ namespace Platforme.model
                     command.Parameters.Add(new SqlParameter("@Kolicina", namestaj.Kolicina));
                     command.Parameters.Add(new SqlParameter("@Obrisan", namestaj.Obrisan));
                     command.Parameters.Add(new SqlParameter("@IdTip", namestaj.IdTip));
-                    command.Parameters.Add(new SqlParameter("@Id", namestaj.Id));
 
                     command.ExecuteNonQuery();
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Nije uspela sql naredba");
+                    return;
+                }
+            }
+        }
+        public static void IzmeniNamestaj(Namestaj namestaj)
+        {
+            using (SqlConnection conn = new SqlConnection(Projekat.CONNECTION_STRING))
+            {
+                try
+                {
+                    if (namestaj.Id != 0)//ako namestaj postoji u bazi
+                    {
+                        conn.Open();
+
+                        SqlCommand command = conn.CreateCommand();
+                        command.CommandText = @"UPDATE Namestaj SET NAZIV=@Naziv, Sifra=@Sifra,Cena=@Cena,Kolicina=@Kolicina,
+                                                                Obrisan=@Obrisan,IdTip=@IdTip WHERE Id=@Id";
+
+                        command.Parameters.Add(new SqlParameter("@Naziv", namestaj.Naziv));
+                        command.Parameters.Add(new SqlParameter("@Sifra", namestaj.Sifra));
+                        command.Parameters.Add(new SqlParameter("@Cena", namestaj.Cena));
+                        command.Parameters.Add(new SqlParameter("@Kolicina", namestaj.Kolicina));
+                        command.Parameters.Add(new SqlParameter("@Obrisan", namestaj.Obrisan));
+                        command.Parameters.Add(new SqlParameter("@IdTip", namestaj.IdTip));
+                        command.Parameters.Add(new SqlParameter("@Id", namestaj.Id));
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Nije uspela sql naredba");
+                    return;
                 }
             }
         }
@@ -223,16 +247,25 @@ namespace Platforme.model
         {
             using(SqlConnection conn=new SqlConnection(Projekat.CONNECTION_STRING))
             {
-                if (namestaj.Id != 0)//ako namestaj postoji u bazi
+                try
                 {
-                    conn.Open();
+                    if (namestaj.Id != 0)//ako namestaj postoji u bazi
+                    {
+                        conn.Open();
 
-                    SqlCommand command = conn.CreateCommand();
-                    command.CommandText = @"DELETE FROM Namestaj WHERE Id=@Id";
+                        SqlCommand command = conn.CreateCommand();
+                        command.CommandText = @"DELETE FROM Namestaj WHERE Id=@Id";
 
-                    command.Parameters.Add(new SqlParameter("@Id", namestaj.Id));
+                        command.Parameters.Add(new SqlParameter("@Id", namestaj.Id));
 
-                    command.ExecuteNonQuery();
+                        command.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception)
+                {
+
+                    Console.WriteLine("Nije uspela sql naredba");
+                    return;
                 }
             }
         }

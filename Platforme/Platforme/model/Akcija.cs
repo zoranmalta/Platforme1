@@ -122,28 +122,37 @@ namespace Platforme.model
         {
             using (SqlConnection connection = new SqlConnection(Projekat.CONNECTION_STRING))
             {
-                connection.Open();
-
-                DataSet ds = new DataSet();
-
-                SqlCommand namestajCommand = connection.CreateCommand();
-                namestajCommand.CommandText = @"SELECT * FROM Akcija ";
-                SqlDataAdapter daNamestaj = new SqlDataAdapter();
-                daNamestaj.SelectCommand = namestajCommand;
-                daNamestaj.Fill(ds, "Akcija");
-
-                foreach (DataRow row in ds.Tables["Akcija"].Rows)
+                try
                 {
-                    Akcija n = new Akcija();
-                    n.Id = (int)row["Id"];
-                    n.DatumPocetka = (DateTime)row["DatumPocetka"];
-                    n.DatumZavrsetka = (DateTime)row["DatumZavrsetka"];
-                    n.Popust = (int)row["Popust"];
-                    n.IdNamestaj = (int)row["IdNamestaj"];
-                    n.Namestaj = Namestaj.GetById(n.IdNamestaj);
-                    n.Obrisan = (bool)row["Obrisan"];
+                    connection.Open();
 
-                    Projekat.Instance.Akcija.Add(n);
+                    DataSet ds = new DataSet();
+
+                    SqlCommand namestajCommand = connection.CreateCommand();
+                    namestajCommand.CommandText = @"SELECT * FROM Akcija ";
+                    SqlDataAdapter daNamestaj = new SqlDataAdapter();
+                    daNamestaj.SelectCommand = namestajCommand;
+                    daNamestaj.Fill(ds, "Akcija");
+
+                    foreach (DataRow row in ds.Tables["Akcija"].Rows)
+                    {
+                        Akcija n = new Akcija();
+                        n.Id = (int)row["Id"];
+                        n.DatumPocetka = (DateTime)row["DatumPocetka"];
+                        n.DatumZavrsetka = (DateTime)row["DatumZavrsetka"];
+                        n.Popust = (int)row["Popust"];
+                        n.IdNamestaj = (int)row["IdNamestaj"];
+                        n.Namestaj = Namestaj.GetById(n.IdNamestaj);
+                        n.Obrisan = (bool)row["Obrisan"];
+
+                        Projekat.Instance.Akcija.Add(n);
+                    }
+                }
+                catch (Exception)
+                {
+
+                    Console.WriteLine("Nije uspela sql naredba");
+                    return;
                 }
             }
         }
@@ -152,28 +161,37 @@ namespace Platforme.model
         {
             using (SqlConnection connection = new SqlConnection(Projekat.CONNECTION_STRING))
             {
-                connection.Open();
-                string date = Convert.ToString(DateTime.Today);
-                DataSet ds = new DataSet();
-
-                SqlCommand namestajCommand = connection.CreateCommand();
-                namestajCommand.CommandText = @"SELECT * FROM Akcija Where "+date+" BETWEEN DatumPocetka AND DatumZavrsetka ";
-                SqlDataAdapter daNamestaj = new SqlDataAdapter();
-                daNamestaj.SelectCommand = namestajCommand;
-                daNamestaj.Fill(ds, "Akcija");
-
-                foreach (DataRow row in ds.Tables["Akcija"].Rows)
+                try
                 {
-                    Akcija n = new Akcija();
-                    n.Id = (int)row["Id"];
-                    n.DatumPocetka = (DateTime)row["DatumPocetka"];
-                    n.DatumZavrsetka = (DateTime)row["DatumZavrsetka"];
-                    n.Popust = (int)row["Popust"];
-                    n.IdNamestaj = (int)row["IdNamestaj"];
-                    n.Namestaj = Namestaj.GetById(n.IdNamestaj);
-                    n.Obrisan = (bool)row["Obrisan"];
+                    connection.Open();
+                    string date = Convert.ToString(DateTime.Today);
+                    DataSet ds = new DataSet();
 
-                    Projekat.Instance.Akcija.Add(n);
+                    SqlCommand namestajCommand = connection.CreateCommand();
+                    namestajCommand.CommandText = @"SELECT * FROM Akcija Where " + date + " BETWEEN DatumPocetka AND DatumZavrsetka ";
+                    SqlDataAdapter daNamestaj = new SqlDataAdapter();
+                    daNamestaj.SelectCommand = namestajCommand;
+                    daNamestaj.Fill(ds, "Akcija");
+
+                    foreach (DataRow row in ds.Tables["Akcija"].Rows)
+                    {
+                        Akcija n = new Akcija();
+                        n.Id = (int)row["Id"];
+                        n.DatumPocetka = (DateTime)row["DatumPocetka"];
+                        n.DatumZavrsetka = (DateTime)row["DatumZavrsetka"];
+                        n.Popust = (int)row["Popust"];
+                        n.IdNamestaj = (int)row["IdNamestaj"];
+                        n.Namestaj = Namestaj.GetById(n.IdNamestaj);
+                        n.Obrisan = (bool)row["Obrisan"];
+
+                        Projekat.Instance.Akcija.Add(n);
+                    }
+                }
+                catch (Exception)
+                {
+
+                    Console.WriteLine("Nije uspela sql naredba");
+                    return;
                 }
             }
         }
@@ -182,19 +200,28 @@ namespace Platforme.model
         {
             using (SqlConnection conn = new SqlConnection(Projekat.CONNECTION_STRING))
             {
-                conn.Open();
+                try
+                {
+                    conn.Open();
 
-                SqlCommand command = conn.CreateCommand();
-                command.CommandText = @"INSERT INTO Akcija (DatumPocetka, DatumZavrsetka,IdNamestaj,Popust,Obrisan) 
+                    SqlCommand command = conn.CreateCommand();
+                    command.CommandText = @"INSERT INTO Akcija (DatumPocetka, DatumZavrsetka,IdNamestaj,Popust,Obrisan) 
                                                      VALUES (@DatumPocetka, @DatumZavrsetka,@IdNamestaj,@Popust,@Obrisan)";
 
-                command.Parameters.Add(new SqlParameter("@DatumPocetka", akcija.DatumPocetka));
-                command.Parameters.Add(new SqlParameter("@DatumZavrsetka", akcija.DatumZavrsetka));
-                command.Parameters.Add(new SqlParameter("@IdNamestaj", akcija.IdNamestaj));
-                command.Parameters.Add(new SqlParameter("@Popust", akcija.Popust));
-                command.Parameters.Add(new SqlParameter("@Obrisan", akcija.Obrisan));
+                    command.Parameters.Add(new SqlParameter("@DatumPocetka", akcija.DatumPocetka));
+                    command.Parameters.Add(new SqlParameter("@DatumZavrsetka", akcija.DatumZavrsetka));
+                    command.Parameters.Add(new SqlParameter("@IdNamestaj", akcija.IdNamestaj));
+                    command.Parameters.Add(new SqlParameter("@Popust", akcija.Popust));
+                    command.Parameters.Add(new SqlParameter("@Obrisan", akcija.Obrisan));
 
-                command.ExecuteNonQuery();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception)
+                {
+
+                    Console.WriteLine("Nije uspela sql naredba");
+                    return; ;
+                }
             }
         }
 
@@ -202,20 +229,29 @@ namespace Platforme.model
         {
             using (SqlConnection conn = new SqlConnection(Projekat.CONNECTION_STRING))
             {
-                conn.Open();
+                try
+                {
+                    conn.Open();
 
-                SqlCommand command = conn.CreateCommand();
-                command.CommandText = @"UPDATE Akcija SET DatumPocetka=@DatumPocetka, DatumZavrsetka=@DatumZavrsetka,
+                    SqlCommand command = conn.CreateCommand();
+                    command.CommandText = @"UPDATE Akcija SET DatumPocetka=@DatumPocetka, DatumZavrsetka=@DatumZavrsetka,
                                             IdNamestaj=@IdNamestaj,Popust=@Popust,Obrisan=@Obrisan WHERE Id=@Id ";
 
-                command.Parameters.Add(new SqlParameter("@DatumPocetka", akcija.DatumPocetka));
-                command.Parameters.Add(new SqlParameter("@DatumZavrsetka", akcija.DatumZavrsetka));
-                command.Parameters.Add(new SqlParameter("@IdNamestaj", akcija.IdNamestaj));
-                command.Parameters.Add(new SqlParameter("@Popust", akcija.Popust));
-                command.Parameters.Add(new SqlParameter("@Obrisan", akcija.Obrisan));
-                command.Parameters.Add(new SqlParameter("@Id", akcija.Id));
+                    command.Parameters.Add(new SqlParameter("@DatumPocetka", akcija.DatumPocetka));
+                    command.Parameters.Add(new SqlParameter("@DatumZavrsetka", akcija.DatumZavrsetka));
+                    command.Parameters.Add(new SqlParameter("@IdNamestaj", akcija.IdNamestaj));
+                    command.Parameters.Add(new SqlParameter("@Popust", akcija.Popust));
+                    command.Parameters.Add(new SqlParameter("@Obrisan", akcija.Obrisan));
+                    command.Parameters.Add(new SqlParameter("@Id", akcija.Id));
 
-                command.ExecuteNonQuery();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception)
+                {
+
+                    Console.WriteLine("Nije uspela sql naredba");
+                    return;
+                }
             }
         }
         public static void ObrisiAkciju(Akcija akcija)
